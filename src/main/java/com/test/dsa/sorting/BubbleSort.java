@@ -8,6 +8,8 @@ public class BubbleSort {
 	*	Bubble sort: Push maximum to the last by adjacent compare
 	* 		In this we will compare adjacent numbers if they are in order then do nothing
 	* 		If they are not swap
+	* 		In first iteration we will compare 64 and 25 and swap them, then in same iteration 25 will be on 0
+	* 		and 64 will be on 1 then compare it with 2nd idx with 12 then again swap it and so onn
 	*/
 	public static void main(String[] args) {
 		int arr[] = {64, 25, 12, 22, 11};
@@ -16,7 +18,7 @@ public class BubbleSort {
 	}
 
 	public static void bubbleSort(int arr[], int n) {
-		for(int i =1; i < n-1; i++ ) {
+		for(int i = 0; i < n-1; i++ ) {
 			for (int j = 0; j < n - i -1; j++) {
 				if(arr[j] > arr[j+1]) {
 					int temp = arr[j];

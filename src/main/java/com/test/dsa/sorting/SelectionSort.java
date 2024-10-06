@@ -5,9 +5,10 @@ import java.util.Arrays;
 public class SelectionSort {
 	/*
 	* In selection sort we will select element like arr[0] --> 64 in our case
-	* 		in first iteration we will compare it with adjacent element like arr[1], arr[2] and so on
-	* 		we will compare arr[0] if this element is greater than other element we will swap it
-	* 		After executing first iteration we will get smallest element in first place
+	* 		in first iteration we will compare it with adjacent elements like arr[1], arr[2], arr[3 and so on
+	* 		we will keep minIdx variable which will have minimum number when first iteration completed we will have the smallest number
+	* 		we will compare arr[0] if this element is greater than other element then we will
+	* 		After executing first iteration we will get the smallest element in first place
 	* 		In second iteration we will start from index 1 as 0 is already sorted and so on
 	*/
 	public static void main(String[] args) {
