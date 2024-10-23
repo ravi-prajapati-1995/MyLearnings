@@ -8,8 +8,11 @@ public class BubbleSort {
 	*	Bubble sort: Push maximum to the last by adjacent compare
 	* 		In this we will compare adjacent numbers if they are in order then do nothing
 	* 		If they are not swap
-	* 		In first iteration we will compare 64 and 25 and swap them, then in same iteration 25 will be on 0
-	* 		and 64 will be on 1 then compare it with 2nd idx with 12 then again swap it and so onn
+	* 		In first iteration we will compare 64 and 25 and swap them,
+	* 		then in same iteration 25 will be on 0 and 64 will be on 1
+	* 		then compare 64 with 2nd idx 12 then again swap it
+	* 		then compare 64 with 3rd idx 22 then again swap it
+	* 		In this way when first iteration is completed we will get greatest element in last
 	*/
 	public static void main(String[] args) {
 		int arr[] = {64, 25, 12, 22, 11};
