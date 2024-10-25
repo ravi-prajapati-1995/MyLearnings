@@ -16,7 +16,8 @@ public class BubbleSort {
 	*/
 	public static void main(String[] args) {
 		int arr[] = {64, 25, 12, 22, 11};
-		bubbleSort(arr, 5);
+//		bubbleSort(arr, 5);
+		bubbleSortRecursive(arr,  4);
 		System.out.println(Arrays.toString(arr));
 	}
 
@@ -30,5 +31,21 @@ public class BubbleSort {
 				}
 			}
 		}
+	}
+
+	public static void bubbleSortRecursive(int[] arr, int to) {
+
+		if(to == 1 ){
+			return;
+		}
+
+		for (int j = 0; j < to; j++) {
+			if (arr[j] > arr[j + 1]) {
+				int temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+		bubbleSortRecursive(arr, to - 1);
 	}
 }

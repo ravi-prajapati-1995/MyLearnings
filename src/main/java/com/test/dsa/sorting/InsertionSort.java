@@ -22,7 +22,8 @@ public class InsertionSort {
     public static void main(String[] args) {
         int arr[] = {64, 25, 12, 22, 11};
 //        insertionSort(arr, 5);
-        striverInsertionSort(arr, 5);
+//        striverInsertionSort(arr, 5);
+        recursiveInsertionSort(arr, 1);
         System.out.println(Arrays.toString(arr));
     }
 
@@ -34,6 +35,18 @@ public class InsertionSort {
                 j--;
             }
         }
+    }
+
+    private static void recursiveInsertionSort(int[] arr, int from) {
+        if (from >= arr.length) return;
+
+        int j = from;
+        while (j > 0 && arr[j] < arr[j - 1]) {
+            swap(arr, j, j - 1);
+            j--;
+        }
+
+        recursiveInsertionSort(arr, from+1);
     }
 
     private static void insertionSort(int[] arr, int n) {
