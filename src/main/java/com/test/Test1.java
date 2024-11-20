@@ -1,7 +1,7 @@
 package com.test;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+//import com.google.gson.Gson;
+//import com.google.gson.GsonBuilder;
 import lombok.val;
 
 import java.io.IOException;
@@ -63,8 +63,8 @@ class Test1 {
             HttpRequest httpRequest = HttpRequest.newBuilder().uri(uri).GET().build();
             HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
             if(httpResponse.statusCode() == 200) {
-                Gson gson = new GsonBuilder().setLenient().create();
-                return gson.fromJson(httpResponse.body(), ApiResponse.class);
+//                Gson gson = new GsonBuilder().setLenient().create();
+                return null;
             }
         } catch (IOException | InterruptedException | URISyntaxException e) {
             throw new RuntimeException(e);
