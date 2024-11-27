@@ -1,0 +1,201 @@
+/*
+CoderPad provides a basic SQL sandbox with the following schema.
+You can also use commands like '\dt;' and '\d employees;'
+
+employees                             projects
++---------------+---------+           +---------------+---------+
+| id            | int     |<----+  +->| id            | int     |
+| first_name    | varchar |     |  |  | title         | varchar |
+| last_name     | varchar |     |  |  | start_date    | date    |
+| salary        | int     |     |  |  | end_date      | date    |
+| department_id | int     |--+  |  |  | budget        | int     |
++---------------+---------+  |  |  |  +---------------+---------+
+                             |  |  |
+departments                  |  |  |  employees_projects
++---------------+---------+  |  |  |  +---------------+---------+
+| id            | int     |<-+  |  +--| project_id    | int     |
+| name          | varchar |     +-----| employee_id   | int     |
++---------------+---------+           +---------------+---------+
+*/
+
+--Question 1) Write an SQL query to find the highest-salaried employee in each department. Your query should return the employee's full name and department name and salary.
+
+SELECT * from EMPLOYEES e left join DEPARTMENTS d on e.DEPARTMENT_ID = d.ID;
+
+SELECT  max(first_name), max(emp.SALARY), dep.NAME from EMPLOYEES emp left join DEPARTMENTS dep on emp.DEPARTMENT_ID = dep.ID group by dep.name;
+
+
+WITH RankedSalaries AS
+( SELECT d.name AS department_name, e.first_name, e.last_name, e.salary, RANK() OVER (PARTITION BY e.department_id ORDER BY e.salary DESC) AS salary_rank FROM employees e JOIN departments d ON e.department_id = d.id )
+SELECT department_name, first_name, last_name, salary
+FROM RankedSalaries WHERE salary_rank = 1;
+
+SELECT  first_name, last_name, max(emp.SALARY), dep.NAME from EMPLOYEES emp left join DEPARTMENTS dep on emp.DEPARTMENT_ID = dep.ID group by dep.name;
+
+
+--Question 2) Write an SQL query to find the total salary of employees per department who worked on the project called "Build a cool site. Your query should return total salary and department name.
+
+
+
+
+-------------------------------------------------------------------
+//EXAMPLE INPUT
+
+//List<Container> containers = Arrays.asList(
+//    new Container("C001", "refrigerated", 1),
+//    new Container("C002", "dry", 2),
+//    new Container("C003", "dry", 3),
+//    new Container("C004", "hazardous", 4),
+//    new Container("C005", "dry", 5),
+//    new Container("C006", "hazardous", 6),
+//    new Container("C007", "refrigerated", 7)
+//);
+
+
+//EXPECTED OUTPUT
+
+//{
+//    "refrigerated" -> {count: 2, averagePosition: 4.0},
+//    "dry" -> {count: 3, averagePosition: 3.33},
+//    "hazardous" -> {count: 2, averagePosition: 5.0}
+//}
+
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+record Container(String number, String type, int position) {}
+
+public class Solution {
+    public static void main(String[] args) {
+        List<Container> containers = Arrays.asList(
+            new Container("C001", "refrigerated", 1),
+            new Container("C002", "dry", 2),
+            new Container("C003", "dry", 3),
+            new Container("C004", "hazardous", 4),
+            new Container("C005", "dry", 5),
+            new Container("C006", "hazardous", 6),
+            new Container("C007", "refrigerated", 7)
+        );
+        // Complete the method to perform MapReduce operation
+        Map<String, ContainerStatistics> containerStats = calculateContainerStatistics(containers);
+        // Print results
+        containerStats.forEach((type, stats) -> System.out.println(type + " -> " + stats));
+    }
+    public static Map<String, ContainerStatistics> calculateContainerStatistics(List<Container> containers) {
+        return containers.stream()
+            //.add more code here
+        ;
+
+    }
+}
+
+-----------------------------------------------------------
+/*
+***Objective***
+Parse .csv input stream.
+
+***Requirements***
+Filter Out Invalid Data:
+
+-The equipment_number cannot be null.
+-Handle equipment sizes with special characters by excluding those entries.
+
+-Map Equipment Size to TEU:
+
+-Use a hardcoded mapping provided to map equipment sizes to TEU values.
+equipment_size,teu
+45HC,2.25
+40HC,2.0
+40ST,2.0
+20ST,1.0
+20ST,1.0
+
+***Desired Output***
+XYZ3425: 2.0
+ABC9843: 2.0
+NYC5294: 1.0
+NOF1021: 2.25
+*/
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.*;
+
+public class Solution {
+
+    private static final Map<String, Float> equipmentSizeToTeu = new HashMap<>();
+    static {
+      equipmentSizeToTeu.put("45HC", Float.valueOf(2.25f));
+      equipmentSizeToTeu.put("40HC", Float.valueOf(2.0f));
+      equipmentSizeToTeu.put("40ST", Float.valueOf(2.0f));
+      equipmentSizeToTeu.put("20ST", Float.valueOf(1.0f));
+    }
+
+
+
+    // Function to parse the equipment CSV and map to TEU values
+    public static List<String> parseAndMapEquipment(InputStream equipmentStream) throws IOException {
+
+          final List<Equipment> equipments = new ArrayList<>();
+        // Read and parse equipment CSV from InputStream
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(equipmentStream))) {
+          reader.readLine();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] values = line.split(",");
+                equipments.add(new Equipment(Integer.valueOf(values[0]), values[1], values[2]));
+                System.out.println(Arrays.toString(values));
+            }
+            }
+
+            equipments.stream()
+            .filter(equ -> equ.equipmentNumber == null);
+            .filter(equ -> !equ.equipmentSize.equals)
+            .
+
+      return null;
+
+    }
+
+    private static int getSizeFromEquipmentSize(String equipmentSizeStr) {
+        return 0;
+    }
+
+    public static void main(String[] args) throws IOException {
+        // Example usage with InputStream
+        String equipmentCsv = "id,equipment_number,equipment_size\n" +
+                              "1,XYZ3425,40HC\n" +
+                              "2,ABC9843,40ST\n" +
+                              "3,NYC5294,20ST\n" +
+                              "4,LAX6437,%4HC\n" +
+                              "5,NOF1021,45HC\n" +
+                              "6,,45HC";
+        InputStream equipmentStream = new java.io.ByteArrayInputStream(equipmentCsv.getBytes());
+
+        List<String> result = parseAndMapEquipment(equipmentStream);
+        result.forEach(System.out::println);
+    }
+
+
+     class Equipment {
+       int id;
+       String equipmentNumber;
+       String equipmentSize;
+
+      Equipment(int id, String number, String size) {
+        this.id = id;
+        this.equipmentNumber = number;
+        this.equipmentSize = size;
+      }
+
+      @Override
+      public String toString() {
+        return id +"\t"+equipmentNumber+"\t"+equipmentSize;
+      }
+    }
+}
+
+
