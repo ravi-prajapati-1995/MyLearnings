@@ -1,11 +1,10 @@
-package com.test;
+package com.test.dsa.poisonPill;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-;
 
-class Scratch {
+public class Scratch {
     public static void main(String[] args) {
         int BOUND = 10;
         int N_PRODUCERS = 4;
