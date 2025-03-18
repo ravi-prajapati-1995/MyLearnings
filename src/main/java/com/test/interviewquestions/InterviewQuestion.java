@@ -1,4 +1,4 @@
-package com.test;
+package com.test.interviewquestions;
 
 //import com.google.gson.Gson;
 //import com.google.gson.GsonBuilder;
@@ -13,7 +13,7 @@ import java.net.http.HttpResponse;
 import java.util.*;
 import java.util.stream.Collectors;
 
-class Test1 {
+class InterviewQuestion {
     static final String baseUrl = "https://jsonmock.hackerrank.com/api/tvseries?page=%d";
     public static void main(String[] args) {
         String action = bestInGenre("Action");

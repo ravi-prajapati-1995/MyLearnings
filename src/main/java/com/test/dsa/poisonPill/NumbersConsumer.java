@@ -1,4 +1,4 @@
-package com.test;
+package com.test.dsa.poisonPill;
 import java.util.concurrent.BlockingQueue;
 
 public class NumbersConsumer implements Runnable {
