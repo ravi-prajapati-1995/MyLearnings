@@ -1,0 +1,11 @@
+Technique to remember all layers of OSI model:
+
+Aaj Peene Se Thoda Nuksaan Dikh Raha
+
+Aaj → Application (Layer 7)
+Peene → Presentation (Layer 6)
+Se → Session (Layer 5)
+Thoda → Transport (Layer 4)
+Nuksaan → Network (Layer 3)
+Dikh → Data Link (Layer 2)
+Raha → Physical (Layer 1)
