@@ -2,8 +2,10 @@ package com.test.dsa.binarySearch.on2DArray;
 
 /**
  * <a href="https://www.geeksforgeeks.org/problems/row-with-max-1s0023/1">here</a>
- *You are given a 2D binary array arr[][] consisting of only 1s and 0s. Each row of the array is sorted in non-decreasing order.
- * Your task is to find and return the index of the first row that contains the maximum number of 1s. If no such row exists, return -1.
+ *You are given a 2D binary array arr[][] consisting of only 1s and 0s.
+ * Each row of the array is sorted in non-decreasing order.
+ * Your task is to find and return the index of the first row that contains the maximum number of 1s.
+ * If no such row exists, return -1.
  *
  * Input: arr[][] = [[0,1,1,1], [0,0,1,1], [1,1,1,1], [0,0,0,0]]
  * Output: 2
@@ -45,7 +47,6 @@ public class RowWithMax1s {
         int max = 0;
         int resultedRow = -1;
         for(int row = 0; row < rows; row++) {
-            int currMax;
             int intialIdx = getCountOf1s(arr[row]);
             int curMax = columns - intialIdx;
 
