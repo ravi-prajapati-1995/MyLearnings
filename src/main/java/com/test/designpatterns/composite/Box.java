@@ -1,7 +1,4 @@
-package com.test.designPatterns.composite;
-
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+package com.test.designpatterns.composite;
 
 import java.util.ArrayList;
 import java.util.Collection;

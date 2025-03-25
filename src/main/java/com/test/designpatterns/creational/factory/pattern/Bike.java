@@ -1,4 +1,4 @@
-package com.test.designPatterns.creational.factory.pattern;
+package com.test.designpatterns.creational.factory.pattern;
 
 public class Bike implements Vehicle{
     @Override

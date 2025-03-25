@@ -1,0 +1,16 @@
+Abstract Factory:
+It is the extension of factory design pattern, In this design pattern we will have multiple factory
+i.e We have VehicleFactory and this is implemented by other factories
+
+Like vehicle can be type of Car and Bike which are LandVehicle and Vehicle can be Boat and Ship which are WaterVehicle
+So we will have two factory which give us vehicle based on type
+
+i.e We have multiple car companies like: Tata, Mahindra, Maruti
+and each car company made car in these category: Sedan, Hatchback, SUV
+
+So we can create Vehicle factory and we ask that to create vehicle based on type like sedan, hatchback and SUV
+Vehicle is also interface
+interface VehicleFactory {
+    Vehicle createVehicle(String type);
+}
+class LandVehicleFactory implements VehicleFactory
