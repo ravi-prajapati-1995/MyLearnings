@@ -1,4 +1,4 @@
-package com.test.designPatterns.composite;
+package com.test.designpatterns.composite;
 
 import java.util.List;
 

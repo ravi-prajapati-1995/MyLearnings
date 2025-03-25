@@ -1,4 +1,4 @@
-package com.test.designPatterns.behaviroal.strategy.withoutPattern;
+package com.test.designpatterns.behaviroal.strategy.withoutPattern;
 
 
 /**
