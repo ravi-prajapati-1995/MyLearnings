@@ -1,9 +1,0 @@
-Install minikube to create cluster on local machine
-Install Docker for containerize applications
-
-run in cmd:
-minikube -- To check if minikube is installed or not
-docker -- To check docker is installed or not
-
-minikube start -- To start cluster on local
-kubectl cluster-info -  We will get the information of control plane running on your local machine
