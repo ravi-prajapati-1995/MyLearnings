@@ -1,0 +1,13 @@
+# We can define multiple configurations in same file to do so we need to add 3 hyphen(---)
+---
+# This configuration will create a new namespace with the name in our kubernetes cluster
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: development
+---
+# This will add production namespace in our cluster
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: production
