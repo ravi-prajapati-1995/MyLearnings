@@ -11,18 +11,27 @@ CoreDNS is running
 
 kubectl get nodes -- To check the running nodes
 kubectl get namespace -- To check the namespaces - namespaces is helpful to run multiple projects in same cluster
-namespace provide the isolated resources like pods, services and deployments
+                         namespace provide the isolated resources like pods, services and deployments
+Shortcut: kubectl get ns
+
 i.e If we are using same kubernetes cluster for or dev, test, stage, demo and prod env we can create different
 namespaces for each and we can run all these in same kubernetes cluster
 
 kubectl get pods -A -- To get all the running pods -A tells running all pods in any namespace
 Pods: Pods are the smallest unit in kubernetes which will contains one or more application along with required
-resources to it like storage, networking
+      resources to it like storage, networking
+kubectl get pods -n development: to get pods under development namespace
 
 kubectl get services -A -- To get all the running services -A tells running all services in any namespace
 services: act as the load balancers within the cluster and direct traffic to the pods
 
 kubectl apply -f <fileName>: This command is used to create and update the resources, it can be used to deploy or update
-the application on your kubernetes cluster
+                             the application on your kubernetes cluster
 
 kubectl delete -f <fileName>: To delete the resources defined in this file
+kubectl get deployments -A: To get all deployments running in any namespace in our cluster
+kubectl get deployments -n development: to get deployments running under development namespace
+
+kubectl delete pod <podID> -n <namespace>: to delete the pod
+
+kubectl describe pod <podId> -n <namespace> : to see the description of pod and event logs
