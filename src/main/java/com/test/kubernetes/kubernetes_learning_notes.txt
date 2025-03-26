@@ -1,0 +1,28 @@
+Install minikube to create cluster on local machine
+Install Docker for containerize applications
+
+run in cmd:
+minikube -- To check if minikube is installed or not
+docker -- To check docker is installed or not
+
+minikube start -- To start cluster on local
+kubectl cluster-info -  We will get the information of control plane running on your local machine and check for
+CoreDNS is running
+
+kubectl get nodes -- To check the running nodes
+kubectl get namespace -- To check the namespaces - namespaces is helpful to run multiple projects in same cluster
+namespace provide the isolated resources like pods, services and deployments
+i.e If we are using same kubernetes cluster for or dev, test, stage, demo and prod env we can create different
+namespaces for each and we can run all these in same kubernetes cluster
+
+kubectl get pods -A -- To get all the running pods -A tells running all pods in any namespace
+Pods: Pods are the smallest unit in kubernetes which will contains one or more application along with required
+resources to it like storage, networking
+
+kubectl get services -A -- To get all the running services -A tells running all services in any namespace
+services: act as the load balancers within the cluster and direct traffic to the pods
+
+kubectl apply -f <fileName>: This command is used to create and update the resources, it can be used to deploy or update
+the application on your kubernetes cluster
+
+kubectl delete -f <fileName>: To delete the resources defined in this file
