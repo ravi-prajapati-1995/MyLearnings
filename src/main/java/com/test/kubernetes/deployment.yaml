@@ -1,2 +1,36 @@
----
-apiVersion:
+--- 
+apiVersion: apps/v1 # Api version 
+kind: Deployment # Kind of kubernetes object we want to create
+metadata:
+  name: pod-info-deployment
+  namespace: development
+  labels:
+    app: pod-info
+spec:
+  replicas: 3 # How many replicas of our app will run at any time, if any pod is down kubernetes create another pod to replace it
+  selector:
+    matchLabels:
+      app: pod-info
+  template:
+    metadata:
+      labels:
+        app: pod-info
+    spec:
+      containers: # Containers that we want to run in the pods
+      - name: pod-info-container
+        image: kimschles/pod-info-app:latest
+        ports:
+        - containerPort: 3000
+        env: # Env name for the container
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
