@@ -21,3 +21,5 @@ docker image inspect <image-id or image-name>  --> Use the docker image inspect 
 
 To give env variable we can use ENV variable_name=variable_value or we can give variable while we create build using
 docker build --build-arg APP_ENV=production -t my-app .
+
+docker stats --> This gives us information about the memory and cpu utilization of each and every running docker image

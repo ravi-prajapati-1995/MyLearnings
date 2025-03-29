@@ -1,0 +1,44 @@
+Decomposition Patterns: These are the pattern which tells us that how we should break monolith application
+    into microservice.
+ 1. Decompose by Business Capability
+    Explanation: This pattern involves identifying distinct business capabilities within your application and creating
+    separate microservices for each capability. Each microservice focuses on a specific business function.
+
+    Example: In an e-commerce application, you might have separate microservices for inventory management,
+    order processing, payment handling, and customer service. Each microservice handles its own business logic
+    and can be developed, deployed, and scaled independently.
+
+ 2. Decompose by Subdomain
+ Explanation: Using domain-driven design, this pattern breaks down the application based on subdomains.
+ Each subdomain corresponds to a microservice, ensuring that the microservices align with the business's domain model.
+
+ Example: In a healthcare application, you might have microservices for patient management, appointment scheduling,
+ billing, and medical records. Each microservice represents a subdomain of the healthcare system.
+
+ 3. Strangler Fig
+ Explanation: This pattern involves gradually replacing parts of a monolithic application with microservices.
+ It allows for incremental refactoring without disrupting the entire system.
+
+ Example: If you have a legacy monolithic application, you can start by creating a new microservice for user authentication.
+  Over time, you can replace other parts of the monolith, such as product catalog and order management, with microservices.
+
+  We will first try with some percentage of traffic to new service like 10% in case there is some issue we can down that
+  microservice and traffic will start going to monolith application only.
+  If all things gone right then we gradually increase traffic and when 100% traffic moved to microservice then we can
+  remove code from monolith
+
+Data Management Pattern:
+    1. Database Per Service: - Each service Has its own DB
+    2. Shared Database for all service
+        Why it is not recommended: Lets take example of e-commerce we have OrderService, PaymentService and InventoryService
+            1. If we have high volume of data for OrderService like in million and there are less data for PaymentService
+                and InventoryService then there is no way we can only increase memory for OrderService we need to increase
+                memory for whole DB
+            2. Table modification can cause problem: ie if a team that is working with PaymentService needs to delete a
+                column from table T1 then they need to take care about all other teams if they need this column or not.
+                Its not scalable
+
+        Benefits:
+            1. Can join multiple tables as all data is stored at one place.
+            2. Transaction management is easier: if we have T1 to T10 tables and we got issue at T8 then we can easily
+                rollback for tables where we updated the entries
