@@ -38,7 +38,7 @@ public class MedianRowWiseSortedMatrix {
      To do this we need to find that for a given number how many elements are in left and how many are in right
 
      We can use binary search on answers steps below:
-     1. find min and max of array by traverse is column and last column from top to bottom
+     1. find min and max of array by traverse first column and last column from top to bottom
      2. Find the mid and call a function that will give us how many element present in left of this element
      3. If element are less than equal to half of matrix(m*n/2) then we will increase low = mid + 1 else high = mid -1
      4. And after that return low it will point to center
