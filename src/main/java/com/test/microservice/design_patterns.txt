@@ -1,5 +1,4 @@
-Decomposition Patterns: These are the pattern which tells us that how we should break monolith application
-    into microservice.
+Decomposition Patterns: These are the pattern which tells us that how we should break monolith application into microservice.
  1. Decompose by Business Capability
     Explanation: This pattern involves identifying distinct business capabilities within your application and creating
     separate microservices for each capability. Each microservice focuses on a specific business function.
@@ -42,3 +41,39 @@ Data Management Pattern:
             1. Can join multiple tables as all data is stored at one place.
             2. Transaction management is easier: if we have T1 to T10 tables and we got issue at T8 then we can easily
                 rollback for tables where we updated the entries
+
+    Issue with Database per Service:
+        1. We can't Join multiple tables
+        2. We can't able to manage transaction between multiple dbs as we can do in shared database approach
+
+To resolve Transaction issue we have SAGA patterns:
+
+Choreography: This pattern is suggest that each service do its work, if any service fails it generate compensate event to rollback
+    changes done by the previous service.
+
+i.e: 1. When OrderService receive event it generate event order.created
+     2. Then PaymentService receive that event and do needful steps, if something went wrong on payment service it
+        creates compensate event(payment.failed) that will listen by OrderService and then order status will be updated
+     3. If payment success event is received by InventoryService, if something fails on inventory then inventory service
+        generate compensate event(inventory.failed) that will listen by PaymentService and OrderService
+        payment service rollback its changes and order service too
+
+Orchestration-Based Saga: In this pattern we will have a central service that manage the workflow, service interact with
+                          orchestrator not with each other
+
+i.e:
+    1. Create a OrderOrchestrator, when order created orchestrator receive event and call PaymentService to do its steps
+    2. If something fails then orchestrator will receive event and generate event to rollback on OrderService changes
+    3. If payment success then orchestrator call inventory service
+    4. if something fail on InventoryService then it received by orchestrator and event generated to PaymentService and OrderService
+
+CQRS: In microservice we have issue that we can't join multiple tables to get data if both tables is used by different microservices
+To resolve this issue we can use CQRS pattern:
+CQRS: Command Query Responsibility Segregation
+    If we have T1 in OrderService and T2 in PaymentService we can't join T1 and T2 because they are part of different
+    microservice.
+    To overcome this problem we will do all create, delete, update operation in their particular DB and an event
+    is generated to update the view that we have to read.
+    All read operation is handled by different view and this view keep in sync with T1 and T2 in this way we can overcome
+    multi table selection
+    we can also use DB triggers and procedure to keep in sync view with T1 and T2
