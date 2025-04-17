@@ -5,6 +5,8 @@ run in cmd:
 minikube -- To check if minikube is installed or not
 docker -- To check docker is installed or not
 
+docker engine should be up for running minikube to start it open Docker Desktop
+
 minikube start -- To start cluster on local
 kubectl cluster-info -  We will get the information of control plane running on your local machine and check for
 CoreDNS is running
