@@ -9,6 +9,7 @@ public class DoubleLinkedList {
     }
 }
 
+/// ading comment
 class Node<T> {
     private Node prev;
     private T data;
