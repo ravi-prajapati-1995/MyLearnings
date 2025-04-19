@@ -6,9 +6,12 @@ public class DoubleLinkedList {
         final var integerNode = Node.fromArray(ints);
 
 //        final var integerNode1 = Node.insertHead(integerNode, 22);
-        final var integerNode1 = Node.insertTail(integerNode, 232);
+//        final var integerNode1 = Node.insertTail(integerNode, 232);
+//        final var integerNode1 = Node.insertAtPosition(integerNode, 232, 6);
+//        final var integerNode1 = Node.insertAtValue(integerNode, 232, 36);
+        final var integerNode1 = Node.insertBeforeTail(integerNode, 232);
 
-        Node.print(integerNode);
+        Node.print(integerNode1);
     }
 }
 
@@ -65,11 +68,77 @@ class Node<T> {
         return head;
     }
 
+    static <T> Node<T> insertBeforeTail(Node<T> head, T data) {
+        if(head == null) {
+            return new Node<>(data);
+        }
+
+        var temp = head;
+        while(temp.next != null) {
+            temp = temp.next;
+        }
+
+        final var prev = temp.prev;
+        final var newNode = new Node<T>(prev, data, temp);
+        prev.next = newNode;
+        temp.prev = newNode;
+        return head;
+    }
+
+    static <T> Node<T> insertAtPosition(Node<T> head, T data, int position) {
+        if(head == null) {
+            return new Node<>(data);
+        }
+
+        if(position == 1) {
+            return new Node<>(null, data, head);
+        }
+
+        Node<T> temp = head;
+        int count = 1;
+        while(temp != null) {
+
+            if(count == position) {
+                var prevNode = temp.prev;
+                var newNode = new Node<T>(prevNode, data, temp);
+                prevNode.next = newNode;
+                temp.prev = newNode;
+            }
+            temp = temp.next;
+            count++;
+        }
+        return head;
+    }
+
     static void print(Node head) {
         Node temp = head;
         while (temp != null) {
             System.out.println(temp.data);
             temp = temp.next;
         }
+    }
+
+    static <T> Node<T> insertAtValue(Node<T> head, T data, T value) {
+        if(head == null) {
+            return new Node<>(data);
+        }
+
+        if(head.data == value) {
+            return new Node<>(null, data, head);
+        }
+
+        Node<T> temp = head;
+
+        while(temp != null) {
+
+            if(temp.data == value) {
+                var prevNode = temp.prev;
+                var newNode = new Node<T>(prevNode, data, temp);
+                prevNode.next = newNode;
+                temp.prev = newNode;
+            }
+            temp = temp.next;
+        }
+        return head;
     }
 }
