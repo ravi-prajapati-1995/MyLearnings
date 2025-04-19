@@ -2,6 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+<<<<<<< HEAD
     <mapping directory="$PROJECT_DIR$/my-angular-app" vcs="Git" />
+=======
+>>>>>>> 2a874d0f81cb10861c9fe081283d3aefaddccd56
   </component>
 </project>

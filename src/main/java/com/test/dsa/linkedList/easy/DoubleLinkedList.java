@@ -8,13 +8,12 @@ public class DoubleLinkedList {
 //        final var integerNode1 = Node.insertHead(integerNode, 22);
         final var integerNode1 = Node.insertTail(integerNode, 232);
 
-        Node.print(integerNode1);
-
+        Node.print(integerNode);
     }
 }
 
 /// ading comment test 1
- class Node<T> {
+class Node<T> {
     private Node prev;
     private T data;
     private Node next;
