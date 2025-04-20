@@ -9,7 +9,10 @@ public class DoubleLinkedList {
 //        final var integerNode1 = Node.insertTail(integerNode, 232);
 //        final var integerNode1 = Node.insertAtPosition(integerNode, 232, 6);
 //        final var integerNode1 = Node.insertAtValue(integerNode, 232, 36);
-        final var integerNode1 = Node.insertBeforeTail(integerNode, 232);
+//        final var integerNode1 = Node.insertBeforeTail(integerNode, 232);
+//        final var integerNode1 = Node.deleteTail(integerNode);
+//        final var integerNode1 = Node.deleteHead(integerNode);
+        final var integerNode1 = Node.deleteKthElement(integerNode, 5);
 
         Node.print(integerNode1);
     }
@@ -139,6 +142,72 @@ class Node<T> {
             }
             temp = temp.next;
         }
+        return head;
+    }
+
+    static <T> Node<T> deleteTail(Node<T> head) {
+        if(head == null) {
+            return null;
+        }
+        var temp = head;
+        while(temp.next != null) {
+            temp = temp.next;
+        }
+
+        final var prev = temp.prev;
+        temp.prev = null;
+        prev.next = null;
+
+        return head;
+    }
+
+    static <T> Node<T> deleteHead(Node<T> head) {
+        if(head == null) {
+            return null;
+        }
+
+        var temp = head;
+        head = temp.next;
+        temp.next = null;
+        head.prev = null;
+        return head;
+    }
+
+    static <T> Node<T> deleteKthElement(Node<T> head, int k) {
+        if(head == null) {
+            return null;
+        }
+
+        int count = 1;
+        var temp = head;
+
+        if(k == 1) {
+            head = head.next;
+            temp.next = null;
+            return head;
+        }
+
+        while(temp != null) {
+
+            if(count == k) {
+                break;
+            }
+            temp = temp.next;
+            count++;
+        }
+
+        if(count == k) {
+            var prev = temp.prev;
+            var next = temp.next;
+            prev.next = next;
+            if(next != null) {
+                next.prev = prev;
+            }
+
+            temp.prev = null;
+            temp.next = null;
+        }
+
         return head;
     }
 }
