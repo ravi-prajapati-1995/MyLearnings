@@ -173,6 +173,9 @@ class Node<T> {
         return head;
     }
 
+    /**
+     * Here we will delete the kth given element from the linked list
+     * */
     static <T> Node<T> deleteKthElement(Node<T> head, int k) {
         if(head == null) {
             return null;
