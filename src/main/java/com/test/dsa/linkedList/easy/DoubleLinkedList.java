@@ -1,5 +1,8 @@
 package com.test.dsa.linkedList.easy;
 
+/*
+* https://www.youtube.com/watch?v=0eKMU10uEDI
+* */
 public class DoubleLinkedList {
     public static void main(String[] args) {
         final var ints = new int[]{1, 2, 3, 4, 5};
@@ -12,9 +15,11 @@ public class DoubleLinkedList {
 //        final var integerNode1 = Node.insertBeforeTail(integerNode, 232);
 //        final var integerNode1 = Node.deleteTail(integerNode);
 //        final var integerNode1 = Node.deleteHead(integerNode);
-        final var integerNode1 = Node.deleteKthElement(integerNode, 5);
+//        final var integerNode1 = Node.deleteKthElement(integerNode, 5);
 
-        Node.print(integerNode1);
+        Node.deleteNode(integerNode.getNext().getNext());
+
+        Node.print(integerNode);
     }
 }
 
@@ -23,6 +28,18 @@ class Node<T> {
     private Node prev;
     private T data;
     private Node next;
+
+    Node getPrev() {
+        return prev;
+    }
+
+    T getData() {
+        return data;
+    }
+
+    Node getNext() {
+        return next;
+    }
 
     Node(final Node prev, final T data, final Node next) {
         this.prev = prev;
@@ -47,6 +64,9 @@ class Node<T> {
         return head;
     }
 
+    /*
+     * https://www.youtube.com/watch?v=0eKMU10uEDI&t=2684s
+     * */
     static <T> Node<T> insertHead(Node<T> head, T data) {
        if(head == null) {
            return new Node<>(data);
@@ -212,5 +232,19 @@ class Node<T> {
         }
 
         return head;
+    }
+
+    static <T> void deleteNode(Node<T> deleteNode) {
+
+        final var prev = deleteNode.prev;
+        final var next = deleteNode.next;
+
+        prev.next = next;
+        if(next != null) {
+            next.prev = prev;
+        }
+
+        deleteNode.next = null;
+        deleteNode.prev = null;
     }
 }
