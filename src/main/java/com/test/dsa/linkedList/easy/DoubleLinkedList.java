@@ -1,5 +1,7 @@
 package com.test.dsa.linkedList.easy;
 
+import java.util.ArrayDeque;
+
 /*
 * https://www.youtube.com/watch?v=0eKMU10uEDI
 * */
@@ -16,10 +18,12 @@ public class DoubleLinkedList {
 //        final var integerNode1 = Node.deleteTail(integerNode);
 //        final var integerNode1 = Node.deleteHead(integerNode);
 //        final var integerNode1 = Node.deleteKthElement(integerNode, 5);
+//        Node.deleteNode(integerNode.getNext().getNext());
 
-        Node.deleteNode(integerNode.getNext().getNext());
+//        final var reverse = Node.reverse(integerNode);
+        final var reverse = Node.reverseOptimized(integerNode);
 
-        Node.print(integerNode);
+        Node.print(reverse);
     }
 }
 
@@ -246,5 +250,67 @@ class Node<T> {
 
         deleteNode.next = null;
         deleteNode.prev = null;
+    }
+
+    /**
+     * Reversing double linked list using stack,
+     * first we add elements in stack
+     * after that we pop element one by one and set in data
+     *
+     * TC -> O(2n) --- O(n) to getting the data in stack + O(n) to modify linked list with the element
+     * SC -->  O(n) --- As we are storing data in stack
+     * */
+    static <T> Node<T> reverse(Node<T> head) {
+        if(head == null) {
+            return null;
+        }
+
+        final var stack = new ArrayDeque<T>();
+
+        var temp = head;
+        while(temp != null) {
+            stack.push(temp.data);
+            temp = temp.next;
+        }
+
+        temp = head;
+        while(temp != null) {
+            temp.data = stack.pop();
+            temp = temp.next;
+        }
+
+        return head;
+    }
+
+    /*
+    * So here we are doing reverse in single run,
+    * we are taking two variable pre and next and storing current element pre and next
+    * then doint temp.next = pre and temp.prev = next to swap the pointers
+    * in this way for each element we will swap the pointer
+    * while moving next we need to take care as we swapped element we will move now current.prev
+    *
+    * then at last  we will got prev which will pe pointing on pointer behide so returing prev.prev
+    * as we are doing temp = temp.prev
+    * */
+    static <T> Node<T> reverseOptimized(Node<T> head) {
+        if(head == null) {
+            return null;
+        }
+
+
+        var temp = head;
+        Node<T> prev = null;
+        while(temp != null) {
+             prev = temp.prev;
+            var next = temp.next;
+
+            temp.next = prev;
+            temp.prev = next;
+
+            temp = temp.prev;
+        }
+
+
+        return prev.prev;
     }
 }
