@@ -1,5 +1,8 @@
 package com.test.features;
 
+/*
+* We can use binary search for this type of problem and can be done using find upper and lower bound
+* */
 public class sortedArrayFirstAndLastOccurrence {
 	public static void main(String[] args) {
 		int[] arr = {1, 1, 2, 2, 3, 3, 3, 3, 4, 5, 6, 7, 7, 7};

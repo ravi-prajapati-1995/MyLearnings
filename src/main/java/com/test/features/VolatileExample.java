@@ -1,7 +1,7 @@
 package com.test.features;
 
 public class VolatileExample {
-	private static boolean flag = false; // Declare the flag variable as volatile
+	private static volatile boolean flag = false; // Declare the flag variable as volatile
 
 	public static void main(String[] args) {
 		// Thread that changes the flag value
