@@ -1,4 +1,4 @@
-package com.test.designpatterns.composite;
+package com.test.systemdesign.designpatterns.composite;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package com.test.designpatterns.behaviroal.strategy.withoutPattern;
+package com.test.systemdesign.designpatterns.behaviroal.strategy.withoutPattern;
 
 public class OffRoadVehicle extends Vehicle{
     @Override

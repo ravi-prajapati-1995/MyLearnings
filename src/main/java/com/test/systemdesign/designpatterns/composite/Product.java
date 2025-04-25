@@ -1,4 +1,4 @@
-package com.test.designpatterns.composite;
+package com.test.systemdesign.designpatterns.composite;
 
 
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.test.designpatterns.creational.factory.pattern;
+package com.test.systemdesign.designpatterns.creational.factory.pattern;
 
 public class FactoryDesignPattern {
     public static void main(String[] args) {
