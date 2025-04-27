@@ -52,14 +52,13 @@ public class LInkedListCycle {
         ListNode slow = head;
         ListNode fast = head;
 
-        while(slow != null && fast != null) {
-            final var add = hascodes.add(slow.hashCode());
-            final var add2 = hascodes.add(fast.hashCode());
-            if(!add || !add2) {
-                return true;
-            }
+        //for odd number we have fast.next = null and for even number we have fast=null
+        while(fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
+            if(slow == fast) {
+                return true;
+            }
         }
 
         return false;
