@@ -13,7 +13,8 @@ docker run -d -p 8080:8080 --name api-gateway api-gateway  ->>
         --name api-gateway: Assigns a name to the container for easier management.
         api-gateway: The Docker image you want to use.
 
-docker logs [container-id]  --> To see the logs of a running container
+docker logs -f [container-id]  --> To see the logs of a running container
+                               -f  follow flag will tail logs
 
 docker run -it <image-name> sh  --> To see what's inside the image, you can run a container from it and inspect it interactively
 
