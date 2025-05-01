@@ -9,8 +9,8 @@ public class ReverseLinkedList {
     public static void main(String[] args) {
         final var integers = List.of(3, 2, 1, 0, -1, -2, 8);
         final var head = ListNode.from(integers);
-//        final var listNode = reverseUsingPointers(head);
-        final var listNode = reverseRecursion(head);
+        final var listNode = reverseUsingPointers(head);
+//        final var listNode = reverseRecursion(head);
         ListNode.print(listNode);
     }
 
@@ -37,6 +37,7 @@ public class ReverseLinkedList {
 
     /**
      * Here we will change the pointer we are pointing current next to the previous for all the elements
+     *
      * <p>
      * TC - o(n)
      * SC - O(1)
