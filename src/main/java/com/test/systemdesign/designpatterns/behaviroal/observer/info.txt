@@ -1,0 +1,24 @@
+Observer Design Pattern:
+
+There are two components in this pattern:
+1. Observable : It is the object whenever there is change in its state then it will notify all the Observers
+2. Observer: It will observe the state of observable and take step accordingly
+
+Interface Observable {
+    void add(Observer);
+    void remove(Observer);
+    void notify()
+    void setData(data)
+}
+
+interface Observer() {
+    void update();
+}
+
+
+-----------------------------------------
+
+
+Question asked by Walmart:
+Suppose you goes on Amazon shopping website and you saw Iphone, and iphone is out of stock at that time
+There is button for Notify Me, We have to implement its functionality
