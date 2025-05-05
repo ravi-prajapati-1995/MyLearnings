@@ -2,6 +2,7 @@ package com.test.dsa.linkedList.medium;
 
 import com.test.dsa.linkedList.ListNode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,26 +18,47 @@ public class OddEvenLinkedList {
 
     public static void main(String[] args) {
         final var integers = List.of(1, 2, 3, 4, 5, 6);  // 1 3 5 2 4 6
-        final var head = ListNode.from(integers);
-        ListNode.print(head);
+        final var head = com.test.dsa.linkedList.ListNode.from(integers);
+        final var listNode = oddEvenListBruteForce(head);
+        ListNode.print(listNode);
     }
 
 
-    public ListNode oddEvenList(ListNode head) {
+    /**
+     * We will create two list one will contain odd number and another contain even then concat
+     * those list
+     * */
+    public static ListNode oddEvenListBruteForce(ListNode head) {
         if(head == null || head.next == null) {
             return head;
         }
-        ListNode odd = head;
+        final List<Integer> odd = new ArrayList<>();
+        final List<Integer> even = new ArrayList<>();
+        int count = 1;
 
-        ListNode even = head.next;
-        ListNode eventBackup = even;
-        int count = 3;
+        ListNode temp = head;
 
-        ListNode temp = even.next;
         while(temp != null) {
-
+            if(count % 2 == 0) {
+                even.add(temp.val);
+            } else {
+                odd.add(temp.val);
+            }
+            count++;
+            temp = temp.next;
         }
 
-        return  null;
+        temp = head;
+
+        for(Integer intVal : odd) {
+            temp.val = intVal;
+            temp = temp.next;
+        }
+
+        for(Integer intVal : even) {
+            temp.val = intVal;
+            temp = temp.next;
+        }
+        return  head;
     }
 }
