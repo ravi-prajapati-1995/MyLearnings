@@ -27,6 +27,11 @@ public class OddEvenLinkedList {
     /**
      * We will create two list one will contain odd number and another contain even then concat
      * those list
+     * 1. Create two list one will have odd position elements and second will have even position element
+     * 2. Then first iterate odd List and replace linked list element with each element
+     * 3. Do same for even list
+     * 4. Finally we will have list that will first have odd number of element and after that elements that are
+     *      on even number
      * */
     public static ListNode oddEvenListBruteForce(ListNode head) {
         if(head == null || head.next == null) {

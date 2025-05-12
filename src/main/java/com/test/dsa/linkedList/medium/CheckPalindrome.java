@@ -55,7 +55,7 @@ public class CheckPalindrome {
     /**
      * For optimal solution we have steps
      * 1. Find mid using Hare and Tortoise way, In even number of element stop at first mid
-     * 2. Slow pointer will be at mid, Then revert element from slow.next
+     * 2. Slow pointer will be at mid, Then revert linked list from slow.next
      * 3. After reverse we will get updated pointer
      * 4. Then we will move temp till meet with slow and moving new pointer by one by comparing
      */
