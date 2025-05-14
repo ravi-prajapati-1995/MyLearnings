@@ -1,0 +1,40 @@
+Tree DS:
+It is the DS in which we store elements in hierarchical order ie.
+Tree
+└── Desktop
+    ├── work
+    │   ├── Job
+    │   ├── TUP
+    │   └── YT
+    ├── personal
+    │   ├── Trips
+    │   └── Family
+    └── image
+
+Tree has three types:
+1. BinaryTree -> A tree where a Node can have max of two children
+2. Binary Search Tree
+3. N-array Tree
+
+Node: Node is where we store the data
+
+      1
+     / \
+    5   6
+   / \  / \
+ 10  6 2  3
+          \
+          12
+In above tree we have 8 nodes, and each element is having at max 2 element so it is binary tree
+Root: top level element where we start traversing
+Children: for 1 node.  5 and 6 are children and 10, 6, 2, 3 are grand children
+Parent: for 5 and 6, 1 is parent , for 10, 6 node 5 is parent and 1 is grand parent. For 2, 3
+Ancestor: Anything that is above from that particular node is ancestor of that element for 12 node, 3, 6, 1 are ancestor
+          for 2 node, 6 is ancestor
+
+LeafNode: Any node which is having 0 child called leaf node 10, 6, 2 and 12 are leaf node
+SubTree: Any tree that can be cut from tree is subtree in above example 5 10 6 is sub tree, 12 can be sub tree 3 12 is tree
+
+
+Types of Binary Tree:
+Full BT: All nodes have either 0 or 2 child elements
