@@ -38,3 +38,10 @@ SubTree: Any tree that can be cut from tree is subtree in above example 5 10 6 i
 
 Types of Binary Tree:
 Full BT: All nodes have either 0 or 2 child elements
+Complete BT:
+            1. All level must be completely filled except the last level. 2^level = no. of nodes, root is at 0 level
+            2.The last level has all nodes in left as possible
+
+Perfect BT:
+    1. All the leaf node must be at same level
+    2. All non leaf node must have 2 children
