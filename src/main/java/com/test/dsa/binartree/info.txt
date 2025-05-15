@@ -45,3 +45,7 @@ Complete BT:
 Perfect BT:
     1. All the leaf node must be at same level
     2. All non leaf node must have 2 children
+
+ Balanced BT: Height difference between left and right subtree at any node must be at max 1
+
+ Degenerate BT: Every node is must having single child

@@ -1,0 +1,23 @@
+Binary tree traversal:
+
+BFS : Breadth First Search
+DFS:  Depth First Search
+
+      1
+     / \
+    2   3
+   / \ / \
+  4  5 6  7
+
+Inorder traversal (Left Root Right): 4 2 5 1 6 3 7
+
+Pre-order Traversal(Root Left Right): 1 2 4 5 3 6 7
+
+Post Order Traversal(Left Right Root): 4 5 2 6 7 3 1
+
+To remember naming:
+In-order(In) meaning root will be between
+Pre-order(pre) Meaning root will be first element
+Post-order(Post) : Root will be at last
+
+BFS - In this search we traverse element level vise bfs for abovee is: 1 2 3 4 5 6 7
