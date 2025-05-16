@@ -1,17 +1,18 @@
 package com.test.dsa.binartree.traversal;
 
-import com.test.dsa.binartree.Node;
+import com.test.dsa.binartree.TreeNode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TraversalBT {
     public static void main(String[] args) {
-        final var root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
-
+        final var root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
         inOrderTraversal(root);
-
 
     }
 
@@ -23,14 +24,13 @@ public class TraversalBT {
         / \  / \
        1`  5  6  7
      * */
-    public static void inOrderTraversal(Node node) {
+    public static void inOrderTraversal(TreeNode node) {
         if(node.left == null) {
-            System.out.print(node.getData() +" ");
+            System.out.print(node.val +" ");
             return;
         }
         inOrderTraversal(node.left);
-        System.out.print(node.getData() +" ");
-        System.out.print(node.getRight().getData() + " ");
-
+        System.out.print(node.val +" ");
+        System.out.print(node.getRight().val + " ");
     }
 }

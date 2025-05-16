@@ -27,12 +27,12 @@ Node: Node is where we store the data
           12
 In above tree we have 8 nodes, and each element is having at max 2 element so it is binary tree
 Root: top level element where we start traversing
-Children: for 1 node.  5 and 6 are children and 10, 6, 2, 3 are grand children
-Parent: for 5 and 6, 1 is parent , for 10, 6 node 5 is parent and 1 is grand parent. For 2, 3
-Ancestor: Anything that is above from that particular node is ancestor of that element for 12 node, 3, 6, 1 are ancestor
-          for 2 node, 6 is ancestor
+Children: for 1 treeNode.  5 and 6 are children and 10, 6, 2, 3 are grand children
+Parent: for 5 and 6, 1 is parent , for 10, 6 treeNode 5 is parent and 1 is grand parent. For 2, 3
+Ancestor: Anything that is above from that particular treeNode is ancestor of that element for 12 treeNode, 3, 6, 1 are ancestor
+          for 2 treeNode, 6 is ancestor
 
-LeafNode: Any node which is having 0 child called leaf node 10, 6, 2 and 12 are leaf node
+LeafNode: Any treeNode which is having 0 child called leaf treeNode 10, 6, 2 and 12 are leaf treeNode
 SubTree: Any tree that can be cut from tree is subtree in above example 5 10 6 is sub tree, 12 can be sub tree 3 12 is tree
 
 
@@ -43,9 +43,9 @@ Complete BT:
             2.The last level has all nodes in left as possible
 
 Perfect BT:
-    1. All the leaf node must be at same level
-    2. All non leaf node must have 2 children
+    1. All the leaf treeNode must be at same level
+    2. All non leaf treeNode must have 2 children
 
- Balanced BT: Height difference between left and right subtree at any node must be at max 1
+ Balanced BT: Height difference between left and right subtree at any treeNode must be at max 1
 
- Degenerate BT: Every node is must having single child
+ Degenerate BT: Every treeNode is must having single child
