@@ -17,9 +17,9 @@ import static com.test.dsa.linkedList.ListNode.from;
  */
 public class SorLinkedList {
     public static void main(String[] args) {
-        final var integers = List.of(1, 2, 3, -1, -2);  // 1 3 5 2 4 6
+        final var integers = List.of(1, 2, 3, 4, 5, 6);  // 1 3 5 2 4 6
         final var head = from(integers);
-        final var listNode = sortList(head);
+        final var listNode = findMiddle(head);
         print(listNode);
     }
 
@@ -62,16 +62,46 @@ public class SorLinkedList {
      */
     public static ListNode sortList(ListNode head) {
         //base case when head is null or head.next is null meaning list contains only one element
-        if(head == null || head.next == null) {
+        if (head == null || head.next == null) {
             return head;
         }
 
         ListNode middle = findMiddle(head);
+        ListNode leftHead = head;
+        ListNode rightHead = middle.next;
+        middle.next = null;
+        sortList(leftHead);
+        sortList(rightHead);
 
-        return head;
+        return merge(leftHead, rightHead);
+    }
+
+    private static ListNode merge(final ListNode leftHead, final ListNode rightHead) {
+        ListNode listNode = new ListNode(-1);
+        ListNode temp = listNode;
+        while (leftHead != null || rightHead !=null) {
+            int leftVal = leftHead.val;
+            int rightVal = rightHead.val;
+
+            if(leftVal > rightVal) {
+                temp.next = rightHead;
+                temp = rightHead;
+            }
+
+        }
     }
 
     private static ListNode findMiddle(final ListNode head) {
-        return null;
+        if(head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
     }
 }
