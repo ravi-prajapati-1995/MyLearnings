@@ -1,0 +1,29 @@
+Decorator Design Pattern:
+
+
+When we have an object which can have multiple properties and each property is independent from each other.
+i.e
+Pizza: In pizza we have base on that base we can  add multiple things ie
+        1. Topping
+        2. Extra Veg
+        3. Cheese
+And so on here we can add multiple things independently we can have multiple toppings.
+Here our base object is s same and we adding on multiple properties.
+
+Coffee:
+    Here we can customize it with multiple things like  we are having Latte
+    1. we can add extra milk of soya milk , almond milk
+    2. We can add extra suger
+
+
+Dressing: Like we dress in winter
+1. we wear thermals
+2. on top of that we wear Shirt Pent
+3. on that we can wear sweater
+4. on that we can wear coat
+
+
+Why we use decorator design pattern: To avoid class explosion
+We need to create multiple classes which have properties in permuntation combination like in pizz
+we need to create class base+extra veg, base + extra-veg + cheese,, base + cheese
+when any new property came  then we need to create all combination
