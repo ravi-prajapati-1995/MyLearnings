@@ -17,7 +17,7 @@ import static com.test.dsa.linkedList.ListNode.from;
  */
 public class SorLinkedList {
     public static void main(String[] args) {
-        final var integers = List.of(1, 3);  // 1 3 5 2 4 6
+        final var integers = List.of(1, 3, 4, 2,2);  // 1 3 5 2 4 6
         final var head = from(integers);
         final var listNode = sortList(head);
         print(listNode);
@@ -109,8 +109,9 @@ public class SorLinkedList {
             return head;
         }
 
+        //[todo] Why here we start fast with head.next previously we are starting it with head only
         ListNode slow = head;
-        ListNode fast = head;
+        ListNode fast = head.next;
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
