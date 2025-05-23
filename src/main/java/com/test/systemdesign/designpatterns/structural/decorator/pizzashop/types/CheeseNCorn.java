@@ -10,12 +10,14 @@ public class CheeseNCorn extends BasePizza {
     }
 
     @Override
-    protected int price() {
-        return switch (getSize()){
+    public int price() {
+        int price =  switch (getSize()){
             case REGULAR -> 209;
             case MEDIUM -> 379;
             case LARGE -> 609;
             case EXTRA_LARGE -> 799;
         };
+        System.out.println("Have CheeseNCorn: "+ price);
+        return price;
     }
 }

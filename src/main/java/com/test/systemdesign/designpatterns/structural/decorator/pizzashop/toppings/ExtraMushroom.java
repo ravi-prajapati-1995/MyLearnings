@@ -3,21 +3,21 @@ package com.test.systemdesign.designpatterns.structural.decorator.pizzashop.topp
 import com.test.systemdesign.designpatterns.structural.decorator.pizzashop.BasePizza;
 import com.test.systemdesign.designpatterns.structural.decorator.pizzashop.PizzaDecorator;
 
-public class VegTopping extends PizzaDecorator {
+public class ExtraMushroom extends PizzaDecorator {
 
-    public VegTopping(final BasePizza basePizza) {
+    public ExtraMushroom(final BasePizza basePizza) {
         super(basePizza);
     }
 
     @Override
     public int price() {
         int topping = switch (size) {
-            case REGULAR -> 30;
-            case MEDIUM -> 40;
-            case LARGE -> 50;
-            case EXTRA_LARGE -> 60;
+            case REGULAR -> 40;
+            case MEDIUM -> 60;
+            case LARGE -> 80;
+            case EXTRA_LARGE -> 100;
         };
-        System.out.println("Adding VegTopping with price: "+ topping);
+        System.out.println("Adding ExtraMushroom with price: "+ topping);
         return getBasePizza().price() + topping;
     }
 }

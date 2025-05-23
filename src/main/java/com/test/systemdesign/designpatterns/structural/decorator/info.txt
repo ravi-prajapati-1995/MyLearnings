@@ -27,3 +27,16 @@ Why we use decorator design pattern: To avoid class explosion
 We need to create multiple classes which have properties in permuntation combination like in pizz
 we need to create class base+extra veg, base + extra-veg + cheese,, base + cheese
 when any new property came  then we need to create all combination
+
+
+We will create PizzaShop using Decorator design pattern, In this we will have a abstract class that will have some property
+class BasePizza {
+    size, description
+    abstract int cost();
+}
+
+It will have abstract method cose which will be implement by the child classes as we have multiple types of pizza.
+CheeseNCorn, FarmHouse, MargheritaPizza, VegDeluxe
+
+We are creating a decorator that will be is a relationship with BasePizza, Also in decorator we will have BasePizza
+has a relationship, see {#PizzaDecorator}

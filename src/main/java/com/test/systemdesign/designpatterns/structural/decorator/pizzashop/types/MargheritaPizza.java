@@ -10,12 +10,15 @@ public class MargheritaPizza extends BasePizza {
     }
 
     @Override
-    protected int price() {
-        return switch (getSize()){
+    public int price() {
+        int price =  switch (getSize()){
             case REGULAR -> 109;
             case MEDIUM -> 239;
             case LARGE -> 449;
             case EXTRA_LARGE -> 599;
         };
+
+        System.out.println("Have MargheritaPizza: "+ price);
+        return price;
     }
 }

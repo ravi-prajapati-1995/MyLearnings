@@ -12,5 +12,5 @@ abstract public class BasePizza {
         this.description = description;
     }
 
-    protected abstract int price();
+    public abstract int price();
 }

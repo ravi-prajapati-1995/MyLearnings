@@ -10,12 +10,15 @@ public class VegDeluxe extends BasePizza {
     }
 
     @Override
-    protected int price() {
-        return switch (getSize()){
+    public int price() {
+        int price =  switch (getSize()){
             case REGULAR -> 299;
             case MEDIUM -> 549;
             case LARGE -> 799;
             case EXTRA_LARGE -> 950;
         };
+
+        System.out.println("Have VegDeluxe: "+ price);
+        return price;
     }
 }
