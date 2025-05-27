@@ -69,6 +69,15 @@ public class SortLinkedList0s1s2s {
         return head;
     }
 
+    /**
+     * Here we took three nods and initialize them with -1 because if we are not initializing them with -1 we need to add
+     * check if(head0 == null) do this else same for head1 and head2 by using extra node we reduced extra if else
+     * This also solves issue when we are connecting head with dummy otherwise we need to add multiple checks
+     * 1. Take three node and initialize all with -1
+     * 2. Take dummy0, dummy1 and dummy2 to track the head
+     * 3. Add elements in each node depending on value
+     * 4. after all iteration connect head0 with dummy1 and head1 with dummy 2 based on conditions
+     * */
     static Node segregateOptimal(Node head) {
         if (head == null || head.next == null) {
             return head;
@@ -99,14 +108,13 @@ public class SortLinkedList0s1s2s {
             temp = temp.next;
         }
 
-        //When we don't have any 0s
+        //When we don't have any 1s we will directly add dummy2.next,
         if(dummy1.next == null) {
             head0.next = dummy2.next;
         } else {
             head0.next = dummy1.next;
+            head1.next = dummy2;
         }
-
-        head1.next = dummy2;
         head2.next = null;
 
         return dummy0;
