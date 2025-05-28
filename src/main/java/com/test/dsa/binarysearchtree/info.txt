@@ -1,0 +1,28 @@
+Binary Search Tree:
+
+It is binary tree having some properties:
+1. Every left node must be less than the root
+2. Every right node must be greater than the root
+3. Each subtree withing BST should itself binary search tree
+
+                    8
+                   / \
+                  7   10
+                 /    / \
+                5    9   60
+               / \       /
+              4   6     50
+
+Generally in BST we don't have duplicate elements but in some cases if we have duplicates element then
+there is slightly change
+1. Every left node must be less or equal to the root
+
+This is only different
+
+We can also have counter variable in our implementation so that we can count how many times a element is present
+in case we need to handle for duplicates
+
+Why BST?
+
+In Tree if need to search any node we need to traverse O(N), we need to traverse each and every node.
+In BST as we know in left smaller element is present and in right greater so searching will be O(Log2N)
