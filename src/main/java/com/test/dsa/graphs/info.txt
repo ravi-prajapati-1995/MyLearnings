@@ -1,0 +1,58 @@
+We have two types of graphs
+1. Directed Graph : Directed graph where all edges are directed edges
+ O--->O
+ |    |
+ v    v
+ O--->O
+
+2. Undirected Graph : In undirected graph edges are undirectional
+ O---O
+ |   |
+ O---O
+  \ /
+   O
+
+Cycles in graph: It is not necessary that all nodes should connected or have cycle to form a graph, if a structure
+that is having edges and nodes, can called as graph, tree can also be graph as it has nodes and edges
+
+If we start traversing from node and end at that node then it is called cycle in graph
+
+Path: It contains multiple nodes/vertices and each of them are reachable.
+
+Degree:
+    Undirected Graph: No of nodes to which a node is connected known as degree, Total Degree = 2 * Edge
+    Directional Graph:
+        In-Degree: No of incoming edge to that particular node know and in degree
+        out-Degree: No of outgoing edges from a node know as out degree
+
+Edge Weight: When edges has value known as edge weight if not then we consider it as 1 for all
+
+Representation of Graph:
+    1. We can represent it via 2d matrix having a matrix [n+1, m+1] where n defines nodes and m define edges
+    i.e if we have a unidirectional graph where 1 -> 2, 1 -> 3, 2->4, 3-> 5, 4->5
+      1 ——  2
+      |     |
+      |     |
+      3 ——  4
+       \   /
+         5
+
+    above example is un-directional graph having 5 nodes(n) and 6 edges(m) so we will create a 2D matrix
+    in question we will have m lines represents edges: In un directional graph [1 2] and [2 1] is same
+    [1 2]
+    [2 4]
+    [1 3]
+    [3 5]
+    [3 4]
+    [5 4]
+
+This matrix will be represented by:
+                  0   1   2   3   4   5
+                ------------------------
+             0 |  0   0   0   0   0   0
+             1 |  0   0   1   1   0   0
+             2 |  0   1   0   0   0   1
+             3 |  0   1   0   0   1   1
+             4 |  0   0   0   1   0   1
+             5 |  0   0   1   1   1   0
+
