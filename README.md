@@ -12,4 +12,6 @@ Also learned multple system design pattern from Shreyansh Jain
 
 Hope next time I made much more progrss before next workshop
 
+
+Returned from Kheerganga trip on May 3, 2025
 Om Namah Shivaye .... 🕉️
