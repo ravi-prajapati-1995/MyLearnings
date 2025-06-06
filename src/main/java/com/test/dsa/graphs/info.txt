@@ -56,3 +56,14 @@ This matrix will be represented by:
              4 |  0   0   0   1   0   1
              5 |  0   0   1   1   1   0
 
+We can store graph in list also we will create a list with [n+1] here n is nodes
+list will look like:
+0 -> {}
+1 -> {2, 3}
+2 -> {1, 4}
+3 -> {1, 4, 5}
+4 -> {2, 3, 5}
+5 -> {3, 4}
+
+Above given graph is un-directional graph that's why we need to keep relation vice versa like 1 is having
+relation with 2 and 3, then 2 and 3 also having relation with 1
