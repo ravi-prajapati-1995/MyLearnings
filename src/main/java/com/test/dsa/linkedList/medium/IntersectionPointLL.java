@@ -12,9 +12,7 @@ import java.util.List;
  * Find the node at which the two linked lists intersect. If they do intersect, return the node at which the intersection begins, otherwise return null.
  * The Linked List will not contain any cycles. The linked lists must retain their original structure,
  * given as per the input, after the function returns.
- *
- *
- * */
+ */
 public class IntersectionPointLL {
 
     public static void main(String[] args) {
@@ -35,14 +33,14 @@ public class IntersectionPointLL {
      * 2. traverse list2 and check if element is exist in the hashset
      * 3. If yes, then return the temp
      * 4. Else return null
-     *
+     * <p>
      * TC --- O(n1) + 0(n2)
      * SC -- O(n1) --- we are storing in hashset
-     * */
+     */
     private static ListNode intersectionPointBruteForce(final ListNode headA, final ListNode headB) {
         final var hashSet = new HashSet<ListNode>();
 
-        ListNode temp  = headA;
+        ListNode temp = headA;
         while (temp != null) {
             hashSet.add(temp);
             temp = temp.next;
@@ -50,7 +48,7 @@ public class IntersectionPointLL {
 
         temp = headB;
         while (temp != null) {
-            if(hashSet.contains(temp)) {
+            if (hashSet.contains(temp)) {
                 return temp;
             }
 
@@ -60,7 +58,6 @@ public class IntersectionPointLL {
         return null;
     }
 
-
     /**
      * In brute force approach we are using extra space we need to remove it
      * For this solution idea is that we will find the difference between length of two linked list and will remove
@@ -69,29 +66,28 @@ public class IntersectionPointLL {
      * LL2 - 1 - 2 - 4- 5 - 4 - 6 - 2
      * in above example 4 is intersection point so will will move LL2 to 2 point ahead so that both linked list
      * length would be same
-     * */
+     */
     private static ListNode intersectionPointBetter(final ListNode headA, final ListNode headB) {
         final var sizeA = getSize(headA);
         final var sizeB = getSize(headB);
 
-        ListNode tempA = headA;
-        ListNode tempB = headB;
-        if(sizeA > sizeB) {
-            var diff = sizeA - sizeB;
-            while (diff>0) {
-                tempA = tempA.next;
-                diff--;
-            }
+        if (sizeA > sizeB) {
+            return collisionPoint(headB, headA, sizeA - sizeB);
         } else {
-             var diff = sizeB - sizeA;
-            while (diff>0) {
-                tempB = tempB.next;
-                diff--;
-            }
+            return collisionPoint(headA, headB, sizeB - sizeA);
+        }
+    }
+
+    private static ListNode collisionPoint(ListNode smallList, ListNode largeList, int diff) {
+        ListNode tempA = smallList;
+        ListNode tempB = largeList;
+        while (diff > 0) {
+            tempB = tempB.next;
+            diff--;
         }
 
         while (tempA != null) {
-            if(tempA == tempB){
+            if (tempA == tempB) {
                 return tempA;
             }
 
@@ -99,14 +95,13 @@ public class IntersectionPointLL {
             tempB = tempB.next;
         }
 
-
         return null;
     }
 
     private static int getSize(ListNode listNode) {
         int result = 0;
         ListNode temp = listNode;
-        while(temp != null) {
+        while (temp != null) {
             result++;
             temp = temp.next;
         }
