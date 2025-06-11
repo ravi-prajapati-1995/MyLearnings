@@ -66,6 +66,10 @@ public class IntersectionPointLL {
      * LL2 - 1 - 2 - 4- 5 - 4 - 6 - 2
      * in above example 4 is intersection point so will will move LL2 to 2 point ahead so that both linked list
      * length would be same
+     *
+     * TC -- O(N1) -- to get size of l1 + O(N2) -- To get size of l2 + O(N1-N2) -- TO move header  + O(N1)-- to check
+     * collision in case collision no exit
+     * SC - O(1)
      */
     private static ListNode intersectionPointBetter(final ListNode headA, final ListNode headB) {
         final var sizeA = getSize(headA);
@@ -86,16 +90,12 @@ public class IntersectionPointLL {
             diff--;
         }
 
-        while (tempA != null) {
-            if (tempA == tempB) {
-                return tempA;
-            }
-
+        while (tempA != tempB) {
             tempA = tempA.next;
             tempB = tempB.next;
         }
 
-        return null;
+        return tempA;
     }
 
     private static int getSize(ListNode listNode) {
