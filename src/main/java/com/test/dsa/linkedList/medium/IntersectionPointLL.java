@@ -23,7 +23,7 @@ public class IntersectionPointLL {
         head1.next.next = zeroNode;
         System.out.println("------------------------");
         System.out.println(Math.subtractExact(5, 7));
-        final var listNode = intersectionPointBetter(head, head1);
+        final var listNode = intersectionPointOptimalApproach(head, head1);
         ListNode.print(listNode);
     }
 
@@ -66,7 +66,7 @@ public class IntersectionPointLL {
      * LL2 - 1 - 2 - 4- 5 - 4 - 6 - 2
      * in above example 4 is intersection point so will will move LL2 to 2 point ahead so that both linked list
      * length would be same
-     *
+     * <p>
      * TC -- O(N1) -- to get size of l1 + O(N2) -- To get size of l2 + O(N1-N2) -- TO move header  + O(N1)-- to check
      * collision in case collision no exit
      * SC - O(1)
@@ -80,6 +80,83 @@ public class IntersectionPointLL {
         } else {
             return collisionPoint(headA, headB, sizeB - sizeA);
         }
+    }
+
+    /**
+     * In optimal approach we will do below steps:
+     * 1. take temp1 for headA and temp2 for headB
+     * 2. Increment both temp1 and temp2 one by one till one of them read to null
+     * 3. If temp1 reach to null then assign headB to it
+     * 4. Move temp2 till it reaches to null when it reach assign temp2 = headA
+     * 5. with each step also increase temp1 by one step
+     * 6. when temp2 reach to null and we assign it headA you will find temp1 will be ahead with size2 - size1 that we
+     * are calculating in better approach
+     * i.e
+     * LL1 - 3 - 1 - 4 - 6 - 2
+     * LL2 - 1 - 2 - 4- 5 - 4 - 6 - 2
+     */
+    private static ListNode intersectionPointOptimalApproach(final ListNode headA, final ListNode headB) {
+        ListNode temp1 = headA;
+        ListNode temp2 = headB;
+
+        while(temp1 != null && temp2 != null) {
+            temp1 = temp1.next;
+            temp2 = temp2.next;
+        }
+
+        if(temp1 == null) {
+            temp1 = headB;
+            while(temp2 != null) {
+                temp1 = temp1.next;
+                temp2 = temp2.next;
+            }
+            temp2 = headA;
+        } else {
+            temp2 = headA;
+            while(temp1 != null) {
+                temp1 = temp1.next;
+                temp2 = temp2.next;
+            }
+            temp1 = headB;
+        }
+
+        while(temp1 != temp2) {
+            temp1 = temp1.next;
+            temp2 = temp2.next;
+        }
+
+        return temp1;
+    }
+
+
+/**
+ * TC = O(n1 + n2)
+ *
+ *
+ * */
+    private static ListNode intersectionPointOptimalStriverMethod(final ListNode headA, final ListNode headB) {
+        ListNode temp1 = headA;
+        ListNode temp2 = headB;
+
+        while(temp1 != temp2) {
+            temp1 = temp1.next;
+            temp2 = temp2.next;
+
+            if(temp1 == temp2) {
+                return  temp1;
+            }
+
+            if(temp1 == null) {
+                temp1 = headB;
+            }
+
+            if(temp2 == null) {
+                temp2 = headA;
+            }
+        }
+
+
+        return temp1;
     }
 
     private static ListNode collisionPoint(ListNode smallList, ListNode largeList, int diff) {
