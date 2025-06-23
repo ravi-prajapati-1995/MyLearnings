@@ -1,6 +1,6 @@
 package com.test.dsa.linkedList.hard;
 
-import com.test.dsa.linkedList.ListNode;
+import com.test.dsa.linkedList.Node;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +24,92 @@ public class FlattingTheLL {
         final var childs = List.of(List.of(7, 8, 30), List.of(20), List.of(22, 50), List.of(35, 40, 45));
 
         final var head = Node.from(integers, childs);
-        Node.print(head);
-        final var listNode = flattenBruteForce(head);
-        System.out.println(listNode);
+        final var listNode = flattenOptimalUsingRecursion(head);
+        printBottom(listNode);
+    }
+
+    /**
+     * In this solution we take the two nodes and merge them using two pointer in sorted order
+     * 1. Create a merge function that will took two nodes and merge them in sorted order
+     * 2. Result that is returned by this function will be sorted in merged and and in next call we call function with
+     * merged node
+     * TC - O(N) + O(n1+n2) (to merge the elements)
+     * */
+    public static Node flattenOptimal(Node root) {
+        Node temp = root;
+        Node mergedNode = null;
+        while(temp != null) {
+            mergedNode = mergeNode(mergedNode, temp);
+            printBottom(mergedNode);
+            temp = temp.next;
+        }
+        return mergedNode;
+    }
+
+    /**
+     * In recursion we used the same function mergeNode
+     * 1. We call flatten function recursively
+     * 2. Add base case we will return node if node.next will be null
+     * 3. Then we will use return value and current node and merge them
+     * 4. In last we will return the merged node
+     *
+     * TC -> N(for recursion) + O(n1+n2) (for merging the nodes)
+     * SC -> O(n) (recursive stack space)
+     * */
+    public static Node flattenOptimalUsingRecursion(Node root) {
+        if(root.next == null) {
+            return root;
+        }
+
+        final var node = flattenOptimalUsingRecursion(root.next);
+        return mergeNode(root, node);
+    }
+
+    private static void printBottom(final Node node) {
+        Node temp = node;
+        while (temp != null) {
+            System.out.print(temp.data +" ");
+            temp = temp.bottom;
+        }
+        System.out.println();
+    }
+
+    private static Node mergeNode(final Node l1, final Node l2) {
+        if(l1 == null) {
+            return  l2;
+        }
+        if(l2 == null) {
+            return l1;
+        }
+        Node dummyNode = new Node(-1);
+        Node newHead = dummyNode;
+        Node t1 = l1;
+        Node t2 = l2;
+
+        while(t1 != null && t2 != null) {
+            int val;
+            if(t1.data < t2.data) {
+                val = t1.data;
+                t1 = t1.bottom;
+            } else {
+                val = t2.data;
+                t2 = t2.bottom;
+            }
+
+            dummyNode.bottom = new Node(val);
+            dummyNode = dummyNode.bottom;
+            dummyNode.next = null;
+        }
+
+        if(t1 != null) {
+            dummyNode.bottom = t1;
+        }
+
+        if(t2 != null) {
+            dummyNode.bottom = t2;
+        }
+
+        return newHead.bottom;
     }
 
     /**
@@ -35,17 +118,21 @@ public class FlattingTheLL {
      * 2. For each next node parse all the child and store it in list
      * 3. Sort the list
      * 4. Write a convert function that will convert list of integers to Node
+     *
+     * TC -> O(n*m) (Traverse the List) + O(XLogX) (To sort the list where x is no of total nodes) +O(n*m) (for
+     * convert function taking all the elements)
+     * SC -> O(n*m) (to store the elements in the list) + O(n*m) ( As we creating new linked list that will be returned)
      * */
     public static Node flattenBruteForce(Node root) {
         // code here
         List<Integer> list = new ArrayList<>();
         Node temp = root;
         while (temp != null) {
-            list.add(temp.val);
-            Node temp1 = temp.child;
+            list.add(temp.data);
+            Node temp1 = temp.bottom;
             while (temp1 != null) {
-                list.add(temp1.val);
-                temp1 = temp1.child;
+                list.add(temp1.data);
+                temp1 = temp1.bottom;
             }
             temp = temp.next;
         }
@@ -61,33 +148,33 @@ public class FlattingTheLL {
         Node prev = node;
         for(int i: sorted) {
             final var curr = new Node(i);
-            prev.child = curr;
+            prev.bottom = curr;
             prev = curr;
         }
-        return node.child;
+        return node.bottom;
     }
 
     static class Node {
-        int val;
+        int data;
         Node next;
-        Node child;
+        Node bottom;
 
         Node() {
-            val = 0;
+            data = 0;
             next = null;
-            child = null;
+            bottom = null;
         }
 
         Node(int data1) {
-            val = data1;
+            data = data1;
             next = null;
-            child = null;
+            bottom = null;
         }
 
         Node(int data1, Node next1, Node next2) {
-            val = data1;
+            data = data1;
             next = next1;
-            child = next2;
+            bottom = next2;
         }
 
         public static Node from(List<Integer> list, List<List<Integer>> childs) {
@@ -95,7 +182,7 @@ public class FlattingTheLL {
             Node prev = head;
             for (int i = 0; i < list.size(); i++) {
                 final var listNode = new Node(list.get(i));
-                listNode.child = from(childs.get(i));
+                listNode.bottom = from(childs.get(i));
                 prev.next = listNode;
                 prev = listNode;
             }
@@ -107,22 +194,22 @@ public class FlattingTheLL {
             Node prev = head;
             for (int i = 0; i < list.size(); i++) {
                 final var listNode = new Node(list.get(i));
-                prev.child = listNode;
+                prev.bottom = listNode;
                 prev = listNode;
             }
-            return head.child;
+            return head.bottom;
         }
 
         public static void print(Node head) {
             var temp = head;
 
             while (temp != null) {
-                System.out.print(temp.val + " ");
-                Node child1 = temp.child;
+                System.out.print(temp.data + " ");
+                Node child1 = temp.bottom;
                 System.out.print("=====> ");
                 while (child1 != null) {
-                    System.out.print(child1.val + " ");
-                    child1 = child1.child;
+                    System.out.print(child1.data + " ");
+                    child1 = child1.bottom;
                 }
                 temp = temp.next;
                 System.out.println();
