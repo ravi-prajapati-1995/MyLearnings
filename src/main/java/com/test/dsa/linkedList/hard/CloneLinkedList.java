@@ -22,11 +22,54 @@ public class CloneLinkedList {
 
         final var head = Node.from(integers, randoms);
         printWithRandom(head);
-        final var node = copyRandomList(head);
-        System.out.println("-----------------------");
+        final var node = copyRandomListStriverOptimal(head);
+        System.out.println("-------------");
         printWithRandom(node);
     }
 
+    /**
+     * In optimal solution we will remove the extra map that we are using to storing old and new node,
+     * in this solution we will add newly created nodes next to old node
+     * 1. Create a new node and insert newly created node next to current node, do it for all nodes
+     * 2. After that connect the random pointers, traverse from head and new random will be next from the templ.random
+     * 3. After connecting random, remove the newNodes from the existing node and return new head
+     *
+     * TC =  O(N) + O(N) + O(N) -- Traversing the node three time
+     * SC  = O(N) -- For creating new list
+     */
+    public static Node copyRandomListStriverOptimal(Node head) {
+        Node temp = head;
+        while(temp != null) {
+            Node newNode = new Node(temp.val);
+            temp.next = newNode;
+            newNode.next = temp.next;
+
+            temp = temp.next.next;
+        }
+
+        temp = head;
+        while(temp != null) {
+            final var copyNode = temp.next;
+            final var random = temp.random;
+            if(random != null) {
+                copyNode.random = random.next;
+            }
+            temp = temp.next.next;
+        }
+
+        // o7 --- n7 --- o11 --- n11
+        temp = head;
+        Node newHead = new Node(-1);
+        Node res = newHead;
+        while(temp != null) {
+            res.next = temp.next;
+            temp.next = temp.next.next;
+
+            res = res.next;
+            temp = temp.next;
+        }
+        return newHead;
+    }
 
     /**
      * This is brute force by striver:
@@ -37,9 +80,10 @@ public class CloneLinkedList {
      * 5. Get the newNode corresponding to temp
      * 6. Assign new node next to the map.get(temp.next)
      * 7. Assign new node random to map.get(tem.random)
-     *
-     * SC - O(N) +-O
-     * */
+     * <p>
+     * TC - O(N) + O(N)
+     * SC - O(N) (for map) + O(N) ( new node created)
+     */
     public static Node copyRandomListStriverBruteForce(Node head) {
         Node temp = head;
         Map<Node, Node> map = new HashMap<>();
@@ -59,9 +103,10 @@ public class CloneLinkedList {
         }
         return map.get(head);
     }
+
     /**
      * My code is not worked need to figure out why???
-     * */
+     */
     public static Node copyRandomList(Node head) {
 
         Node newHead = new Node(-1);
@@ -83,7 +128,7 @@ public class CloneLinkedList {
         while (temp != null) {
             final var random = temp.random;
 
-            if(random != null) {
+            if (random != null) {
                 System.out.println(random.val);
                 newh.random = map.get(random.val);
             }
@@ -99,7 +144,7 @@ public class CloneLinkedList {
         while (temp != null) {
             System.out.print(temp.val);
             if (temp.random != null) {
-                System.out.print("---------> " + temp.random.val + "("+temp.random+")");
+                System.out.print("---------> " + temp.random.val + "(" + temp.random + ")");
             }
 
             System.out.println();
