@@ -23,30 +23,16 @@ public class StringToInteger_Atoi {
         System.out.println(atoi);
     }
 
-    private static int getAtoi(final char[] charArray, final int i, long result, int sign) {
-
-        if (i == charArray.length) {
-            return (int)result;
-        }
-
-        final var ch = charArray[i];
-        if (ch >= 48 && ch <= 57) {
-            int number = ch - '0';
-            result = result * 10L + number;
-
-            if ((result * sign) >= Integer.MAX_VALUE) {
-                return Integer.MAX_VALUE;
-            }
-
-            if ((result * sign) <= Integer.MIN_VALUE) {
-                return Integer.MIN_VALUE;
-            }
-            return getAtoi(charArray, i + 1, result, sign);
-        } else {
-            return  (int)result;
-        }
-    }
-
+    /**
+     * We will divide problem in two parts 1st part will validate the initial things
+     * 1. Validate if string is empty
+     * 2. Validate string has - or + sign
+     * 3. Check if it has 0(zeros) intially if yes then skip
+     * 4. When we reach to real number then start a recursive call which will have result(previously calculated integer)
+     * 5. Do it til we reaches to end or a non digit or a value which crosses the integer MAX
+     * @param s
+     * @return
+     */
     public static int atoi(String s) {
         if (s.isBlank()) {
             return 0;
@@ -65,13 +51,37 @@ public class StringToInteger_Atoi {
             idx++;
         }
 
-        while ( idx < charArray.length && charArray[idx] == '0') {
+        while (idx < charArray.length && charArray[idx] == '0') {
             idx++;
         }
 
         System.out.println(idx + "\t" + s);
         System.out.println(s.substring(idx));
         return getAtoi(charArray, idx, 0, sign);
+    }
+
+    private static int getAtoi(final char[] charArray, final int i, long result, int sign) {
+
+        if (i == charArray.length) {
+            return (int) result;
+        }
+
+        final var ch = charArray[i];
+        if (ch >= 48 && ch <= 57) {
+            int number = ch - '0';
+            result = result * 10L + number;
+
+            if ((result * sign) >= Integer.MAX_VALUE) {
+                return Integer.MAX_VALUE;
+            }
+
+            if ((result * sign) <= Integer.MIN_VALUE) {
+                return Integer.MIN_VALUE;
+            }
+            return getAtoi(charArray, i + 1, result, sign);
+        } else {
+            return (int) result;
+        }
     }
 
     public static int myAtoiIterative(String s) {
