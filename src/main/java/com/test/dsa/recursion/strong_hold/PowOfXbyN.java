@@ -1,9 +1,9 @@
-package com.test.dsa.recursion;
+package com.test.dsa.recursion.strong_hold;
 
 public class PowOfXbyN {
 
     public static void main(String[] args) {
-        final var v = myPowOptimalStriverImprovment(2.0, -2147483648);
+        final var v = myPowOptimalIterative(3, 4);
         System.out.println(v);
     }
 
