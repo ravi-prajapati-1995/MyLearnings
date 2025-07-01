@@ -3,7 +3,7 @@ package com.test.dsa.recursion.strong_hold;
 public class PowOfXbyN {
 
     public static void main(String[] args) {
-        final var v = myPowOptimalIterative(3, 4);
+        final var v = myPowOptimalIterative(2, 4);
         System.out.println(v);
     }
 
@@ -43,6 +43,10 @@ public class PowOfXbyN {
             x = 1 / x;
         }
         double res = 1;
+        if(n % 2 ==0) {
+            res = x;
+            n = n-1;
+        }
 
         while (n > 0) {
 
@@ -50,6 +54,7 @@ public class PowOfXbyN {
                 res = res * x;
                 n = n - 1;
             } else {
+
                 res = res * res;
                 n = n / 2;
             }
