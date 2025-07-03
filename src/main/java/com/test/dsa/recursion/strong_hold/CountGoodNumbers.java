@@ -12,9 +12,9 @@ package com.test.dsa.recursion.strong_hold;
  */
 public class CountGoodNumbers {
     public static void main(String[] args) {
-//        final var goodNumbers = countGoodNumbersOptimal(806166225460393l);
-//        System.out.println(goodNumbers);
-        System.out.println(myPow(2, 10, 10000000));
+        final var goodNumbers = countGoodNumbersOptimal(806166225460393l);
+        System.out.println(goodNumbers);
+//        System.out.println(myPow(2, 10, 10000000));
     }
 
     /**
@@ -32,32 +32,21 @@ public class CountGoodNumbers {
         long evenPlaces = n / 2 + n % 2;
         int mod = 10_000_000_07;
 
-        final var res = myPow(4, oddPlaces, mod) * myPow(5, evenPlaces, mod) % mod;
+        final var res = (myPow(4, oddPlaces, mod)) * (myPow(5, evenPlaces, mod)) % mod;
 
-        return (int) res;
+        return (int) res % mod;
     }
 
-    public static long myPow(long number, long times, int mod) {
-        if (times == 0) {
+    public static long myPow(long x, long n, int mod) {
+        if (n == 0) {
             return 1;
         }
-        long res = 1;
-        while (times > 0) {
-
-            if (times % 2 == 1) {
-                res = res * number;
-                times = times - 1;
-            } else {
-                if(res == 1) {
-                    res = number * number;
-                } else {
-                    res = res * res;
-                }
-                times = times / 2;
-            }
+        //when n is 3  or any od number we need to manually multipy
+        if (n % 2 == 1) {
+            return (x * (myPow(x, n - 1, mod) % mod)) % mod;
         }
 
-        return res % mod;
+        return myPow((x * x) % mod,  n / 2, mod) % mod;
     }
 
     /**
