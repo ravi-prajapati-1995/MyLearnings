@@ -1,8 +1,11 @@
 package com.test.dsa.bit_manipulation.easy;
 
+import lombok.val;
+
 public class DecimalToBinary {
     public static void main(String[] args) {
-        System.out.println(decimalToBinary(321));
+        System.out.println(decimalToBinary(654321));
+        System.out.println(binaryToDecimal("10011111101111110001"));
     }
 
     /**
@@ -23,9 +26,18 @@ public class DecimalToBinary {
         var charArray = bs.toCharArray();
         var idx = charArray.length - 1;
         int num = 0;
+        int _2pow = 1;
         while(idx >= 0) {
+            final var ch = charArray[idx];
+            int val = 0;
+            if(ch == '1') {
+                val = 1;
+            }
 
+            num = num + (_2pow * val);
+            _2pow = _2pow * 2;
+            idx--;
         }
-        return 0;
+        return num;
     }
 }
