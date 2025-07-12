@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class GenerateSubsequenceWithSumK {
     public static void main(String[] args) {
-        int nums[] = {1, 1};
+        int nums[] = {2, 1, 1, 2};
         final var subsequenceWithSum = findSubsequenceWithSum(nums, 2);
         System.out.println(subsequenceWithSum);
     }
@@ -17,7 +17,8 @@ public class GenerateSubsequenceWithSumK {
         final var lists = new ArrayList<List<Integer>>();
 
 //        getAllSubsequence(nums, k, 0, 0, new ArrayList<>(), lists);
-        getFirstSubsequece(nums, k, 0, 0, new ArrayList<>(), lists);
+//        getFirstSubsequece(nums, k, 0, 0, new ArrayList<>(), lists);
+        getFirstSubsequeceStriverMethod(nums, k, 0, 0, new ArrayList<>(), lists);
         return lists;
     }
 
@@ -75,7 +76,7 @@ public class GenerateSubsequenceWithSumK {
             return;
         }
 
-        if(!l1.isEmpty()) {
+        if(!result.isEmpty()) {
             return;
         }
         final var num = nums[idx];
@@ -90,7 +91,7 @@ public class GenerateSubsequenceWithSumK {
         getFirstSubsequece(nums, k, idx + 1, currSum, l1, result);
     }
 
-    private boolean getFirstSubsequeceStriverMethod(
+    private static boolean getFirstSubsequeceStriverMethod(
             final int[] nums,
             final int k,
             final int idx,
