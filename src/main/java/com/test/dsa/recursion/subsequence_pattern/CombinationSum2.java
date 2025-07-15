@@ -115,28 +115,26 @@ public class CombinationSum2 {
         l1.removeLast();
         currSum = currSum - num;
 
-        idx = getUpperBound(nums, num, idx);
+        idx = upperBound(nums, num, idx);
         //Not taking the current element and proceed
         getAllSubsequenceStriver(nums, k, idx, currSum, l1, result);
     }
 
-    public static int getUpperBound(int[] nums, int k, int start) {
-
+    public static int upperBound(int[] arr, int target, int start) {
+        int result = arr.length;
         int low = start;
-        int high = nums.length - 1;
-        int result = nums.length;
-        while (low <= high) {
-            int mid = (high + low) / 2;
+        int high = arr.length - 1;
 
-            //when mid is greater than given element
-            if (nums[mid] > k) {
-                result = high;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if(arr[mid] > target) {
+                result = mid;
                 high = mid - 1;
             } else {
                 low = mid + 1;
             }
         }
-
         return result;
     }
 }
