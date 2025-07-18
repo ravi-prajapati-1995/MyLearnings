@@ -21,12 +21,12 @@ import java.util.List;
 public class CombinationSum3 {
 
     public static void main(String[] args) {
-        combinationSum3(9, 50);
+        combinationSum3(3, 9);
     }
 
     public static List<List<Integer>> combinationSum3(int k, int n) {
         final var l2 = new ArrayList<List<Integer>>();
-        generateNumberWithSize(k, new ArrayList<>(), l2, 1, 0, n);
+        getNumberStriverWay(k, new ArrayList<>(), l2, 1, 0, n);
 
         System.out.println("number of times recursion runs: " + i);
         System.out.println(l2);
@@ -38,9 +38,9 @@ public class CombinationSum3 {
      * 1. Start from 1 then follow the take and not take recursion
      * 2. In base case when list reaches to the n then checking the sum of elements
      * 3. If element sum is equal to target sum then storing it in l2
-     *
-     * */
+     */
     static int i = 0;
+
     private static void generateNumberWithSize(
             int k, List<Integer> l1, List<List<Integer>> l2, int number, int sum,
             int targetSum
@@ -51,7 +51,7 @@ public class CombinationSum3 {
         }
 
         if (l1.size() == k) {
-            if (sum  == targetSum) {
+            if (sum == targetSum) {
                 l2.add(new ArrayList<>(l1));
             }
             return;
@@ -66,5 +66,39 @@ public class CombinationSum3 {
         sum = sum - number;
 
         generateNumberWithSize(k, l1, l2, (number + 1), sum, targetSum);
+    }
+
+    private static void getNumberStriverWay(
+            int k,
+            List<Integer> l1,
+            List<List<Integer>> l2,
+            int number,
+            int sum,
+            int targetSum
+    ) {
+        i++;
+        if(number > 9) {
+            return;
+        }
+        if (sum > targetSum || l1.size() > k) {
+            return;
+        }
+
+        if (l1.size() == k) {
+            l2.add(new ArrayList<>(l1));
+            return;
+        }
+
+        number = l1.isEmpty() ? 1 : l1.getLast() + 1;
+        for (int i = (number); i < 10; i++) {
+            if (sum < targetSum && l1.size() < k) {
+                l1.add(number);
+                sum = sum + number;
+                getNumberStriverWay(k, l1, l2, i + 1, sum, targetSum);
+                l1.removeLast();
+            } else {
+                break;
+            }
+        }
     }
 }
