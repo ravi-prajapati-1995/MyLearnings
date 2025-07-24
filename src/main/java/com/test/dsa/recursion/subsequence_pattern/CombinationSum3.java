@@ -28,7 +28,7 @@ public class CombinationSum3 {
         final var l2 = new ArrayList<List<Integer>>();
         getNumberStriverWay(k, new ArrayList<>(), l2, 1, 0, n);
 
-        System.out.println("number of times recursion runs: " + i);
+        System.out.println("number of times recursion runs: " + count);
         System.out.println(l2);
         return null;
     }
@@ -39,13 +39,13 @@ public class CombinationSum3 {
      * 2. In base case when list reaches to the n then checking the sum of elements
      * 3. If element sum is equal to target sum then storing it in l2
      */
-    static int i = 0;
+    static int count = 0;
 
     private static void generateNumberWithSize(
             int k, List<Integer> l1, List<List<Integer>> l2, int number, int sum,
             int targetSum
     ) {
-        i++;
+        count++;
         if (number > 10) {
             return;
         }
@@ -76,7 +76,7 @@ public class CombinationSum3 {
             int sum,
             int targetSum
     ) {
-        i++;
+        count++;
         if(number > 9) {
             return;
         }
@@ -85,16 +85,20 @@ public class CombinationSum3 {
         }
 
         if (l1.size() == k) {
-            l2.add(new ArrayList<>(l1));
+            if(sum == targetSum)
+                l2.add(new ArrayList<>(l1));
             return;
         }
 
-        number = l1.isEmpty() ? 1 : l1.getLast() + 1;
-        for (int i = (number); i < 10; i++) {
-            if (sum < targetSum && l1.size() < k) {
-                l1.add(number);
-                sum = sum + number;
-                getNumberStriverWay(k, l1, l2, i + 1, sum, targetSum);
+        number = l1.isEmpty() ? 1 : number + 1;
+
+        for (int i = number; i < 10; i++) {
+            if (sum < targetSum && l1.size() <= k) {
+                l1.add(i);
+                sum = sum + i;
+                getNumberStriverWay(k, l1, l2, i , sum, targetSum);
+
+                sum = sum - i;
                 l1.removeLast();
             } else {
                 break;
