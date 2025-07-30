@@ -18,7 +18,7 @@ docker logs -f [container-id]  --> To see the logs of a running container
 
 docker run -it <image-name> sh  --> To see what's inside the image, you can run a container from it and inspect it interactively
 
-docker image inspect <image-id or image-name>  --> Use the docker image inspect command to view detailed metadata about the image
+docker inspect <image-id or image-name>  --> Use the docker image inspect command to view detailed metadata about the image
 
 To give env variable we can use ENV variable_name=variable_value or we can give variable while we create build using
 docker build --build-arg APP_ENV=production -t my-app .
