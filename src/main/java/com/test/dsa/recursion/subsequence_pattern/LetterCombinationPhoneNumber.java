@@ -38,6 +38,10 @@ public class LetterCombinationPhoneNumber {
      *  the combinations then increase the idx so we reach with a -> (def) and for b and c also
      *  3. Base case when idx become equal to the length of string mean we processed all the string
      *  4. if string is empty return empty list.
+     *
+     *  TC -> O(4^N * N) -> As for each number in wrost case we have 4 characters so we call recursion 4 times * N
+     *  for each time processing
+     *  SC -> O(N) for storing the result
      */
     private static void myFunction(
             List<String> strings, final String digits, int idx,
