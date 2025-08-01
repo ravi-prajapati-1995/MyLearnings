@@ -5,20 +5,20 @@ import java.util.List;
 
 public class ObservableImpl implements Observable<Integer>{
     private int data;
-    private static final List<Observer> observers = new ArrayList<>();
+    private static final List<Observer<Integer>> observers = new ArrayList<>();
     @Override
-    public void add(final Observer observer) {
+    public void add(final Observer<Integer> observer) {
         observers.add(observer);
     }
 
     @Override
-    public void delete(final Observer observer) {
+    public void delete(final Observer<Integer> observer) {
         observers.remove(observer);
     }
 
     @Override
     public void notifyObserver() {
-        observers.forEach(observer -> observer.update());
+        observers.forEach(Observer::update);
     }
 
     @Override

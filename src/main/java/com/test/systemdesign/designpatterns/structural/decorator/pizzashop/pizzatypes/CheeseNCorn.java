@@ -1,4 +1,4 @@
-package com.test.systemdesign.designpatterns.structural.decorator.pizzashop.types;
+package com.test.systemdesign.designpatterns.structural.decorator.pizzashop.pizzatypes;
 
 import com.test.systemdesign.designpatterns.structural.decorator.pizzashop.BasePizza;
 import com.test.systemdesign.designpatterns.structural.decorator.pizzashop.PizzaSize;
