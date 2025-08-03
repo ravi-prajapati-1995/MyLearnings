@@ -1,0 +1,66 @@
+Lecture here: https://www.udemy.com/course/system_design_lld_hld/learn/lecture/41910252#overview
+
+Messaging Queue: To support async processing between multiple service or in same application also one way to implement
+messaging queue there is generally Pub/Sub modal one application/service produce a message and another consume it.
+i.e We have NotificationService and it can send 10 notifications per second , This service is used by multiple applications
+So multiple application ask NotificationService to send message it may be possible that there is 100 message that sends
+to NotificationService to they all went in a Queue and notification Service process them at its own pace
+
+Advantages:
+1. Async in nature : Mean Sender or publisher don't need to wait for response from NotificationService that can continue
+its further processing all message will store in Queue
+
+Why we don't directly send message to NotificationService:
+1. Because MQ has retry mechanism, In case NotificationService is down other service will stuck as we don't have response
+from NS
+2. Pace Matcher: NS(Notification Service) can process messages on it own PACE
+
+
+P2P (Point to Point): message is consumed by only one consumer, if we have P2P and for same there are multiple consumers
+
+
+Kafka has below components:
+1. Producer
+2. Consumer
+3. Consumer Group
+4. Topic
+5. Partition
+6. offset
+7. Broker
+8. Cluster
+9. Zookeeper
+
+1. Producer: Message is produced by this
+2. Broker: A message publisher talks with the Producer it will Kafka Server in our case
+3. Topic: There are  multiple topics in a single broker i.e: TopicA, TopicB ..... Topic XYZ
+4. Partition: There are multiple partitions in a single Topic i.e Partition1, Partition2 ..... N. It is the place where
+actual data stored
+5. Offset: Each Partitions has multiple numbers of offset it helps to tell know about till where consumer reads the message
+ in case one consumer fails and another consumer start listening it so offset help to find out till which position we processed
+ the messages i.e 0, 1, 2, 3, 4, 5.....N
+6. Consumer: Consumer reads from the Partitions
+7 Consumer Group: Each consumer is part of consumer Group there can be multiple consumer in consumer Group: consumer1,
+consumer2.....ConsumerN, There can be multiple consumer Group ConsumerGroup1, ConsumerGroup2.....ConsumerGroupN
+
+In a consumer group if there are multiple consumer i.e Consumer1, Consumer2, And it is reading message from TopicA
+and TopicA is having Partition1 and Partition2 So consumer 1 reads from Partition1 and consumer2 reads from partition2
+But Two consumer from same ConsumerGroup can't read from same partitions.
+But Other consumer group can read from same partition
+
+8. Cluster: If we have multiple Brokers running on multiple Machines i.e Broker1 Running on Node1
+Broker2 on Node2 ..... Brokern running on NodeN
+So group of brokers running on different machines known as cluster
+
+9. Zookeeper: It is managing for all the Brokers running on multiple machines, Zookeeper knows that on which Broker which
+Topic is there, all the brokers connect with zookeeper.
+ZooKeeper has the information about the consumer that till which offset it reads the information successfully
+
+
+In Message there 4 things:
+1. Key: It can be any string or ID, hash will be calculated for the key and then based on hash partition is decided at which
+partition it goes. In case empty as it is not mandatory then partition will be checked
+2. value*: Actual message body may be in JSON format or XML
+3. Partition: In which partition message will go this is decided by this in case key is empty, if this is also empty then
+round robin method is used to place this message in partition
+4. Topic*: Topic name on which message is published
+
