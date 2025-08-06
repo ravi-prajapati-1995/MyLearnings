@@ -36,6 +36,17 @@ public class NQueen {
         return l2;
     }
 
+    /**
+     * Steps I have followed while solving the N Queen Problem::
+     * 1. Start with 0 row 0 Column and place a Queen then check for this we can place all the queens
+     * 2. I wrote a function canPutAt which will check if we can put a Queen at given place this will check
+     *      a. If there is any queen from that row and col till top as we are adding queens from top to bottom
+     *      b. Then check diagonally by decreasing row number and increasing col number
+     *      c. Second diagonally decreasing both row and column
+     * 3. I i reached a place where I put all the queens then I will store that answer in the list
+     *
+     * This solution is not Striver solution
+     */
     private static void checkQueen(
             final int totalQueens,
             final List<List<String>> l1,
