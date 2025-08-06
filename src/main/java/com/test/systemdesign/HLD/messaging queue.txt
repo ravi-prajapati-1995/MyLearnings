@@ -37,7 +37,7 @@ Kafka has below components:
 actual data stored
 5. Offset: Each Partitions has multiple numbers of offset it helps to tell know about till where consumer reads the message
  in case one consumer fails and another consumer start listening it so offset help to find out till which position we processed
- the messages i.e 0, 1, 2, 3, 4, 5.....N
+ the messages i.e 0, 1, 2, 3, 4, 5.....N, Offset is unique for each partition
 6. Consumer: Consumer reads from the Partitions
 7 Consumer Group: Each consumer is part of consumer Group there can be multiple consumer in consumer Group: consumer1,
 consumer2.....ConsumerN, There can be multiple consumer Group ConsumerGroup1, ConsumerGroup2.....ConsumerGroupN
@@ -64,3 +64,5 @@ partition it goes. In case empty as it is not mandatory then partition will be c
 round robin method is used to place this message in partition
 4. Topic*: Topic name on which message is published
 
+In kafka same topic has multiple partitions, It is possible in a cluster P0 of TopicA at Broker1 and P1 of TopicA at Broker2
+Kafka main
