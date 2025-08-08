@@ -1,0 +1,9 @@
+Consider A child want to eat chocolate , he asks his mother to bring , then his mother go to shop and bring chocolate
+
+In above case Mother is act like proxy, Child is Client and Shopkeeper is Server
+Meaning: Execute request on someone's behalf, A proxy server can execute requests on behalf of multiple clients, so that
+client and server don't have direct communication
+
+Types:
+    Forward (Simple Proxy):
+    Reverse

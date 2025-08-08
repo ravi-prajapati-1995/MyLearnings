@@ -48,7 +48,7 @@ But Two consumer from same ConsumerGroup can't read from same partitions.
 But Other consumer group can read from same partition
 
 8. Cluster: If we have multiple Brokers running on multiple Machines i.e Broker1 Running on Node1
-Broker2 on Node2 ..... Brokern running on NodeN
+Broker2 on Node2 ..... BrokerN running on NodeN
 So group of brokers running on different machines known as cluster
 
 9. Zookeeper: It is managing for all the Brokers running on multiple machines, Zookeeper knows that on which Broker which
@@ -66,3 +66,21 @@ round robin method is used to place this message in partition
 
 In kafka same topic has multiple partitions, It is possible in a cluster P0 of TopicA at Broker1 and P1 of TopicA at Broker2
 Kafka main
+We can have multiple replicas for a partition ie. P0 in Broker2, In case Broker1 is down
+Leader: Partitions who are not replicas are called leaders, replicas known as followers,all read and write operations handle
+by leader
+
+What will happen when Machine size reaches while sotring the messages:
+Ans: As there are multiple brokers running if one machine size is full message will move to another machine where different
+partition of the machine will be there
+
+What will happen if consumer goes Down?
+Ans: If consumer goes down another consumer from same consumer group take over the and start processing messages from the offset
+that is stored in zookeeper
+
+What will happen when consumer will not able to process message?
+Ans: When a message is not processed after defined retry count so that message will be moved into another queue failure
+/dead letter queue. and committed count got increased
+
+Kafka based on pull based approach, consumer will ask to kafka if there are any new message for me
+RabbitMQ/ActiveMQ is Push based approach these MQ only will push message to the consumer
