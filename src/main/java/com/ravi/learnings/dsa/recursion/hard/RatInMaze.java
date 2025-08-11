@@ -44,6 +44,50 @@ public class RatInMaze {
         System.out.println(ratInMaze(maze));
     }
 
+    // Recursive function to find paths
+    private static void path(int[][] m, int x, int y, String dir, int n, List<String> result) {
+        // If destination is reached, add path to result
+        if (x == n - 1 && y == n - 1) {
+            result.add(dir);
+            return;
+        }
+
+        // If cell is blocked, return
+        if (m[x][y] == 0) return;
+
+        // Mark cell as visited by setting it to 0
+        m[x][y] = 0;
+
+        // Move up if possible
+        if (x > 0) {
+            m[x][y] = 0;
+            path(m, x - 1, y, dir + 'U', n, result);
+            m[x][y] = 1;
+        }
+        // Move left if possible
+        if (y > 0) {
+            m[x][y] = 0;
+            path(m, x, y - 1, dir + 'L', n, result);
+            m[x][y] = 1;
+        }
+        // Move down if possible
+        if (x < n - 1){
+            m[x][y] = 0;
+            path(m, x + 1, y, dir + 'D', n, result);
+            m[x][y] = 1;
+        }
+        // Move right if possible
+        if (y < n - 1){
+            m[x][y] = 0;
+            path(m, x, y + 1, dir + 'R', n, result);
+            m[x][y] = 1;
+        }
+
+        // Unmark cell as visited by setting it to 1
+        m[x][y] = 1;
+    }
+
+
     public static ArrayList<String> ratInMaze(int[][] maze) {
         // Base case when starting position is 0 or end position is 0 we can't reach to end to maze
         if (maze[0][0] == 0 || maze[maze.length - 1][maze.length - 1] == 0) {
@@ -51,7 +95,8 @@ public class RatInMaze {
         }
 
         final var strings = new ArrayList<String>();
-        solveMazeStriver1(maze, strings, 0, 0, "");
+        path(maze, 0, 0, "", maze.length, strings);
+//        solveMazeStriver1(maze, strings, 0, 0, "");
 //        solveMazeStriver(maze, strings, 0, 0, new StringBuilder());
         Collections.sort(strings);
         return strings;
@@ -73,9 +118,9 @@ public class RatInMaze {
         //Marking cell visited
         maze[row][col] = 0;
 
-        // Go To downward direction if we have 1 in that direction and now exceeding the maze length
-        if (row < maze.length - 1) {
-            solveMazeStriver1(maze, strings, row + 1, col, sb + "D");
+        // Go To Upward direction if we have 1 in that direction and is greater than equals to 0
+        if (row > 0) {
+            solveMazeStriver1(maze, strings, row - 1, col, sb +"U");
         }
 
         //Go to left direction only if there are element present in it and element is 1 and is greater than 0
@@ -84,16 +129,18 @@ public class RatInMaze {
             solveMazeStriver1(maze, strings, row, col - 1, sb + "L");
         }
 
+        // Go To downward direction if we have 1 in that direction and now exceeding the maze length
+        if (row < maze.length - 1) {
+            solveMazeStriver1(maze, strings, row + 1, col, sb + "D");
+        }
+
+
         //Go to right direction only if there are element present in it and element is 1
         if (col < maze.length -1) {
             // then go to right side
             solveMazeStriver1(maze, strings, row, col + 1, sb + "R");
         }
 
-        // Go To Upward direction if we have 1 in that direction and is greater than equals to 0
-        if (row > 0) {
-            solveMazeStriver1(maze, strings, row - 1, col, sb +"U");
-        }
 
         maze[row][col] = 1;
     }
