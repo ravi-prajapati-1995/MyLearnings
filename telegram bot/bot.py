@@ -82,14 +82,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         msg = f"<b>{r['title']}</b>\n{r['snippet']}\n<i>{r['location']}</i>\n{r['link']}"
         await update.message.reply_text(msg, parse_mode=ParseMode.HTML, disable_web_page_preview=False)
 
-async def main():
+def main():
     token = os.environ.get("TELEGRAM_BOT_TOKEN")
     if not token:
         raise RuntimeError("TELEGRAM_BOT_TOKEN not set")
     app = ApplicationBuilder().token(token).build()
     app.add_handler(CommandHandler("start", start))
     logger.info("EU Visa Sponsorship Bot running...")
-    await app.run_polling()
+    app.run_polling()
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
