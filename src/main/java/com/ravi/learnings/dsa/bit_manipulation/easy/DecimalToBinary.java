@@ -4,24 +4,34 @@ import lombok.val;
 
 public class DecimalToBinary {
     public static void main(String[] args) {
-        System.out.println(decimalToBinary(654321));
-        System.out.println(binaryToDecimal("10011111101111110001"));
+        final var decimalToBinary = decimalToBinary(14);
+        System.out.println(decimalToBinary);
+        System.out.println(binaryToDecimal(decimalToBinary));
+//        decimalToBinary2(14);
+
     }
 
     /**
-     * 1. Take a while loop till we h
+     * 1/2 = 0
+     * 1. Take a while loop till we have Quotient is greater than 0 take string builder and append reminder
+     * 2.Then store remainder s
+     *
      */
     public static String decimalToBinary(int val) {
         StringBuilder sb = new StringBuilder();
-        while (val != 1) {
+        while (val > 0) {
             sb.append(val % 2);
             val = val / 2;
         }
-        sb.append(1);
 
         return sb.reverse().toString();
     }
 
+    /**
+     * str = "10101"
+     * We start from the right to left and start multiplying with 2^0 , 2^1, 2^2... so on till we reaches at the end
+     * Take a sum variable and increase it in while loop
+     * */
     public static int binaryToDecimal(String bs) {
         var charArray = bs.toCharArray();
         var idx = charArray.length - 1;

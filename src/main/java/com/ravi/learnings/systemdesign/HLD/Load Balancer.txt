@@ -1,8 +1,8 @@
 https://www.udemy.com/course/system_design_lld_hld/learn/lecture/41910262#overview
 
-Load Balancer: When in a application we have multiple servers to balance the traffice between these servers we need
+Load Balancer: When in a application we have multiple servers to balance the traffic between these servers we need
 load balancer.
-This will help that requests are equally distributed traffic appropriately between all there servers so that no one single
+This will help that requests are equally distributed appropriately between all there servers so that no one single
 server over burden
 
 There are two types of load balancer:
@@ -64,7 +64,7 @@ Ip hash: In this we will distribute load based on the ip address of the client, 
 
 Dynamic Load Balancing:
 1. Least Connection: In this type of load balancing , load balancer checks server for the connection to the server. if
-    Server 1 is having more connection and server 2 is having less connection then new request will goest to server2
+    Server 1 is having more connection and server 2 is having less connection then new request will goes to server2
 
     Advantages:
         1. Dynamic allocation of requests so that requests distributed equally between servers, if servers are equal then
