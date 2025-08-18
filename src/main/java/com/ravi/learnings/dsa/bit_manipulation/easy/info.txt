@@ -1,0 +1,14 @@
+when we write  int x = 13 , then computer don't understand decimal thing it only understands binary and its stores 1101
+as int is 32 bits, so it in last four bits it stores 1101 and remaining 28 bits it stores 0
+
+when we print x then computer convert this binary into decimal no behind the scene
+
+1s complement: fliping the bits called 1s compelemtn
+    let take example of 13 = b(1101), here b() this is binary of 13,
+    then flip the 1s to 0s and 0s to 1s so it will become 0010 so 1s complement of 13 is 0010
+
+2s complement:
+    1. Figure out the 1s complement of the given no.
+    2. Add 1 to it
+
+ 13s 2s compelment is --> 0011, 13 -> b(1101) ---1s complement--> 0010  --- Adding 1 --> 0011
