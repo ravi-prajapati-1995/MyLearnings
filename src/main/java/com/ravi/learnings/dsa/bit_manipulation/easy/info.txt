@@ -12,3 +12,78 @@ when we print x then computer convert this binary into decimal no behind the sce
     2. Add 1 to it
 
  13s 2s compelment is --> 0011, 13 -> b(1101) ---1s complement--> 0010  --- Adding 1 --> 0011
+
+ AND operator: When all true then result will be true, if any one is false then it become false
+ A      B       & result
+ 1      1       1
+ 1      0       0
+ 0      1       0
+ 0      0       0
+
+ Lets do AND of 13 & 7 --binary of these--> b(1101) & (111)
+
+    1101
+  & 0111
+   ------
+    0101 ---- in decimal it is --> 5
+
+OR: 1 true is true, all false is false
+ A      B       | result
+ 1      1       1
+ 1      0       1
+ 0      1       1
+ 0      0       0
+
+     1101
+   | 0111
+    ------
+     1111 ---- in decimal it is --> 15
+
+
+XOR: no of 1's is odd  ---> 1
+     no of 1's is even  ---> 0
+
+ A      B       | result
+ 1      1       0
+ 1      0       1
+ 0      1       1
+ 0      0       0
+
+     1101
+   ^ 0111
+     ------
+      1010 ---- in decimal it is --> 10
+
+SHIFT operators:
+    Right Shift(>>): x = 13 ---> b(1101) >> 1 ---> b(110)
+    as we right shift 13 by 1 so the most right bit with is 1 in our case will be out of the clif so only remain b(110) = 6
+    13 >> 2 ---> b(1101) --> (0011) as we remove most right 2 bits in decimal it will be 3
+    13 >> 3 ---> b(1101) --> (0001) removed 3 bits from right side in decimal it will be 1
+    13 >> 4 ---> b(1101) --> (0000) removed 3 bits from right side in decimal it will be 0
+    so formula for x >> k = x/2^k  --> in our case for 13 >> 2  --> 13/2^2 --> 13/4 = 3
+
+    LEFT shift(<<)
+        when we write x = -13, then computer to tell or store negative number most left bit 31th bit will be 1
+        31th bit is reserved for the sign if it is 1 then negative number if it is 0 then positive number
+        computer will store negative number in 2's complements so for 13
+        13 = b(1101)  -- 1s complement --> 11111111111111111111111111110010  --- adding 1 in right bit -->
+        11111111111111111111111111110011 --->so now most left bit is 1
+
+        Left Shift(<<): x = 13 ---> b(1101) << 1 ---> b(11010)  ->> which will be 26 in decimal
+        x << k = x * 2^k
+
+
+NOT(~) : x = ~ 5, So 1st computer will flip all the bits 5 = b(0101)
+        Then if number is negative then do 2's complement on the 31 bits leave sign bit as it is else stop
+        in our case 5 when we do 1st step flip the bits then it became: 11111111111111111111111111111010
+        Here most left bit is 1 so number is negative, then do 2's complement
+        1. flip the digits -> 10000000000000000000000000000101
+        2. add 1 in -> 10000000000000000000000000000110 which is equal to: 6
+
+        x = ~ -6 , Computer will store 6 in 2's complement so it will store like:
+        -6 = 10000000000000000000000000000110
+        Do 1's complement 11111111111111111111111111111001
+        adding 1 -> 11111111111111111111111111111010
+
+        Now apply NOT operator
+        1st step flipt the digits -> 00000000000000000000000000000101, number is positive so this will equal to 5

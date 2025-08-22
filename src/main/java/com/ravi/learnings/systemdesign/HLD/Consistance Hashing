@@ -1,0 +1,21 @@
+What is Hashing?
+Hashing a technique in which I give a random length string to a function and it will return a constant length string/Integer
+i.e hash("ravi") -> 5 , hash("Nitin") -> 2
+
+Module of Hashing: When we have a fixed length hash table or hashmap and want to store all the result of hash function
+in that DS then we use module:
+i.e hash function return 239 and we have 6 size of hashtable or list then we do 239 % 6 -> 5, 123874 % 6 -> 4
+
+Where hashing is used:
+1. On load balancer: If we have 3 servers and  we have hash function based on ip  address then that function will return
+values from 1, 2 and 3 and according to that we will move request to corresponding server.
+2. In Horizontal Sharding: We have a table which is having 100k entries of user and we want to shard it on multiple servers
+such that a-f on 1 server g-p on 2 and from q-z on 3rd server, so we will write a hash function, that will give server no
+based on first name and we will store data accordingly
+
+Problem with Hashing:
+    Load Balancer: I we do hashing or constant hashing then when we add or remove a server then we need to rehash requests again.
+    There may be chances also that 1 server will receive more request than other that will also cause problem
+    Horizontal sharding: IN horizontal sharding if we added new server then we need to rebalancing the record may be from
+    1st server some record to 2nd and so on, so rebalancing is very expensive task that will take time.
+
