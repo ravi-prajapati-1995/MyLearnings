@@ -14,8 +14,11 @@ such that a-f on 1 server g-p on 2 and from q-z on 3rd server, so we will write 
 based on first name and we will store data accordingly
 
 Problem with Hashing:
-    Load Balancer: I we do hashing or constant hashing then when we add or remove a server then we need to rehash requests again.
-    There may be chances also that 1 server will receive more request than other that will also cause problem
-    Horizontal sharding: IN horizontal sharding if we added new server then we need to rebalancing the record may be from
-    1st server some record to 2nd and so on, so rebalancing is very expensive task that will take time.
+    Load Balancer:
+        1. We do hashing or constant hashing when we add or remove a server then we need to rehash requests again.
+        2. There may be chances also that 1 server will receive more request than other that will also cause problem
+
+    Horizontal sharding:
+        1. In horizontal sharding if we added new server or Deleted a server then we need to re - balancing the record may be from
+            1st server some record to 2nd and so on, re-balancing is very expensive task that will take time.
 
