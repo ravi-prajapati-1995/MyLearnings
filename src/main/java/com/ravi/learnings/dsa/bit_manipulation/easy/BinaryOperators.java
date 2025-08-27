@@ -7,7 +7,13 @@ public class BinaryOperators {
 //        System.out.println("XOR : " + XOR(13, 13));
         //        System.out.println(rightShift(13, 2));
         //        System.out.println(not(-6));
-        swap(1, 3);
+//        swap(1, 3);
+        //13 = b(1101)
+//        System.out.println(checkithBitSetUsingRightShift(13, 1));
+//        System.out.println(checkithBitSetUsingLeftShift(13, 2));
+
+        System.out.println(setIthBit(9, 2));
+        System.out.println(clearIthBitUsingNotOperator(1312345, 2));
     }
 
     public static int AND(int a, int b) {
@@ -65,9 +71,51 @@ public class BinaryOperators {
      * figure out if it is set or not
      *
      * Using Binary operator:
-     *  using Right shift operator:
+     *  using Right shift operator: 13 = b(1101)
+     *      We can right shift givent number ith times
+     *      After doing that do & with 1
+     *      if result is non zero then bit is set
+     *      Otherwise bit is not set
      * */
-    public static void checkithBitSet(int n, int i) {
-
+    public static boolean checkithBitSetUsingRightShift(int n, int i) {
+        n = n >> i;
+        return (n & 1) != 0;
     }
+
+    /**
+     * In left shift operator we will left shift 1 by n
+     * After that do & with n
+     *
+     * 13 = b(1101), i = 2
+     * 1 << 2 = 100
+     * 1101 & 100 = 0100
+     * which is not 0
+     * */
+    public static boolean checkithBitSetUsingLeftShift(int n, int i) {
+        i = 1 << i;
+        return (n & i) != 0;
+    }
+
+    /**
+     * left shift 1 ith times, 1<<2 --> 100
+     * then make or with the given number i.e 9 = b(1001) | 100 -> 1101 -> 13
+     * */
+    public static int setIthBit(int n, int i) {
+        i = 1 << i;
+        return (n | i);
+    }
+
+    /**
+     * 13 = b(1101) if we do & it with 1011, we will do & it with all 1 just 0 at ith place
+     * first 1<< i we will get 100 in case of i is 2
+     * Then do ~ so that it became 1111111011
+     * And then do & with number
+     * */
+    public static int clearIthBitUsingNotOperator(int n, int i) {
+        System.out.println(DecimalToBinary.decimalToBinary(n));
+        int temp = 1 << i;
+        temp = ~temp;
+        return n & temp;
+    }
+
 }
