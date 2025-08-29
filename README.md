@@ -17,6 +17,7 @@ Returned from Kheerganga trip on May 3, 2025
 
 10 july -- No problem Solved
 29 July --- No problem Solved
+29 August --- No problem solved too much work load 😣
 
 start learning Recursion on 2nd july may this will also cimpleted soon
 Om Namah Shivaye .... 🕉️
