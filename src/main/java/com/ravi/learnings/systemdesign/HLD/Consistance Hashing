@@ -22,3 +22,65 @@ Problem with Hashing:
         1. In horizontal sharding if we added new server or Deleted a server then we need to re - balancing the record may be from
             1st server some record to 2nd and so on, re-balancing is very expensive task that will take time.
 
+Consistence Hashing: When there is addition of new node or deletion of node in that case rebalanceing should be minimum
+it should be (1/n)%  where n is the number of nodes, of total numbers of keys
+
+
+How Does Consistence hashing works:
+  In consistence hashing we have a virtual ring which will have some numbers in our case lets take a virtual ring
+  0 - 11 and I am having a hash function key%12 with will give me where current data will goes
+
+  on that virtual ring we will have point our server lets take we have 3 server 1 is at 3rd position, 2nd is at 7th and
+  3rd is at 11th position
+
+  when any data came we will calculate its hash, using hash function lets take a example
+  k1 comes at 1st place, k2 comes on 2nd soo on k11 comes on 11th position in the virtual ring
+  then to calculate which key is handled by which server, we move in the clockwise direction, for k1 we move in clockwise
+  direction then at 3rd position we have s1 , that will handle k1, same for k2 in clockwise direction we have S1
+  so k2 request also handled by S1,
+
+  see in this video for graphics: https://www.udemy.com/course/system_design_lld_hld/learn/lecture/41910208#overview
+
+  similarly for for K4 and k5 request will go ton the S2 which is at 7th position
+  and K8, k9 and k10 will got to S3 at 11th position
+
+  How it will resolve problem in addition of server and removing of the server:
+    Current server setup: s1  -> 3rd, s2-- 7th and s3 --- at 11th
+    Lets suppose we have added a new server at position 5 so I have to do rebalancing of the keys which are between 3, 4 only
+    because request before 3rd now also handled by
+    Before Rebalancing
+    S1 handles -- k0, k1, k2,
+    S2 Handles: k4, k5, k6
+    S3 handles: k7, k8, k9, k10
+
+    After adding new server:
+    S1 handles -- k0, k1, k2,
+    S2 Handles: k5, k6
+    S3 handles: k7, k8, k9, k10
+    s4 (new Server): it is at 5th position so k4 request will be reblanced only, : k4
+
+    in  this way adding new server required minimum rebalancing
+    If we delete a node:
+    suppose we have deleted s2:
+     Before Rebalancing
+     S1 handles -- k0, k1, k2,
+     S2 Handles: k4, k5, k6
+     S3 handles: k7, k8, k9, k10
+
+     After deleting s2
+      S1 handles -- k0, k1, k2,
+      S3 handles: k4, k5, k6, k7, k8, k9, k10
+
+      we need to re-balance k4, k5 and k6 all other requests go same way
+
+
+  Disadvantage: we distribute the server on the ring at equal distance by our hash function if our hash function will return
+  s1 at 1st , s2 at 2nd and s3 at 3rd place in that case most of the requests will be handled by s1 only, in this case
+  constant load balancer across servers fails
+
+
+To overcome above problem we will replicate the same server at the different position in the virtual ring so that distribution
+can be equal balanced
+
+
+Where consistance hashing will work:    Where I am having dynamic servers where adding new node and deleting existing load
