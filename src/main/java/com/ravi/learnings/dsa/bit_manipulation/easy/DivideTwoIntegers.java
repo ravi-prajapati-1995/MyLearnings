@@ -16,7 +16,7 @@ package com.ravi.learnings.dsa.bit_manipulation.easy;
  * */
 public class DivideTwoIntegers {
     public static void main(String[] args) {
-        System.out.println(divideOptimal(-2147483648, -1));
+        System.out.println(divideOptimal(2147483647, -1));
     }
 
     /**
@@ -37,22 +37,25 @@ public class DivideTwoIntegers {
             return 1;
         }
 
-        //Handle sign
-        boolean sign = true;
-        if(dividend < 0 && divisor >= 0) {
-            sign = false;
-        }
-        if(dividend >= 0 && divisor < 0) {
-            sign = false;
+        if(dividend == Integer.MIN_VALUE && divisor == -1) {
+            return Integer.MAX_VALUE;
         }
 
-        if(dividend == Integer.MIN_VALUE) {
-            dividend = Integer.MAX_VALUE;
+        //Handle isPositive
+        boolean isPositive = true;
+        if(dividend < 0 && divisor >= 0) {
+            isPositive = false;
         }
+        if(dividend >= 0 && divisor < 0) {
+            isPositive = false;
+        }
+
 
         int n = Math.abs(dividend);
         int d = Math.abs(divisor);
+
         int ans = 0;
+
 
         while (n >= d) {
             // this n will help us to get power of 2
@@ -60,7 +63,7 @@ public class DivideTwoIntegers {
 
             // after that I need to check if number (n) is greater than equal to d * 2^count+1
             // here d << count +1  = d * 2^count+1
-            while(n > (d << count+1)){
+            while(n >= (d << (count+1))){
                 count++;
             }
 
@@ -70,10 +73,64 @@ public class DivideTwoIntegers {
             n = n - (d * (1 << count));
         }
 
-        if(sign) {
+        // Handling overflowing condition
+        if(ans > Integer.MAX_VALUE && isPositive)
+            return Integer.MAX_VALUE;
+        if(ans > Integer.MAX_VALUE && !isPositive)
+            return Integer.MIN_VALUE;
+
+        if(isPositive) {
             return ans;
         }
         return ans * -1;
+    }
+
+    public static int divide1(int dividend, int divisor) {
+
+        // Base case
+        if(dividend == divisor) return 1;
+
+        // Variable to store the sign of result
+        boolean isPositive = true;
+
+        // Updating the sign of quotient
+        if(dividend >= 0 && divisor < 0)
+            isPositive = false;
+        else if(dividend < 0 && divisor > 0)
+            isPositive = false;
+
+        // Storing absolute dividend & divisor
+        int n = Math.abs(dividend);
+        int d = Math.abs(divisor);
+
+        // Variable to store the answer
+        int ans = 0;
+
+        /* Looping while dividend is
+        greater than equal to divisor */
+        while(n >= d) {
+            int count = 0;
+
+            /* Finding the required
+            largest power of 2 */
+            while(n >= (d << (count+1))) {
+                count++;
+            }
+
+            // Updating the answer & dividend
+            ans += (1 << count);
+            n -= d*(1 << count);
+        }
+
+        // Handling overflowing condition
+        if(ans > Integer.MAX_VALUE && isPositive)
+            return Integer.MAX_VALUE;
+        if(ans > Integer.MAX_VALUE && !isPositive)
+            return Integer.MIN_VALUE;
+
+        /* Returning the quotient
+        with proper sign */
+        return isPositive ? ans : -1*ans;
     }
     /*
     * To get the Quotient without use of multiplication, division and mod operator
