@@ -16,9 +16,65 @@ package com.ravi.learnings.dsa.bit_manipulation.easy;
  * */
 public class DivideTwoIntegers {
     public static void main(String[] args) {
-        System.out.println(divide(-2147483648, -1));
+        System.out.println(divideOptimal(-2147483648, -1));
     }
 
+    /**
+     * In optimal solution lets take we have 22/3 , where dividend = 22 and divisor = 3
+     * in brute force approach we are adding divisor till it become greater than of dividend
+     * so quotient for 22/3 = 7,
+     *
+     * we  can write (3*7) = 21
+     * 3*(2^2 + 2^1 +2^0) => (3*4) + (3*2) + (3*1) = 21
+     * So we will try to remove bigger part of the dividend so that we can reduce the complexity
+     * @param dividend
+     * @param divisor
+     * @return
+     */
+    public static int divideOptimal(int dividend, int divisor) {
+        //base case when we divide 3/3
+        if(dividend == divisor) {
+            return 1;
+        }
+
+        //Handle sign
+        boolean sign = true;
+        if(dividend < 0 && divisor >= 0) {
+            sign = false;
+        }
+        if(dividend >= 0 && divisor < 0) {
+            sign = false;
+        }
+
+        if(dividend == Integer.MIN_VALUE) {
+            dividend = Integer.MAX_VALUE;
+        }
+
+        int n = Math.abs(dividend);
+        int d = Math.abs(divisor);
+        int ans = 0;
+
+        while (n >= d) {
+            // this n will help us to get power of 2
+            int count = 0;
+
+            // after that I need to check if number (n) is greater than equal to d * 2^count+1
+            // here d << count +1  = d * 2^count+1
+            while(n > (d << count+1)){
+                count++;
+            }
+
+            //Now we will store and increase the ans till 2^count time as we can remove this number from dividened
+            ans += (1<<count);
+            //Now we need to decrease that number from the actual number
+            n = n - (d * (1 << count));
+        }
+
+        if(sign) {
+            return ans;
+        }
+        return ans * -1;
+    }
     /*
     * To get the Quotient without use of multiplication, division and mod operator
     * we can use + operator
@@ -28,17 +84,16 @@ public class DivideTwoIntegers {
     public static int divide(int dividend, int divisor) {
         long count = 0;
         int number = 0;
-        int d = 1;
+        int sign = 1;
         if(dividend < 0) {
-            dividend = dividend * -1;
-            d = -1;
+            sign = -1;
         }
 
-        int di = 1;
         if(divisor < 0) {
-            divisor = divisor * -1;
-            di = -1;
+            sign = sign * -1;
         }
+        dividend = Math.abs(dividend);
+        divisor = Math.abs(divisor);
 
         while(number + divisor <= dividend) {
             number += divisor;
@@ -53,6 +108,6 @@ public class DivideTwoIntegers {
             count = Integer.MIN_VALUE;
 
         }
-        return Long.valueOf(count).intValue() * d * di;
+        return Long.valueOf(count).intValue() * sign;
     }
 }
