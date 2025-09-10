@@ -20,6 +20,9 @@ public class CountNoOfBitFliped {
      * So to solve this problem:
      * 1. To get the different bit between start and goal we did XOR
      * 2. After getting xor we count the no of set bit, using while loop till value become zero
+     *
+     * SC = O(1)
+     * TC = O(log(xor))
      * */
     public static int minBitFlips(int start, int goal) {
         int xor = start ^ goal;
