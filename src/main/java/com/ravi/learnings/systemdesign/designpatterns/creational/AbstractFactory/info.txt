@@ -8,9 +8,12 @@ So we will have two factory which give us vehicle based on type
 i.e We have multiple car companies like: Tata, Mahindra, Maruti
 and each car company made car in these category: Sedan, Hatchback, SUV
 
+We can use Abstract factory design pattern where I can group multiple types of object
 So we can create Vehicle factory and we ask that to create vehicle based on type like sedan, hatchback and SUV
 Vehicle is also interface
 interface VehicleFactory {
     Vehicle createVehicle(String type);
 }
 class LandVehicleFactory implements VehicleFactory
+----------------------------------------------------
+From Shreyansh jain: https://www.udemy.com/course/system_design_lld_hld/learn/lecture/41932796#overview
