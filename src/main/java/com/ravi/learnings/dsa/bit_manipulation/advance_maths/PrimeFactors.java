@@ -1,27 +1,27 @@
 package com.ravi.learnings.dsa.bit_manipulation.advance_maths;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * You are given an integer array queries of length n.
- *
+ * <p>
  * Return the prime factorization of each number in array queries in sorted order.
  * Input : queries = [2, 3, 4, 5, 6]
- *
+ * <p>
  * Output : [ [2], [3], [2, 2], [5], [2, 3] ]
- *
+ * <p>
  * Explanation : The values 2, 3, 5 are itself prime numbers.
- *
+ * <p>
  * The prime factorization of 4 will be --> 2 * 2.
- *
+ * <p>
  * The prime factorization of 6 will be --> 2 * 3.
- * */
+ */
 public class PrimeFactors {
     public static void main(String[] args) {
-       int[] queries = {2, 3, 4, 5, 6};
-        System.out.println(primeFactors(queries));
-
+        int[] queries = {2, 3, 4, 5, 6};
+        System.out.println(primeFactorsOptimal(queries));
     }
 
     /**
@@ -29,20 +29,55 @@ public class PrimeFactors {
      * 1. Take an array with n+1 numbers where n is the maximum number for which we want to calculate prime factor
      * 2. Start from 0-n+1 and mark element with their respective number
      * 3. Again start the loop from 2 and start marking all the divisor of number with that number if already not marked
-     *  i.e: for 2, mark 4, 6, 8, 10, 12, 14, 16.... with 2 as smallest prime factor will be 2 for all of these
-     *      for 3 , we can't mark 6 again with 3 as it is already marked with 2 so mark 9, 15, 21, 27, ....
+     * i.e: for 2, mark 4, 6, 8, 10, 12, 14, 16.... with 2 as smallest prime factor will be 2 for all of these
+     * for 3 , we can't mark 6 again with 3 as it is already marked with 2 so mark 9, 15, 21, 27, ....
      * In this way pre calculate all the prime factor for all the numbers
      * 4. let we have n = 60, directly go 60 and get smallest prime factor which is 2, then divide it by 2 which will
      * become 30 then go to 30 and check smallest factor again 2, then divide which become 15, then go to arr[15]
      * check spf which is 3
-     * */
+     */
     public static List<List<Integer>> primeFactorsOptimal(int[] queries) {
-            return null;
+        int maxIdx = 1000000;
+        int[] arr = new int[maxIdx + 1];
+        // Filing array with default value
+        for (int i = 1; i <= maxIdx; i++) {
+            arr[i] = i;
+        }
+
+        //now marking all divisor of number
+        for (int i = 2; i * i < maxIdx; i++) {
+
+            // if this number is already has some factor then all its divisor must have same factor
+            if (arr[i] != i) {
+                continue;
+            }
+            for (int j = i; j <= maxIdx; j = j + i) {
+                if (arr[j] % i == 0 && arr[j] == j) {
+                    arr[j] = i;
+                }
+            }
+        }
+
+        final var result = new ArrayList<List<Integer>>();
+        for (int i : queries) {
+            result.add(getPrimFactor(i, arr));
+        }
+        return result;
+    }
+
+    public static List<Integer> getPrimFactor(int number, int[] preComputation) {
+        final var result = new ArrayList<Integer>();
+        while (number > 1 && number >= preComputation[number]) {
+            result.add(preComputation[number]);
+            number = number / preComputation[number];
+        }
+
+        return result;
     }
 
     public static List<List<Integer>> primeFactors(int[] queries) {
         final var lists = new ArrayList<List<Integer>>();
-        for(int i: queries) {
+        for (int i : queries) {
             lists.add(getPrimFactor(i));
         }
         return lists;
@@ -61,7 +96,7 @@ public class PrimeFactors {
         }
 
         // Case when there are no number which can divide this number like 11
-        if(number >1) {
+        if (number > 1) {
             result.add(number);
         }
         return result;
