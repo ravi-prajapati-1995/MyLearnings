@@ -60,7 +60,6 @@ public class SieveOfEratosthenes {
                 }
             }
         }
-
         return arr;
     }
 }
