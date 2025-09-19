@@ -16,7 +16,7 @@ public class StreamApiTest {
     private static void filterExample() {
         final var list = List.of(1, 3, 4, 5, 6, 7, 8);
         final var integers = List.of(1, 6, 8);
-        final var filteredResult = list.stream().filter(i -> i == 3).toList();
+        final var filteredResult = list.stream().filter(i -> i > 3).toList();
         System.out.println(filteredResult);
 
         final var list1 = list.stream().filter(integers::contains).toList();
