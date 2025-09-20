@@ -18,7 +18,8 @@ departments                  |  |  |  employees_projects
 +---------------+---------+           +---------------+---------+
 */
 
---Question 1) Write an SQL query to find the highest-salaried employee in each department. Your query should return the employee's full name and department name and salary.
+--Question 1) Write an SQL query to find the highest-salaried employee in each department.
+ Your query should return the employee's full name and department name and salary.
 
 SELECT * from EMPLOYEES e left join DEPARTMENTS d on e.DEPARTMENT_ID = d.ID;
 
@@ -26,7 +27,9 @@ SELECT  max(first_name), max(emp.SALARY), dep.NAME from EMPLOYEES emp left join 
 
 
 WITH RankedSalaries AS
-( SELECT d.name AS department_name, e.first_name, e.last_name, e.salary, RANK() OVER (PARTITION BY e.department_id ORDER BY e.salary DESC) AS salary_rank FROM employees e JOIN departments d ON e.department_id = d.id )
+( SELECT d.name AS department_name, e.first_name, e.last_name, e.salary,
+ RANK() OVER (PARTITION BY e.department_id ORDER BY e.salary DESC) AS salary_rank
+  FROM employees e JOIN departments d ON e.department_id = d.id )
 SELECT department_name, first_name, last_name, salary
 FROM RankedSalaries WHERE salary_rank = 1;
 

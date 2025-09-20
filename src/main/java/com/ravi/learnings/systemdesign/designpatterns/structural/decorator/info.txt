@@ -24,7 +24,7 @@ Dressing: Like we dress in winter
 
 
 Why we use decorator design pattern: To avoid class explosion
-We need to create multiple classes which have properties in permuntation combination like in pizz
+We need to create multiple classes which have properties in permutation combination like in pizza
 we need to create class base+extra veg, base + extra-veg + cheese,, base + cheese
 when any new property came  then we need to create all combination
 
