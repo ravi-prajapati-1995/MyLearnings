@@ -2,9 +2,13 @@ package com.ravi.learnings.dsa.stack.learning;
 
 import java.util.EmptyStackException;
 
+/**
+ * Stack is the data structure in which element last-in-first-out
+ * You can assume stack of plate in which top plate came in last and out first
+ * */
 public class StackUsingArray {
     public static void main(String[] args) {
-        final var myStackUsingArray = new MyStackUsingArray(5);
+        final var myStackUsingArray = new MyStack(5);
         myStackUsingArray.push(5);
         myStackUsingArray.push(4);
         myStackUsingArray.push(3);
@@ -16,12 +20,12 @@ public class StackUsingArray {
     }
 }
 
-class MyStackUsingArray {
+class MyStack {
     private final int size;
     private int top;
     private final int[] arr;
 
-    public MyStackUsingArray(int size) {
+    public MyStack(int size) {
         this.size = size;
         arr = new int[size];
         this.top = -1;
