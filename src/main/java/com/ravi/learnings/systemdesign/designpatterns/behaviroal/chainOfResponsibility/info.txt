@@ -1,0 +1,19 @@
+Chain of Responsibility:
+Real World Analogy:
+    Customer Care: You has a window computer and there is issue while boot up your computer, you called helpline
+    phone number then:
+    1. It will connect you with the computer which try to give solution of most famous issues.
+    2. After your issue not listed on IVR, then transfer call to Customer care guys which give you some random solution
+        and not worked in your case.
+    3. After that they connected you with Engineer which gives you proper solution about drivers which needs to be installed
+
+So above process is example of chain of responsibility where each layer has some responsibility and according to that they
+try to provide solution till your issue is not resolved
+
+Filter chaining is also an example of chain of responsibility where each filter has its own responsibility and accordingly
+pass or block the request, if on filter block the request it will not traverse further
+
+Application Usages:
+1. ATM/Vending machine
+2. Design Loggers
+
