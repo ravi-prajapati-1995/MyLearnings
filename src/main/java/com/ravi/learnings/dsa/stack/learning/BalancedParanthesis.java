@@ -1,5 +1,7 @@
 package com.ravi.learnings.dsa.stack.learning;
 
+import java.util.LinkedList;
+
 /**
  * <a href="https://leetcode.com/problems/valid-parentheses/description/">Problem Link</a></br>
  * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
@@ -12,10 +14,44 @@ package com.ravi.learnings.dsa.stack.learning;
  */
 public class BalancedParanthesis {
     public static void main(String[] args) {
-        System.out.println(isValid("([])"));
+        System.out.println(isValidStriver("([)]"));
 
     }
 
+    /**
+     * To to solve this problem we need to keep track of last opening bracket i.e: ()[{}()]
+     * traverse all the characters
+     * So first opening of ( comes we will push it to stack
+     * Then ) came then check stack is it having opening bracket for this if yes continue else return false
+     * Then [ push to stack and then { push to stack
+     * after that } came  pop from stack if top element is {
+     *
+     * in that way we can solve this
+     * @param s
+     * @return
+     */
+    public static boolean isValidStriver(String s) {
+        final var linkedList = new LinkedList<Character>();
+        final var charArray = s.toCharArray();
+        for(char c: charArray) {
+            if(c == '(' || c == '{' || c == '[') {
+                linkedList.push(c);
+            } else {
+                if(linkedList.isEmpty()) {
+                    return false;
+                }
+                final var pop = linkedList.pop();
+                if((c == ']' && pop != '[')) {
+                    return false;
+                } else if((c == ')' && pop != '(')) {
+                    return false;
+                } else if((c == '}' && pop != '{')) {
+                    return false;
+                }
+            }
+        }
+        return  linkedList.isEmpty();
+    }
 
     /**
      * below logic will not work for String: ([)]
