@@ -27,7 +27,8 @@ public class BalancedParanthesis {
      * after that } came  pop from stack if top element is {
      *
      * in that way we can solve this
-     * @param s
+     * TC: O(N)
+     * SC: O(N) --- to storing the closing brackets
      * @return
      */
     public static boolean isValidStriver(String s) {
