@@ -1,11 +1,6 @@
 package com.ravi.learnings.dsa.stack.learning;
 
-import lombok.val;
-
-import javax.print.DocFlavor.INPUT_STREAM;
-import java.util.*;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.Map.Entry;
+import java.util.LinkedList;
 
 /**
  * <a href="https://leetcode.com/problems/min-stack/description/">Problem Link</a> </br>
@@ -16,15 +11,28 @@ import java.util.Map.Entry;
 public class ImplementMinStack {
     public static void main(String[] args) {
         final var minStack = new MinStackOptimal();
-        minStack.push(5);
-        minStack.push(6);
-        System.out.println(minStack.getMin());
-        minStack.push(4);
-        System.out.println(minStack.getMin());
-        minStack.pop();
-        System.out.println(minStack.getMin());
+        minStack.push(2147483646);
+        minStack.push(2147483646);
+        minStack.push(2147483647);
         System.out.println(minStack.top());
 
+        minStack.pop();
+        System.out.println(minStack.getMin());
+
+        minStack.pop();
+        System.out.println(minStack.getMin());
+
+        minStack.pop();
+        minStack.push(2147483647);
+        System.out.println(minStack.top());
+        System.out.println(minStack.getMin());
+
+        minStack.push(-2147483648);
+        System.out.println(minStack.top());
+        System.out.println(minStack.getMin());
+
+        minStack.pop();
+        System.out.println(minStack.getMin());
     }
 }
 
@@ -43,11 +51,16 @@ public class ImplementMinStack {
  * To get prevMin = 2 * val - newVal
  * When we pop and check if the current number is less than the minVal then it is modified number we need to
  * revert it
+ * Above formula drived from
+ * when we are pushing 3 then minVal = 4
+ * val < minval => val-minVal < 0  => adding val both sides => val+val-minVal < val  => 2Val-minVal < val
+ * 2*val - minVal = newVal so when newVal<val we modified value
+ *
  *
  * */
 class MinStackOptimal {
-    private  final LinkedList<Integer> stack;
-    private int minVal;
+    private  final LinkedList<Long> stack;
+    private long minVal;
     public MinStackOptimal() {
         stack = new LinkedList<>();
     }
@@ -55,16 +68,16 @@ class MinStackOptimal {
     public void push(int val) {
         if(stack.isEmpty()) {
             minVal = val;
-            stack.push(val);
+            stack.push((long) val);
             return;
         }
 
        if(val < minVal) {
-           int newVal = (2 * val) - minVal; // Need to remember this formula
+           long newVal = (2 * val) - minVal; // Need to remember this formula
            stack.push(newVal);
            minVal = val;
        } else {
-           stack.push(val);
+           stack.push((long) val);
        }
     }
 
@@ -79,15 +92,15 @@ class MinStackOptimal {
     }
 
     public int top() {
-        final var peek = stack.peek();
+        final long peek = stack.peek();
         if(peek < minVal) { //Then it is modified value we need to revert it
-            return minVal;
+            return (int) minVal;
         }
-        return peek;
+        return (int) peek;
     }
 
     public int getMin() {
-        return minVal;
+        return (int)minVal;
     }
 
 }
