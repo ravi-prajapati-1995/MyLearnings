@@ -31,20 +31,21 @@ public class InfixToPostfix {
         Stack<Character> st = new Stack<>();
         StringBuilder result = new StringBuilder(s.length());
         for (final char ch : s.toCharArray()) {
-            if (isOperand(ch)) { //a+b*(c^d-e)^(f+g*h)-i
+            if (isOperand(ch)) { // a+b*(c^d-e)^(f+g*h)-i
                 result.append(ch);
             } else if (ch == '(') {
                 st.push(ch); // In case opening bracket we will directly push to stack
-            } else if (ch ==
-                    ')') {  // when we got closing bracket we will got till opening bracket and push all the elements in the result
+            } else if (ch == ')') { // when we got closing bracket we will got till opening bracket and push all the
+                                    // elements in the result
                 while (!st.empty() && st.peek() != '(') {
                     result.append(st.pop());
                 }
-                //as we got starting bracket (
+                // as we got starting bracket (
                 st.pop();
-            } else { // When we got operator then we need pop all the operator from stack which has greater than or equal priority 
+            } else { // When we got operator then we need pop all the operator from stack which has
+                     // greater than or equal priority
                 // like the comming operator
-                while (!st.isEmpty() &&  priority(st.peek()) >= priority(ch) && ch != '^') {
+                while (!st.isEmpty() && priority(st.peek()) >= priority(ch) && ch != '^') {
                     result.append(st.pop());
                 }
                 st.push(ch);
@@ -97,6 +98,7 @@ public class InfixToPostfix {
                     // till stack is not
                     // empty or we found a sign that has less than or equal to this priority
                     // if we got less priority operator we will append it in result
+                    // If the operator is ^ then we will not pop out we will add that in stack
                     while (!st.isEmpty() && priority(ch) <= priority(st.peek()) && ch != '^') {
                         result.append(st.pop());
                     }
