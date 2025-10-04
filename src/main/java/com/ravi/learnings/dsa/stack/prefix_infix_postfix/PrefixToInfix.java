@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * 1. start traversing from back
+ * 1. start traversing from back, basically from right to left
  * 2. When got operand add to stack
  * 3. When got operator pick last tow operand and put operator in between and
  * reinsert to stack

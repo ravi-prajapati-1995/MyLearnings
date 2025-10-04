@@ -4,20 +4,19 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Problem Link: https://www.geeksforgeeks.org/problems/postfix-to-infix-conversion/1
- * Video Link: https://youtu.be/4pIc9UBHJtk?si=i23DVCvllVhJ-LBr&t=1710
- * To convert a expression from Postfix to infix
- * 1. Add operand to the stack
- * 2. When get operator pick last 2 operand and put that sign in between those
- * and wrap in bracket
- * 
+ * Problem Link: https://www.geeksforgeeks.org/problems/postfix-to-prefix-conversion/1
+ * Video Link: https://youtu.be/4pIc9UBHJtk?si=G93OXXhErNw_Pn4D
+ * To solve we will follow the below steps: 
+ * 1. Traverse from Left to Right
+ * 2. When get operand add to stacck
+ * 3. When get operator pick top two and add operator before them and put back that String to stack
  */
-public class PostfixToInfix {
-    public static void main(String[] args) {
-        System.out.println(postFixToInfix("ab*c+"));
+public class PosfixToPrefix {
+     public static void main(String[] args) {
+        System.out.println(postfixToPrefix("ABC/-AK/L-*"));
     }
 
-    public static String postFixToInfix(final String str) {
+    public static String postfixToPrefix(final String str) {
         // Take a stack and add element when its operand
         Stack<String> st = new Stack<>();
        
@@ -25,11 +24,11 @@ public class PostfixToInfix {
             if(isOperand(ch)) {
                 st.push(ch+"");
             } else {
-                //Pop out two elements and put the operator and add to res
+                //Pop out two elements and put the operator and add back to stack
                 StringBuilder res = new StringBuilder();
                 String a = st.pop();
                 String b = st.pop();
-                res.append("(").append(b).append(ch).append(a).append(")");
+                res.append(ch).append(b).append(a);
                 st.push(res.toString());
                 
             }
@@ -41,5 +40,4 @@ public class PostfixToInfix {
         final var characters = List.of('+', '-', '*', '(', '^', ')', '/');
         return !characters.contains(ch);
     }
-
 }
