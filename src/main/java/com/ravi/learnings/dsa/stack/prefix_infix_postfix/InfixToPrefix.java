@@ -12,7 +12,9 @@ import java.util.Stack;
  * Example: (a+b)*c-d+f
  * 1. Reverse: f+d-c*)b+a( -- After reversing make the opening bracket to closing bracket and closing bracket to
  * opening bracket
- * In this we will directly add the operator to stack if it is other than ^
+ * In control conversion : 
+ *  For ^ we will pop out all the operator which has <= priority than the ^
+ *  for other operator we pop out all operator which has < priority than the current stack element
  */
 public class InfixToPrefix {
     public static void main(String[] args) {
