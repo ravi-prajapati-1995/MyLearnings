@@ -22,6 +22,7 @@ SOURCES = {
     "glassdoor": "glassdoor.com/job-listing"
 }
 
+
 def get_file_logger(name: str, log_file: str, level=logging.INFO, to_console=False):
     """
     Create and return a logger that writes logs to a file (and optionally console).
@@ -60,6 +61,7 @@ def get_file_logger(name: str, log_file: str, level=logging.INFO, to_console=Fal
             logger.addHandler(ch)
 
     return logger
+
 
 def parse_date(date_str):
     try:

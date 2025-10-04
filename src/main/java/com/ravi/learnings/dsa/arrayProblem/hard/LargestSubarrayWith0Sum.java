@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class LargestSubarrayWith0Sum {
     public static void main(String[] args) {
-        int[] arr = {-42, 12 ,20 ,15, 31, -4, 0, 15};
+        int[] arr = {-42, 12, 20, 15, 31, -4, 0, 15};
         System.out.println(maxLen(arr));
     }
 
@@ -20,7 +20,7 @@ public class LargestSubarrayWith0Sum {
           /*  Here we are directly assigning i+1 to maxLen because if we got sum 0 while traversing then no array other
             array greater than this length can be existed till now
             */
-            if(sum == 0) {
+            if (sum == 0) {
                 maxLen = i + 1;
             } else {
                 /*
@@ -28,7 +28,7 @@ public class LargestSubarrayWith0Sum {
                     2nd index and now we are on 7th index again we got sum 3 then from 7th to 2nd index there are
                     elements that will be zero in sum
                 * */
-                if(map.containsKey(sum)) {
+                if (map.containsKey(sum)) {
                     maxLen = Math.max(maxLen, i - map.get(sum));
                 } else {
                     map.put(sum, i);

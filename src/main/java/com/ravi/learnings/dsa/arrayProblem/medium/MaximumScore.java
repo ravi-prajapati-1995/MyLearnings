@@ -5,16 +5,17 @@ public class MaximumScore {
         int[] arr = {4, 3, 1, 5, 6};
         System.out.println(pairWithMaxSum(arr));
     }
+
     public static int pairWithMaxSum(int arr[]) {
         // Your code goes here
         int left = 0;
         int right = 1;
         int max = 0;
 
-        while(right < arr.length ) {
+        while (right < arr.length) {
             int sum = arr[left] + arr[right];
 
-            if(sum > max) {
+            if (sum > max) {
                 max = sum;
             }
 

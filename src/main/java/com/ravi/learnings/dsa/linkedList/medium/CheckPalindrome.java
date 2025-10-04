@@ -8,14 +8,14 @@ import java.util.List;
 /**
  * <a href="https://www.youtube.com/watch?v=lRY_G-u_8jk">Video Link</a>
  * <a href="https://leetcode.com/problems/palindrome-linked-list/">Problem link</a>
- * */
+ */
 public class CheckPalindrome {
     public static void main(String[] args) {
         final var integers = List.of(1, 2);
         final var head = ListNode.from(integers);
         System.out.println(isPalindromeOptimal(head));
-//        ListNode.print(reverse);
-//        System.out.println(isPalindrome(head));
+        //        ListNode.print(reverse);
+        //        System.out.println(isPalindrome(head));
     }
 
     /**

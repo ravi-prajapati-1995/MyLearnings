@@ -12,8 +12,6 @@ public class Node {
         return prev;
     }
 
-    
-
     public Node getNext() {
         return next;
     }
@@ -44,7 +42,7 @@ public class Node {
     /*
      * https://www.youtube.com/watch?v=0eKMU10uEDI&t=2684s
      * */
-    public static  Node insertHead(Node head, int data) {
+    public static Node insertHead(Node head, int data) {
         if (head == null) {
             return new Node(data);
         }
@@ -54,7 +52,7 @@ public class Node {
         return newNode;
     }
 
-    public static  Node insertTail(Node head, int data) {
+    public static Node insertTail(Node head, int data) {
         if (head == null) {
             return new Node(data);
         }
@@ -68,7 +66,7 @@ public class Node {
         return head;
     }
 
-    public static  Node insertBeforeTail(Node head, int data) {
+    public static Node insertBeforeTail(Node head, int data) {
         if (head == null) {
             return new Node(data);
         }
@@ -85,7 +83,7 @@ public class Node {
         return head;
     }
 
-    public static  Node insertAtPosition(Node head, int data, int position) {
+    public static Node insertAtPosition(Node head, int data, int position) {
         if (head == null) {
             return new Node(data);
         }
@@ -118,7 +116,7 @@ public class Node {
         }
     }
 
-    public static  Node insertAtValue(Node head, int data, int value) {
+    public static Node insertAtValue(Node head, int data, int value) {
         if (head == null) {
             return new Node(data);
         }
@@ -142,7 +140,7 @@ public class Node {
         return head;
     }
 
-    public static  Node deleteTail(Node head) {
+    public static Node deleteTail(Node head) {
         if (head == null) {
             return null;
         }
@@ -158,7 +156,7 @@ public class Node {
         return head;
     }
 
-    public  static  Node deleteHead(Node head) {
+    public static Node deleteHead(Node head) {
         if (head == null) {
             return null;
         }
@@ -173,7 +171,7 @@ public class Node {
     /**
      * Here we will delete the kth given element from the linked list
      */
-    public  static  Node deleteKthElement(Node head, int k) {
+    public static Node deleteKthElement(Node head, int k) {
         if (head == null) {
             return null;
         }
@@ -211,7 +209,7 @@ public class Node {
         return head;
     }
 
-    public static  void deleteNode(Node deleteNode) {
+    public static void deleteNode(Node deleteNode) {
 
         final var prev = deleteNode.prev;
         final var next = deleteNode.next;
@@ -233,7 +231,7 @@ public class Node {
      * TC -> O(2n) --- O(n) to getting the data in stack + O(n) to modify linked list with the element
      * SC -->  O(n) --- As we are storing data in stack
      */
-    public static  Node reverse(Node head) {
+    public static Node reverse(Node head) {
         if (head == null) {
             return null;
         }
@@ -265,7 +263,7 @@ public class Node {
      * then at last  we will got prev which will pe pointing on pointer behide so returing prev.prev
      * as we are doing temp = temp.prev
      * */
-    public static  Node reverseOptimized(Node head) {
+    public static Node reverseOptimized(Node head) {
         if (head == null) {
             return null;
         }

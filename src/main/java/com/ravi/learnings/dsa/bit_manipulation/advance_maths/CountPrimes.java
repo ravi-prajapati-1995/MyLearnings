@@ -3,11 +3,11 @@ package com.ravi.learnings.dsa.bit_manipulation.advance_maths;
 /**
  * <a href="https://leetcode.com/problems/count-primes/description/">Problem Link</a>
  * Given an integer n, return the number of prime numbers that are strictly less than n.
- *
+ * <p>
  * Input: n = 10
  * Output: 4
  * Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
- * */
+ */
 public class CountPrimes {
     private static final int[] SIEVE_PRECALCULATED_ARRAY = getSievePrecalculatedArray(10000000);
 
@@ -44,7 +44,7 @@ public class CountPrimes {
 
         int primeNumberCount = 0;
         for (int i = 2; i <= maxIdx; i++) {
-            if(i == arr[i]) {
+            if (i == arr[i]) {
                 primeNumberCount++;
             }
 

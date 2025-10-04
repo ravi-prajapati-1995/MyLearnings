@@ -61,9 +61,9 @@ public class PeakElement {
             int left = mid - 1 >= 0 ? mat[idx][mid - 1] : -1;
             int right = mid + 1 < columns ? mat[idx][mid + 1] : -1;
             int ele = mat[idx][mid];
-            if(ele > left && ele > right) {
+            if (ele > left && ele > right) {
                 return new int[]{idx, mid};
-            } else if(ele > left) {
+            } else if (ele > left) {
                 low = mid + 1;
             } else {
                 high = mid - 1;
@@ -71,7 +71,6 @@ public class PeakElement {
         }
 
         return new int[]{-1, -1};
-
     }
 
     private static int getMaxIdx(final int[][] mat, final int rows, final int colums, final int mid) {

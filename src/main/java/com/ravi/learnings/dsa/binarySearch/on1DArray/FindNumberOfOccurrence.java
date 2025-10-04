@@ -14,13 +14,13 @@ public class FindNumberOfOccurrence {
         System.out.println(countFreqWithOutLUBound(arr, 6));
     }
 
-   static int countFreq(int[] arr, int target) {
+    static int countFreq(int[] arr, int target) {
 
-       int lowerBound = FindFirstAndLastOccurence.lowerBound(arr, target);
-       if(lowerBound == -1 || arr[lowerBound] != target)
-           return 0;
+        int lowerBound = FindFirstAndLastOccurence.lowerBound(arr, target);
+        if (lowerBound == -1 || arr[lowerBound] != target)
+            return 0;
 
-       int upperBound = FindFirstAndLastOccurence.upperBound(arr, target) ;
+        int upperBound = FindFirstAndLastOccurence.upperBound(arr, target);
 
         return upperBound - lowerBound;
     }
@@ -28,7 +28,7 @@ public class FindNumberOfOccurrence {
     static int countFreqWithOutLUBound(int[] arr, int target) {
 
         final var firstOccurrence = getFirstOccurrence(arr, target);
-        if(firstOccurrence == -1)
+        if (firstOccurrence == -1)
             return 0;
         final var lastOccurrence = getLastOccurrence(arr, target);
         return lastOccurrence - firstOccurrence + 1;
@@ -53,9 +53,9 @@ public class FindNumberOfOccurrence {
             }
         }
 
-
         return result;
     }
+
     private static int getLastOccurrence(final int[] arr, final int target) {
         int result = -1;
         int low = 0;
@@ -75,8 +75,6 @@ public class FindNumberOfOccurrence {
             }
         }
 
-
         return result;
     }
-
 }

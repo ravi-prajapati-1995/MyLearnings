@@ -54,31 +54,30 @@ public class RemoveNthNodeFromLast {
     }
 
     /**
-     *  Given: 1 -> 2 -> 3 -> 4 -> 5 -> 6   n=2
-     *  Result: 1 -> 2 -> 3 -> 4 -> 6
-     *
-     *  1. Take a fast pointer and moved it to till n, in our example it will point to 3
-     *  2. Take a slow pointer that will initially point to head
-     *  3. Move slow and fast simultaneously one by one till fast.next != null
-     *  4. so slow pointer will reach at 4 when fast reach at 6
-     *  5. we will make slow.next = slow.next.next
-     *
-     * */
+     * Given: 1 -> 2 -> 3 -> 4 -> 5 -> 6   n=2
+     * Result: 1 -> 2 -> 3 -> 4 -> 6
+     * <p>
+     * 1. Take a fast pointer and moved it to till n, in our example it will point to 3
+     * 2. Take a slow pointer that will initially point to head
+     * 3. Move slow and fast simultaneously one by one till fast.next != null
+     * 4. so slow pointer will reach at 4 when fast reach at 6
+     * 5. we will make slow.next = slow.next.next
+     */
     public static ListNode removeNthFromEndOptimal(ListNode head, int n) {
         ListNode fast = head;
 
         // Moving fast pointer to the given number
         for (int i = 0; i < n; i++) {
-           fast = fast.next;
+            fast = fast.next;
         }
         ListNode slow = head;
 
-        while(fast != null && fast.next != null) {
+        while (fast != null && fast.next != null) {
             fast = fast.next;
             slow = slow.next;
         }
 
-        if(fast == null) {
+        if (fast == null) {
             return slow.next;
         }
 

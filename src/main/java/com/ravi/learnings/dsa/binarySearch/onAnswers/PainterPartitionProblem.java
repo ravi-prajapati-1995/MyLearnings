@@ -22,8 +22,8 @@ public class PainterPartitionProblem {
     }
 
     /*
-    * It is the same problem split Array largest sum, we can use the same logic
-    * */
+     * It is the same problem split Array largest sum, we can use the same logic
+     * */
     public static int findLargestMinDistance(ArrayList<Integer> boards, int k) {
         final int max = boards.stream().max(Integer::compareTo).get();
         final int sum = boards.stream().reduce(0, Integer::sum);
@@ -51,12 +51,11 @@ public class PainterPartitionProblem {
             final var paintersRequired = getPaintersRequired(mid, boards);
 
             //if painters are greater than given painter we need to increase maxBoards
-            if(paintersRequired > k) {
+            if (paintersRequired > k) {
                 low = mid + 1;
             } else {
                 result = low;
                 high = mid - 1;
-
             }
         }
         return result;

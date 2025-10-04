@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * <a href="https://leetcode.com/problems/search-in-a-binary-search-tree/description/">problem link</a>
  * You are given the root of a binary search tree (BST) and an integer val.
- *
+ * <p>
  * Find the node in the BST that the node's value equals val and return the subtree rooted with that node.
  * If such a node does not exist, return null.
  */
@@ -20,11 +20,11 @@ public class SearchInBinaryTree {
     }
 
     public static TreeNode searchBST(TreeNode root, int val) {
-        while(root != null) {
-            if(root.val == val) {
+        while (root != null) {
+            if (root.val == val) {
                 return root;
             }
-            if(root.val > val) {
+            if (root.val > val) {
                 root = root.left;
             } else {
                 root = root.right;

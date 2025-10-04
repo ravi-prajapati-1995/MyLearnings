@@ -1,13 +1,11 @@
 package com.ravi.learnings.dsa.binarySearch.onAnswers;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class KthMissingPositiveNumber {
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4};
+        int[] arr = {1, 2, 3, 4};
         int k = 2;
         System.out.println(findKthPositiveOptimal(arr, k));
     }
@@ -15,10 +13,11 @@ public class KthMissingPositiveNumber {
     /**
      * i.e arr [5, 6, 10, 12] and k =4, mean we need to find 4th missing number and it will be 4 in our case because
      * array itself starts from 5
-     *
+     * <p>
      * what if k=6 then our answer will be 8 so from this we can analyze that
-     *
+     * <p>
      * // [TODO] will review later
+     *
      * @param arr
      * @param k
      * @return
@@ -26,7 +25,7 @@ public class KthMissingPositiveNumber {
     public static int findKthPositiveStriver(int[] arr, int k) {
 
         for (int i = 0; i < arr.length; i++) {
-            if(arr[i] <= k) {
+            if (arr[i] <= k) {
                 k++;
             } else {
                 break;
@@ -50,10 +49,10 @@ public class KthMissingPositiveNumber {
         int count = 0;
         int curr = 0;
 
-        while(count < k) {
+        while (count < k) {
             curr++;
 
-            if(!list.contains(curr)) {
+            if (!list.contains(curr)) {
                 count++;
             }
         }
@@ -65,7 +64,7 @@ public class KthMissingPositiveNumber {
 
         int currElement = 0;
         for (int i = 1; i < Integer.MAX_VALUE; i++) {
-            if(!list.contains(i)) {
+            if (!list.contains(i)) {
                 currElement++;
             }
 
@@ -84,7 +83,6 @@ public class KthMissingPositiveNumber {
      * in same way for  11 at index 4 so to get how many numbers are missing before it 11 - (4+1) = 6
      * 1. Our first task  is to  find the nearby indexes in which our answer is exist
      *
-     *
      * @param arr
      * @param k
      * @return
@@ -93,10 +91,10 @@ public class KthMissingPositiveNumber {
         int low = 0;
         int high = arr.length - 1;
 
-        while(low <= high) {
+        while (low <= high) {
             int mid = (low + high) / 2;
             final var missingNoTillMid = arr[mid] - (mid + 1);
-            if(missingNoTillMid < k) {
+            if (missingNoTillMid < k) {
                 low = mid + 1;
             } else {
                 high = mid - 1;

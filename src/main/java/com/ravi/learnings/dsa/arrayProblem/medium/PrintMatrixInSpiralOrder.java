@@ -1,7 +1,6 @@
 package com.ravi.learnings.dsa.arrayProblem.medium;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -22,8 +21,7 @@ public class PrintMatrixInSpiralOrder {
         int[][] aa = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
 
         System.out.println(printInSpiralOrder(aa));
-//        System.out.println(Arrays.deepToString(matrix));
-
+        //        System.out.println(Arrays.deepToString(matrix));
 
     }
 
@@ -34,7 +32,7 @@ public class PrintMatrixInSpiralOrder {
         int right = matrix[0].length - 1;
         List<Integer> list = new ArrayList<>();
 
-        while(left <= right && top <= bottom) {
+        while (left <= right && top <= bottom) {
             //for Left to right
             for (int i = left; i <= right; i++) {
                 list.add(matrix[top][i]);
@@ -47,7 +45,7 @@ public class PrintMatrixInSpiralOrder {
             }
             right--;
 
-            if(top <= bottom) {
+            if (top <= bottom) {
                 //for right to left
                 for (int i = right; i >= left; i--) {
                     list.add(matrix[bottom][i]);
@@ -55,7 +53,7 @@ public class PrintMatrixInSpiralOrder {
                 bottom--;
             }
 
-            if(left <= right) {
+            if (left <= right) {
                 //for bottom to up
                 for (int i = bottom; i >= top; i--) {
                     list.add(matrix[i][left]);

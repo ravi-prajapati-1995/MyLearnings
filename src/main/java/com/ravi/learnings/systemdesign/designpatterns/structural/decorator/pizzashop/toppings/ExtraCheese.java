@@ -17,7 +17,7 @@ public class ExtraCheese extends PizzaDecorator {
             case LARGE -> 129;
             case EXTRA_LARGE -> 199;
         };
-        System.out.println("Adding Chesse with price: "+ topping);
+        System.out.println("Adding Chesse with price: " + topping);
         return getBasePizza().price() + topping;
     }
 }

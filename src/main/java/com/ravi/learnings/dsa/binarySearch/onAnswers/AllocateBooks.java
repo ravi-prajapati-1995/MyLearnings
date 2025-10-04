@@ -1,10 +1,11 @@
 package com.ravi.learnings.dsa.binarySearch.onAnswers;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <a href="https://www.naukri.com/code360/problems/allocate-books_1090540">here</a>
- *Given an array ‘arr’ of integer numbers, ‘arr[i]’ represents the number of pages in the ‘i-th’ book.
+ * Given an array ‘arr’ of integer numbers, ‘arr[i]’ represents the number of pages in the ‘i-th’ book.
  * There are ‘m’ number of students, and the task is to allocate all the books to the students.
  * Allocate books in such a way that:
  * 1. Each student gets at least one book.
@@ -28,17 +29,17 @@ public class AllocateBooks {
     public static int findPages(ArrayList<Integer> arr, int n, int m) {
         // Write your code here.
         int result = -1;
-        if(n < m) {
+        if (n < m) {
             return result;
         }
 
         final var list = arr.stream().sorted().toList();
         final var max = list.get(arr.size() - 1);
         final var sum = arr.stream().reduce(0, Integer::sum);
-        System.out.println(max+"\t"+sum);
-        for(int i=max; i<=sum; i++) {
+        System.out.println(max + "\t" + sum);
+        for (int i = max; i <= sum; i++) {
             final var studentsCount = getStudentsCount(max, arr);
-            if(studentsCount == m) {
+            if (studentsCount == m) {
                 return i;
             }
         }
@@ -52,11 +53,11 @@ public class AllocateBooks {
      * per student
      * In else part when students required is less than or equal to m so we will eliminate right half as we need minimum
      * no of pages
-    * */
+     */
     public static int findPagesOptimal(ArrayList<Integer> arr, int n, int m) {
         // Write your code here.
         int result = -1;
-        if(n < m) {
+        if (n < m) {
             return result;
         }
 
@@ -66,11 +67,11 @@ public class AllocateBooks {
         int low = max;
         int high = sum;
 
-        while(low <= high) {
+        while (low <= high) {
             int mid = (low + high) / 2;
             final var studentsCount = getStudentsCount(max, arr);
 
-            if(studentsCount <= m) {
+            if (studentsCount <= m) {
 
                 high = mid - 1;
             } else {
@@ -81,9 +82,9 @@ public class AllocateBooks {
     }
 
     /*
-    * 25, 46, 28, 49, 24
-    * 49
-    * */
+     * 25, 46, 28, 49, 24
+     * 49
+     * */
     private static int getStudentsCount(final Integer maxPage, final ArrayList<Integer> arr) {
         int studentCount = 1;
         int pageCount = 0;
@@ -105,12 +106,11 @@ public class AllocateBooks {
      * In this function we will maintain two variable 1 is for studentCount and second for pageCount
      * We will check if pageCount is less than maxPage then keep adding in pageCount
      * if not then move to next student
-     * */
+     */
     private static int getStudentsCountStriver(final Integer maxPage, final ArrayList<Integer> arr) {
         int studentCount = 1;
         int pageCount = 0;
         for (int page : arr) {
-
 
             if (pageCount + page <= maxPage) {
                 pageCount += page;

@@ -34,14 +34,14 @@ public class GenerateParentheses {
             list.add(s);
         }
 
-        if(open > n ) {
+        if (open > n) {
             return;
         }
 
         aa(n, s + "(", open + 1, closed, list);
 
         // Closed bracket only possible when there are open bracket and open bracket are greater that closed
-        if(closed < open) {
+        if (closed < open) {
             aa(n, s + ")", open, closed + 1, list);
         }
     }

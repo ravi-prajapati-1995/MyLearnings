@@ -14,16 +14,16 @@ public class ArrayLeader {
         final var integers = new ArrayList<Integer>();
         integers.add(arr[arr.length - 1]);
 
-        for(int i = arr.length -2 ; i >= 0; i--) {
+        for (int i = arr.length - 2; i >= 0; i--) {
 
             boolean isLeader = true;
-            for(int j = i+1; j < arr.length; j++) {
-                if(arr[j] > arr[i]) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] > arr[i]) {
                     isLeader = false;
                     break;
                 }
             }
-            if(isLeader) {
+            if (isLeader) {
                 integers.add(arr[i]);
             }
         }
@@ -31,14 +31,13 @@ public class ArrayLeader {
         return integers;
     }
 
-
     static ArrayList<Integer> leadersOptimal(int arr[]) {
         // code here
         final var integers = new ArrayList<Integer>();
         integers.add(arr[arr.length - 1]);
         int maxOnRight = arr[arr.length - 1];
-        for(int i = arr.length -2 ; i >= 0; i--) {
-            if(arr[i] > maxOnRight) {
+        for (int i = arr.length - 2; i >= 0; i--) {
+            if (arr[i] > maxOnRight) {
                 integers.add(arr[i]);
                 maxOnRight = arr[i];
             }

@@ -12,7 +12,8 @@ public class LongestPalindromicString {
     }
 
     public static boolean isPalindrome(String s) {
-        if (s.length() == 1) return false;
+        if (s.length() == 1)
+            return false;
 
         int left = 0;
         int right = s.length() - 1;
@@ -57,7 +58,7 @@ public class LongestPalindromicString {
      * In this approach we are doing this in O(n^2)
      * abcba ->  Palindrome will be all string (Odd Case)
      * abbc  ->  Palindrome will be (Even case)
-     *
+     * <p>
      * Question: why we are couting for even and odd
      * Ans: Suppose we have only
      */
@@ -82,7 +83,7 @@ public class LongestPalindromicString {
      * palindrome
      * i.e if string is: nitin and we gave left = 2 and right=2 it start from index 2 and expending around 2 till either
      * cross string boundaries
-     * */
+     */
     private static int expandAroundCenter(final String s, int left, int right) {
         while (left >= 0 && right <= s.length()) {
             if (s.charAt(left) == s.charAt(right)) {

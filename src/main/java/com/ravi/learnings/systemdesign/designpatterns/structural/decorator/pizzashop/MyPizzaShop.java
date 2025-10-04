@@ -1,8 +1,8 @@
 package com.ravi.learnings.systemdesign.designpatterns.structural.decorator.pizzashop;
 
+import com.ravi.learnings.systemdesign.designpatterns.structural.decorator.pizzashop.pizzatypes.VegDeluxe;
 import com.ravi.learnings.systemdesign.designpatterns.structural.decorator.pizzashop.toppings.ExtraCheese;
 import com.ravi.learnings.systemdesign.designpatterns.structural.decorator.pizzashop.toppings.ExtraMushroom;
-import com.ravi.learnings.systemdesign.designpatterns.structural.decorator.pizzashop.pizzatypes.VegDeluxe;
 import com.ravi.learnings.systemdesign.designpatterns.structural.decorator.pizzashop.toppings.VegTopping;
 
 public class MyPizzaShop {
@@ -14,7 +14,5 @@ public class MyPizzaShop {
 
         System.out.println(vegTopping.description);
         System.out.println(vegTopping.price());
-
-
     }
 }

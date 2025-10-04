@@ -8,7 +8,7 @@ public class InfoLogHandler extends BaseLogHandler {
     @Override
     public void log(final int level, final String message) {
         if (level == INFO) {
-            System.out.println(WHITE  + message + RESET);
+            System.out.println(WHITE + message + RESET);
         } else {
             super.log(level, message);
         }

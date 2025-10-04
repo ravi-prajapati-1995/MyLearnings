@@ -31,7 +31,7 @@ public class Node {
     public static void print(Node head) {
         var temp = head;
 
-        while(temp != null) {
+        while (temp != null) {
             System.out.print(temp.data + " ");
             temp = temp.next;
         }

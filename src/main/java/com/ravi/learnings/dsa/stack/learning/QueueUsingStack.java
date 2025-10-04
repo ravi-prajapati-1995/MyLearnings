@@ -1,6 +1,5 @@
 package com.ravi.learnings.dsa.stack.learning;
 
-
 import java.util.Stack;
 
 public class QueueUsingStack {
@@ -19,23 +18,20 @@ public class QueueUsingStack {
         System.out.println(stackQueue.pop());
         System.out.println(stackQueue.pop());
         System.out.println(stackQueue.pop());
-
     }
 }
 
 /**
- *
  * below approach is useful when we have more push and less pop/peek
  * So in this approach I will not do anything while push
- *  While pop and peek , if tempStack is empty if yes the transfer all the element from stack to that
- *  and return the top element
- *
- *  If we have still elements in tempStack then return the top/pop
- *
- *
- *  TC  - in top/pop operation we are transferring element occasionally so O(n)
- *  SC - O(2N)
- *
+ * While pop and peek , if tempStack is empty if yes the transfer all the element from stack to that
+ * and return the top element
+ * <p>
+ * If we have still elements in tempStack then return the top/pop
+ * <p>
+ * <p>
+ * TC  - in top/pop operation we are transferring element occasionally so O(n)
+ * SC - O(2N)
  */
 
 class StackQueue2 {
@@ -75,14 +71,13 @@ class StackQueue2 {
     }
 }
 
-
 /**
  * Three method will be used to make stack as queue
  * Take a new stack s2, and original stack is s1
  * 1. move all element from s1 to s2
  * 2. Push the element in stack
  * 3. Move all elements from s2 to s1 back
- *
+ * <p>
  * TC -> O(2N) iterating via s1 and s2
  * SC -> O(2N) having extra stack and orignal stack for storing data
  */

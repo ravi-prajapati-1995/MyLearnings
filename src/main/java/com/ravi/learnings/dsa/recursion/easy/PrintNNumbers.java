@@ -11,7 +11,6 @@ public class PrintNNumbers {
         }
         printNNumbers(--i);
         System.out.println(i);
-
     }
 
     private static void printNNumbers1(int x, int n) {
@@ -19,8 +18,7 @@ public class PrintNNumbers {
             return;
         }
         System.out.println(x);
-        printNNumbers1(x+1, n);
-
+        printNNumbers1(x + 1, n);
     }
 
     private static void printNNumbers(int x, int n) {
@@ -29,6 +27,5 @@ public class PrintNNumbers {
         }
         System.out.println(x);
         printNNumbers(x, --n);
-
     }
 }

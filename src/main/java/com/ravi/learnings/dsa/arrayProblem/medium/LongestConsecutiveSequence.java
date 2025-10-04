@@ -2,11 +2,10 @@ package com.ravi.learnings.dsa.arrayProblem.medium;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Iterator;
 
 public class LongestConsecutiveSequence {
     public static void main(String[] args) {
-        int[] arr = {9,1,4,7,3,-1,0,5,8,-1,6};
+        int[] arr = {9, 1, 4, 7, 3, -1, 0, 5, 8, -1, 6};
         System.out.println(longestConsecutiveOptimal(arr));
     }
 
@@ -17,12 +16,12 @@ public class LongestConsecutiveSequence {
         int maxCount = 1;
         int pre = nums[0];
 
-        for(int i=1;i<nums.length;i++){
+        for (int i = 1; i < nums.length; i++) {
 
-            if(nums[i] == pre + 1) {
+            if (nums[i] == pre + 1) {
                 pre = nums[i];
                 count++;
-            } else if(nums[i] == pre) {
+            } else if (nums[i] == pre) {
                 // do nothing
             } else {
                 count = 1;
@@ -37,15 +36,15 @@ public class LongestConsecutiveSequence {
         var count = 1;
         var maxCount = 0;
         final var set = new HashSet<Integer>(nums.length);
-        for(int i: nums) {
+        for (int i : nums) {
             set.add(i);
         }
         final var iterator = set.iterator();
         while (iterator.hasNext()) {
             count = 1;
             var value = iterator.next();
-            if(!set.contains(value-1)){
-                while(set.contains(value + 1)) {
+            if (!set.contains(value - 1)) {
+                while (set.contains(value + 1)) {
                     value++;
                     count++;
                 }
@@ -54,5 +53,4 @@ public class LongestConsecutiveSequence {
         }
         return maxCount;
     }
-
 }

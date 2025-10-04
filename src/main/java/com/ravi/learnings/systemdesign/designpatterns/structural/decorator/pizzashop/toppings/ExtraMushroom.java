@@ -17,7 +17,7 @@ public class ExtraMushroom extends PizzaDecorator {
             case LARGE -> 80;
             case EXTRA_LARGE -> 100;
         };
-        System.out.println("Adding ExtraMushroom with price: "+ topping);
+        System.out.println("Adding ExtraMushroom with price: " + topping);
         return getBasePizza().price() + topping;
     }
 }

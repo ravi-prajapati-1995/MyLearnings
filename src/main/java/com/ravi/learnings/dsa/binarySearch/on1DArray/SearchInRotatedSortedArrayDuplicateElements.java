@@ -44,7 +44,6 @@ public class SearchInRotatedSortedArrayDuplicateElements {
         while (low <= high) {
             int mid = (low + high) / 2;
 
-
             if (arr[mid] == target) {
                 return true;
                 // Left half is sorted
@@ -75,5 +74,4 @@ public class SearchInRotatedSortedArrayDuplicateElements {
         }
         return false;
     }
-
 }

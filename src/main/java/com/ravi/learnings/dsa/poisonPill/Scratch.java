@@ -3,7 +3,6 @@ package com.ravi.learnings.dsa.poisonPill;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-
 public class Scratch {
     public static void main(String[] args) {
         int BOUND = 10;
@@ -24,6 +23,5 @@ public class Scratch {
         }
 
         new Thread(new NumbersProducer(queue, poisonPill, poisonPillPerProducer + mod)).start();
-
     }
 }

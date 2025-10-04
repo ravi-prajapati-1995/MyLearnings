@@ -1,26 +1,24 @@
 package com.ravi.learnings.dsa.onstrings.medium;
 
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
  * Given a string s, sort it in decreasing order based on the frequency of the characters.
  * The frequency of a character is the number of times it appears in the string.
- *
+ * <p>
  * Return the sorted string. If there are multiple answers, return any of them.
- * */
+ */
 public class FrequencySort {
 
     public static void main(String[] args) {
         System.out.println(frequencySort("tree"));
     }
 
-    public static  String frequencySort(String s) {
+    public static String frequencySort(String s) {
         Map<Character, Integer> map = new HashMap<>();
 
-        for(char c: s.toCharArray()) {
+        for (char c : s.toCharArray()) {
             map.put(c, map.getOrDefault(c, 0) + 1);
         }
 

@@ -9,17 +9,17 @@ import java.util.List;
 public class GenerateSubsequenceWithSumK {
     public static void main(String[] args) {
         int nums[] = {2, 1, 1, 2, 1};
-//        final var subsequenceWithSum = findSubsequenceWithSum(nums, 2);
+        //        final var subsequenceWithSum = findSubsequenceWithSum(nums, 2);
         int countAllSubsequence = getCountAllSubsequence(nums, 2, 0, 0, new ArrayList<>());
         System.out.println(countAllSubsequence);
-//        System.out.println(subsequenceWithSum);
+        //        System.out.println(subsequenceWithSum);
     }
 
     private static List<List<Integer>> findSubsequenceWithSum(final int[] nums, final int k) {
         final var lists = new ArrayList<List<Integer>>();
 
-//        getAllSubsequence(nums, k, 0, 0, new ArrayList<>(), lists);
-//        getFirstSubsequece(nums, k, 0, 0, new ArrayList<>(), lists);
+        //        getAllSubsequence(nums, k, 0, 0, new ArrayList<>(), lists);
+        //        getFirstSubsequece(nums, k, 0, 0, new ArrayList<>(), lists);
         getFirstSubsequeceStriverMethod(nums, k, 0, 0, new ArrayList<>(), lists);
         return lists;
     }
@@ -57,8 +57,7 @@ public class GenerateSubsequenceWithSumK {
         getAllSubsequence(nums, k, idx + 1, currSum, l1, result);
     }
 
-
-    private static int  getCountAllSubsequence(
+    private static int getCountAllSubsequence(
             final int[] nums,
             final int k,
             final int idx,
@@ -112,7 +111,7 @@ public class GenerateSubsequenceWithSumK {
             return;
         }
 
-        if(!result.isEmpty()) {
+        if (!result.isEmpty()) {
             return;
         }
         final var num = nums[idx];
@@ -153,14 +152,14 @@ public class GenerateSubsequenceWithSumK {
         currSum = currSum + num;
         // Take the current element and process
         final var firstSubsequeceStriverMethod = getFirstSubsequeceStriverMethod(nums, k, idx + 1, currSum, l1, result);
-        if(firstSubsequeceStriverMethod == true) {
+        if (firstSubsequeceStriverMethod == true) {
             return true;
         }
 
         l1.removeLast();
         currSum = currSum - num;
         //Not taking the current element and proceed
-       getFirstSubsequeceStriverMethod(nums, k, idx + 1, currSum, l1, result);
-       return false;
+        getFirstSubsequeceStriverMethod(nums, k, idx + 1, currSum, l1, result);
+        return false;
     }
 }

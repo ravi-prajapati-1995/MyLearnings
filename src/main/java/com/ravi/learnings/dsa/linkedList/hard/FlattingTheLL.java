@@ -32,11 +32,11 @@ public class FlattingTheLL {
      * 2. Result that is returned by this function will be sorted in merged and and in next call we call function with
      * merged node
      * TC - O(N) + O(n1+n2) (to merge the elements)
-     * */
+     */
     public static Node flattenOptimal(Node root) {
         Node temp = root;
         Node mergedNode = null;
-        while(temp != null) {
+        while (temp != null) {
             mergedNode = mergeNode(mergedNode, temp);
             printBottom(mergedNode);
             temp = temp.next;
@@ -50,12 +50,12 @@ public class FlattingTheLL {
      * 2. Add base case we will return node if node.next will be null
      * 3. Then we will use return value and current node and merge them
      * 4. In last we will return the merged node
-     *
+     * <p>
      * TC -> N(for recursion) + O(n1+n2) (for merging the nodes)
      * SC -> O(n) (recursive stack space)
-     * */
+     */
     public static Node flattenOptimalUsingRecursion(Node root) {
-        if(root.next == null) {
+        if (root.next == null) {
             return root;
         }
 
@@ -66,17 +66,17 @@ public class FlattingTheLL {
     private static void printBottom(final Node node) {
         Node temp = node;
         while (temp != null) {
-            System.out.print(temp.data +" ");
+            System.out.print(temp.data + " ");
             temp = temp.bottom;
         }
         System.out.println();
     }
 
     private static Node mergeNode(final Node l1, final Node l2) {
-        if(l1 == null) {
-            return  l2;
+        if (l1 == null) {
+            return l2;
         }
-        if(l2 == null) {
+        if (l2 == null) {
             return l1;
         }
         Node dummyNode = new Node(-1);
@@ -84,9 +84,9 @@ public class FlattingTheLL {
         Node t1 = l1;
         Node t2 = l2;
 
-        while(t1 != null && t2 != null) {
+        while (t1 != null && t2 != null) {
             int val;
-            if(t1.data < t2.data) {
+            if (t1.data < t2.data) {
                 val = t1.data;
                 t1 = t1.bottom;
             } else {
@@ -99,11 +99,11 @@ public class FlattingTheLL {
             dummyNode.next = null;
         }
 
-        if(t1 != null) {
+        if (t1 != null) {
             dummyNode.bottom = t1;
         }
 
-        if(t2 != null) {
+        if (t2 != null) {
             dummyNode.bottom = t2;
         }
 
@@ -116,11 +116,11 @@ public class FlattingTheLL {
      * 2. For each next node parse all the child and store it in list
      * 3. Sort the list
      * 4. Write a convert function that will convert list of integers to Node
-     *
+     * <p>
      * TC -> O(n*m) (Traverse the List) + O(XLogX) (To sort the list where x is no of total nodes) +O(n*m) (for
      * convert function taking all the elements)
      * SC -> O(n*m) (to store the elements in the list) + O(n*m) ( As we creating new linked list that will be returned)
-     * */
+     */
     public static Node flattenBruteForce(Node root) {
         // code here
         List<Integer> list = new ArrayList<>();
@@ -144,7 +144,7 @@ public class FlattingTheLL {
     private static Node convertToNode(final List<Integer> sorted) {
         Node node = new Node(-1);
         Node prev = node;
-        for(int i: sorted) {
+        for (int i : sorted) {
             final var curr = new Node(i);
             prev.bottom = curr;
             prev = curr;

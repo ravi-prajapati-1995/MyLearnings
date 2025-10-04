@@ -5,16 +5,16 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- <a href="https://leetcode.com/problems/n-queens/">Problem Link </a>
- The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
-
- Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
-
- Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a
- queen and an empty space, respectively.
- Input: n = 4
- Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
- Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above
+ * <a href="https://leetcode.com/problems/n-queens/">Problem Link </a>
+ * The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
+ * <p>
+ * Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
+ * <p>
+ * Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a
+ * queen and an empty space, respectively.
+ * Input: n = 4
+ * Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
+ * Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above
  */
 public class NQueen {
     public static void main(String[] args) {
@@ -40,11 +40,11 @@ public class NQueen {
      * Steps I have followed while solving the N Queen Problem::
      * 1. Start with 0 row 0 Column and place a Queen then check for this we can place all the queens
      * 2. I wrote a function canPutAt which will check if we can put a Queen at given place this will check
-     *      a. If there is any queen from that row and col till top as we are adding queens from top to bottom
-     *      b. Then check diagonally by decreasing row number and increasing col number
-     *      c. Second diagonally decreasing both row and column
+     * a. If there is any queen from that row and col till top as we are adding queens from top to bottom
+     * b. Then check diagonally by decreasing row number and increasing col number
+     * c. Second diagonally decreasing both row and column
      * 3. I i reached a place where I put all the queens then I will store that answer in the list
-     *
+     * <p>
      * This solution is not Striver solution
      */
     private static void checkQueen(
@@ -59,7 +59,7 @@ public class NQueen {
             final var arrayList = new ArrayList<String>();
             for (char[] ar : ch) {
                 StringBuilder sb = new StringBuilder();
-                for(char aa: ar) {
+                for (char aa : ar) {
                     sb.append(aa);
                 }
                 arrayList.add(sb.toString());
@@ -85,11 +85,11 @@ public class NQueen {
         }
         //check row if there is any Q in current row from left to right
         final var length = ch.length;
-//        for (int i = 0; i < length; i++) {
-//            if (ch[row][i] == 'Q') {
-//                return false;
-//            }
-//        }
+        //        for (int i = 0; i < length; i++) {
+        //            if (ch[row][i] == 'Q') {
+        //                return false;
+        //            }
+        //        }
 
         //check this column from top to bottom we don't need to check for all rows till because we are placing elements
         // from top to bottom

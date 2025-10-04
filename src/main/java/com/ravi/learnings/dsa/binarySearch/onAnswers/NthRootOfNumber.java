@@ -34,7 +34,6 @@ public class NthRootOfNumber {
             } else if (nSquare > m) {
                 break;
             }
-
         }
 
         return number;
@@ -63,23 +62,23 @@ public class NthRootOfNumber {
     }
 
     /*
-    * Here if we are calculate  power of 10^9 it may cross the long limit to so here we can add one more condition
-    * that if while multiply we are at place where it cross given number then only we can break there is not need to calculate
-    * further
-    *
-    *for x=1, n=2, m=9 this will  multiply 1*1 (x*x) two times as  n=2
-    * if n=3 and x=3 it  will give (3*3*3)
-    * */
+     * Here if we are calculate  power of 10^9 it may cross the long limit to so here we can add one more condition
+     * that if while multiply we are at place where it cross given number then only we can break there is not need to calculate
+     * further
+     *
+     *for x=1, n=2, m=9 this will  multiply 1*1 (x*x) two times as  n=2
+     * if n=3 and x=3 it  will give (3*3*3)
+     * */
     private static int getNMultiply(final int x, final int n, final int m) {
         int result = 1;
-//        for (int i = 0; i < n; i++) {
-//            result = result * x;
-//        }
+        //        for (int i = 0; i < n; i++) {
+        //            result = result * x;
+        //        }
         // Modified version
 
         for (int i = 0; i < n; i++) {
             result = result * x;
-            if(result > m){
+            if (result > m) {
                 break;
             }
         }

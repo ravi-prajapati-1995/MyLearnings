@@ -9,24 +9,24 @@ public class RotateByKNumbers {
         rotate1(nums, 2);
         System.out.println(Arrays.toString(nums));
     }
+
     public static void rotate(int[] nums, int k) {
         int len = nums.length;
         int[] b = new int[len];
-        for(int i =0; i< len; i++) {
-            b[(i+k)%len] = nums[i];
+        for (int i = 0; i < len; i++) {
+            b[(i + k) % len] = nums[i];
         }
 
-        for(int i=0;i<len;i++) {
+        for (int i = 0; i < len; i++) {
             nums[i] = b[i];
         }
-
     }
 
     public static void rotate1(int[] nums, int k) {
         int len = nums.length;
         int[] temp = new int[k];
 
-        for(int i = 0;i < k; i++){
+        for (int i = 0; i < k; i++) {
             temp[i] = nums[i];
         }
 
@@ -35,9 +35,9 @@ public class RotateByKNumbers {
         }
 
         System.out.println(Arrays.toString(temp));
-//        for (int i = 0; i < len; i++) {
-//            nums[i] = temp[i];
-//        }
+        //        for (int i = 0; i < len; i++) {
+        //            nums[i] = temp[i];
+        //        }
 
     }
 }

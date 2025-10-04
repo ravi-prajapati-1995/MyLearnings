@@ -1,7 +1,6 @@
 package com.ravi.learnings.dsa.binarySearch.onAnswers;
 
 import java.util.Arrays;
-import java.util.PriorityQueue;
 
 /**
  * <a href="https://www.geeksforgeeks.org/problems/minimize-max-distance-to-gas-station/0">here</a>
@@ -31,10 +30,7 @@ public class DistanceBetweenGasStations {
     public static void main(String[] args) {
         int[] stations = {1, 13, 17, 23};
         System.out.println(findSmallestMaxDistStriver(stations, 5));
-
     }
-
-
 
     /**
      * stations[] = [1, 13, 17, 23] k= 5
@@ -64,10 +60,10 @@ public class DistanceBetweenGasStations {
         double maxDiff = -1;
         for (int i = 0; i < n - 1; i++) {
             /*
-            * Why we added howMany[i] + 1 because because it will be total sections
-            * i.e 13 - 1 = 12 we added 3 elements between 1 and 13 so it will become 1, '4', '7', '10', 13 so total section
-            * between 1 and 13 will be 4
-            * */
+             * Why we added howMany[i] + 1 because because it will be total sections
+             * i.e 13 - 1 = 12 we added 3 elements between 1 and 13 so it will become 1, '4', '7', '10', 13 so total section
+             * between 1 and 13 will be 4
+             * */
             double sectionLen = (stations[i + 1] - stations[i]) / (howMany[i] + 1);
             maxDiff = Math.max(maxDiff, sectionLen);
         }
@@ -76,7 +72,7 @@ public class DistanceBetweenGasStations {
 
     /**
      * stations[] = [1, 13, 17, 23] k= 5
-    * */
+     */
     private static int getMaxDiffIdx(final int[] stations, final double[] howMany) {
         double maxSection = -1F;
         int maxIdx = -1;
@@ -95,14 +91,12 @@ public class DistanceBetweenGasStations {
 
     record PriorityKey(int first, int second) {}
 
-
     public static double findSmallestMaxDistStriverOptimize(int stations[], int k) {
         // code here
-        
+
         final var n = stations.length;
         for (int i = 0; i < n - 1; i++) {
             double diff = stations[i + 1] - stations[i];
-
         }
 
         double[] howMany = new double[n - 1];
@@ -128,7 +122,7 @@ public class DistanceBetweenGasStations {
 
     /**
      * stations[] = [1, 13, 17, 23] k= 5
-     * */
+     */
     private static int getMaxDiffIdxOptimzed(final int[] stations, final double[] howMany) {
         double maxSection = -1F;
         int maxIdx = -1;
@@ -144,7 +138,5 @@ public class DistanceBetweenGasStations {
         }
         return maxIdx;
     }
-
-
 }
 

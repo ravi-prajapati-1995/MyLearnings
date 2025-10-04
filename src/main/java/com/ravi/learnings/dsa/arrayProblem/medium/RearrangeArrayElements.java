@@ -4,10 +4,9 @@ import java.util.Arrays;
 
 public class RearrangeArrayElements {
     public static void main(String[] args) {
-        int[] arr = {3,1,-2,-5,2,-4};
+        int[] arr = {3, 1, -2, -5, 2, -4};
         System.out.println(Arrays.toString(rearrangeArrayOptimal(arr)));
     }
-
 
     public static int[] rearrangeArray(int[] nums) {
         int positive[] = new int[(nums.length / 2)];
@@ -16,16 +15,16 @@ public class RearrangeArrayElements {
         int nidx = 0;
 
         for (int i = 0; i < nums.length; i++) {
-            if(nums[i] < 0) {
+            if (nums[i] < 0) {
                 negative[nidx] = nums[i];
                 nidx++;
-            } else if(nums[i] > 0) {
+            } else if (nums[i] > 0) {
                 positive[pidx] = nums[i];
                 pidx++;
             }
         }
 
-        for (int i = 0; i < nums.length/2; i++) {
+        for (int i = 0; i < nums.length / 2; i++) {
             nums[i * 2] = positive[i];
             nums[i * 2 + 1] = negative[i];
         }
@@ -35,7 +34,7 @@ public class RearrangeArrayElements {
 
     public static int[] rearrangeArrayOptimal(int[] nums) {
         int result[] = new int[nums.length];
-        int pIdx= 0;
+        int pIdx = 0;
         int nIdx = 1;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] < 0) {

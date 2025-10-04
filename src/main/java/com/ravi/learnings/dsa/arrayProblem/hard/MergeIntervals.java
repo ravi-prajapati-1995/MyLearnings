@@ -15,12 +15,12 @@ public class MergeIntervals {
         int[][] intervals = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
 
         int[][] intervals1 = {{2, 3}, {5, 5}, {2, 2}, {3, 4}, {3, 4}};
-        int[][] intervals2 = {{0, 0}, {1, 2}, {5, 5}, {2, 4}, {3, 3}, {5, 6}, {5, 6}, {4, 6}, {0, 0}, {1, 2}, {0, 2}, {4, 5}};
+        int[][] intervals2 =
+                {{0, 0}, {1, 2}, {5, 5}, {2, 4}, {3, 3}, {5, 6}, {5, 6}, {4, 6}, {0, 0}, {1, 2}, {0, 2}, {4, 5}};
 
         final var merge = mergeOptimal(arr);
         System.out.println(Arrays.deepToString(merge));
     }
-
 
     // example input: [[1, 3], [2, 4], [2, 6], [8, 9], [8, 10], [9, 11], [15, 18], [16, 17]]
     /*
@@ -28,13 +28,15 @@ public class MergeIntervals {
      * */
     public static int[][] merge(int[][] intervals) {
         LinkedList<List<Integer>> list = new LinkedList<>();
-        Arrays.sort(intervals, (a, b) -> {
-            if (a[0] != b[0]) {
-                return Integer.compare(a[0], b[0]); // Compare first elements
-            } else {
-                return Integer.compare(a[1], b[1]); // Compare second elements
-            }
-        });
+        Arrays.sort(
+                intervals, (a, b) -> {
+                    if (a[0] != b[0]) {
+                        return Integer.compare(a[0], b[0]); // Compare first elements
+                    } else {
+                        return Integer.compare(a[1], b[1]); // Compare second elements
+                    }
+                }
+        );
 
         System.out.println(Arrays.deepToString(intervals));
         for (int i = 0; i < intervals.length; i++) {
@@ -70,14 +72,14 @@ public class MergeIntervals {
     }
 
     /*
-    * We can use only one loop and iterate it over all the elements steps:
-    * 1. sort the array
-    * 2. Set first element in list
-    * 3. Loop from  1 to n
-    * 4. If element is overlapping mean last element end element is greater than current element starting then it is overlapping,
-    *    then replace last items end with max(lastEnd, currEnd)
-    * 5. else add current start and end element to the list
-    * */
+     * We can use only one loop and iterate it over all the elements steps:
+     * 1. sort the array
+     * 2. Set first element in list
+     * 3. Loop from  1 to n
+     * 4. If element is overlapping mean last element end element is greater than current element starting then it is overlapping,
+     *    then replace last items end with max(lastEnd, currEnd)
+     * 5. else add current start and end element to the list
+     * */
     public static int[][] mergeOptimal(int[][] intervals) {
         Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
         List<int[]> merged = new ArrayList();
@@ -88,31 +90,29 @@ public class MergeIntervals {
             int end = intervals[i][1];
             final var last = merged.getLast();
 
-            if(start <= last[1]) {
+            if (start <= last[1]) {
                 last[1] = Math.max(end, last[1]);
             } else {
                 merged.add(new int[]{start, end});
             }
-
         }
         return merged.toArray(new int[merged.size()][2]);
     }
 
     public int[][] merge1(int[][] intervals) {
         //sort first in case of array sequence is not connected
-        Arrays.sort(intervals, (a,b)-> Integer.compare(a[0], b[0]));
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
 
         List<int[]> merged = new ArrayList();
 
-        for(int[] x : intervals) {
-            if(merged.isEmpty() || merged.get(merged.size() -1)[1] < x[0]) {  //first of no overlap case
+        for (int[] x : intervals) {
+            if (merged.isEmpty() || merged.get(merged.size() - 1)[1] < x[0]) {  //first of no overlap case
                 merged.add(x);
             } else {    //there is overlap
-                merged.get(merged.size() - 1)[1] = Math.max(merged.get(merged.size() - 1)[1], x[1] );
+                merged.get(merged.size() - 1)[1] = Math.max(merged.get(merged.size() - 1)[1], x[1]);
             }
         }
 
         return merged.toArray(new int[merged.size()][]);
     }
-
 }

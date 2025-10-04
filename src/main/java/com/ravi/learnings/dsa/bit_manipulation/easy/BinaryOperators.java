@@ -12,8 +12,8 @@ public class BinaryOperators {
         //        System.out.println(checkithBitSetUsingRightShift(13, 1));
         //        System.out.println(checkithBitSetUsingLeftShift(13, 2));
 
-//        System.out.println(setIthBit(9, 2));
-//        System.out.println(clearIthBitUsingNotOperator(1312345, 2));
+        //        System.out.println(setIthBit(9, 2));
+        //        System.out.println(clearIthBitUsingNotOperator(1312345, 2));
         System.out.println(toggleithBit(9, 2));
     }
 

@@ -6,8 +6,7 @@ import java.util.List;
 
 /**
  * <a href="https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/description/">Problem Link</a>
- *
- * */
+ */
 public class DeleteMiddleNode {
     public static void main(String[] args) {
         final var integers = List.of(1, 2, 3, 4);  // 1 3 5 2 4 6
@@ -18,12 +17,12 @@ public class DeleteMiddleNode {
 
     /**
      * Base on slow and fast pointer approach
-     * */
+     */
     public static ListNode deleteMiddle(ListNode head) {
 
-          /* If the list is empty or has only one node,
+        /* If the list is empty or has only one node,
          * return null as there is no middle node to delete
-           */
+         */
         if (head == null || head.next == null) {
             return null;
         }
@@ -31,7 +30,7 @@ public class DeleteMiddleNode {
         ListNode fast = head;
         ListNode prev = head;
 
-        while(fast.next != null && fast.next.next != null) {
+        while (fast.next != null && fast.next.next != null) {
             prev = slow;
             slow = slow.next;
             fast = fast.next.next;

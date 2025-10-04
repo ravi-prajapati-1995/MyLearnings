@@ -6,7 +6,7 @@ import lombok.Getter;
 
 /**
  * Here we made a relationship vehicle has Drive strategy
- * */
+ */
 @AllArgsConstructor
 @Getter
 public class Vehicle {

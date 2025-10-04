@@ -9,19 +9,20 @@ public class UnionOfSortedArrays {
         ArrayList<Integer> union = findUnion(a, b);
         System.out.println(union);
     }
+
     public static ArrayList<Integer> findUnion(int a[], int b[]) {
         ArrayList<Integer> result = new ArrayList<>();
         // add your code here
         int aIdx = 0;
         int bIdx = 0;
         int currentElement = 0;
-        while(aIdx < a.length && bIdx < b.length) {
+        while (aIdx < a.length && bIdx < b.length) {
             int nextElement;
-            if(a[aIdx] == b[bIdx]) {
+            if (a[aIdx] == b[bIdx]) {
                 nextElement = a[aIdx];
                 aIdx++;
                 bIdx++;
-            } else if(a[aIdx] < b[bIdx]) {
+            } else if (a[aIdx] < b[bIdx]) {
                 nextElement = a[aIdx];
                 aIdx++;
             } else {
@@ -29,25 +30,25 @@ public class UnionOfSortedArrays {
                 bIdx++;
             }
 
-            if(currentElement != nextElement) {
+            if (currentElement != nextElement) {
                 result.add(nextElement);
                 currentElement = nextElement;
             }
         }
 
-        for(int i = aIdx; i< a.length; i++){
-            if(currentElement != a[i]) {
+        for (int i = aIdx; i < a.length; i++) {
+            if (currentElement != a[i]) {
                 result.add(a[i]);
                 currentElement = a[i];
             }
         }
 
-        for(int i = bIdx; i< b.length; i++){
-            if(currentElement != b[i]) {
+        for (int i = bIdx; i < b.length; i++) {
+            if (currentElement != b[i]) {
                 result.add(b[i]);
                 currentElement = b[i];
             }
         }
-        return  result;
+        return result;
     }
 }

@@ -32,13 +32,13 @@ public class PalindromePartitioning {
      * Steps I have followed before see the solution:
      * 1. Start with 0 index and initiate start point with idx + 1
      * 2. Then start a loop that will run from next index till the last index
-     *     i.e idx = 0  and i=1 first time then till the last index in last we will have whole string as substring
+     * i.e idx = 0  and i=1 first time then till the last index in last we will have whole string as substring
      * 3. for each element we will recursivly call func for next idx if till current position string is palindrome
      * 4. In base condition if we reach at the end while doing operation then all the string in this node are
      * palindrome and storing them in new list for resulting
-     *
+     * <p>
      * TC - O(lengthOfString ^ n) * N for each operation
-     * */
+     */
     private static void myFunc(String s, int idx, List<String> palindrome, List<List<String>> ans) {
         if (s.length() == idx) {
             ans.add(new ArrayList<>(palindrome));
@@ -73,9 +73,8 @@ public class PalindromePartitioning {
         return true;
     }
 
-
-    private static void striverSolution(String str, int idx, List<String> list, List<List<String>>  st) {
-        if(str.length() == idx) {
+    private static void striverSolution(String str, int idx, List<String> list, List<List<String>> st) {
+        if (str.length() == idx) {
             st.add(new ArrayList<>(list));
             return;
         }
@@ -83,7 +82,7 @@ public class PalindromePartitioning {
         for (int i = idx; i <= str.length() - 1; i++) {
             // here we are checking for 0 to 0 but below we are taking i+1 why???
             if (checkPalindrome(str, idx, i)) {
-                String subStr = str.substring(idx, i+1);
+                String subStr = str.substring(idx, i + 1);
                 list.add(subStr);
                 striverSolution(str, i + 1, list, st);
                 list.removeLast();
@@ -92,12 +91,12 @@ public class PalindromePartitioning {
     }
 
     /*
-    * To check the palindrome we took 2 pointer approach take each string from left and right if they are not equal
-    * then return false
-    * */
-    private static boolean checkPalindrome(final String str,  int left,  int right) {
-        while(right > left) {
-            if(str.charAt(left) != str.charAt(right)) {
+     * To check the palindrome we took 2 pointer approach take each string from left and right if they are not equal
+     * then return false
+     * */
+    private static boolean checkPalindrome(final String str, int left, int right) {
+        while (right > left) {
+            if (str.charAt(left) != str.charAt(right)) {
                 return false;
             }
             left++;

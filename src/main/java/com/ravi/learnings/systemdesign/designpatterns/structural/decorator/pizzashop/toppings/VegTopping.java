@@ -17,7 +17,7 @@ public class VegTopping extends PizzaDecorator {
             case LARGE -> 50;
             case EXTRA_LARGE -> 60;
         };
-        System.out.println("Adding VegTopping with price: "+ topping);
+        System.out.println("Adding VegTopping with price: " + topping);
         return getBasePizza().price() + topping;
     }
 }

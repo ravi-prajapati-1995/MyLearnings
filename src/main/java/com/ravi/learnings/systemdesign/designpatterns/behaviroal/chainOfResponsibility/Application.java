@@ -13,6 +13,5 @@ public class Application {
         debugLogHandler.log(LogHandler.WARN, "THis is warning");
         debugLogHandler.log(LogHandler.ERROR, "THis is error");
         debugLogHandler.log(LogHandler.INFO, "THis is info");
-
     }
 }

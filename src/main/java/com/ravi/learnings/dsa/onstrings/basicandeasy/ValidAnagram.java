@@ -14,11 +14,12 @@ public class ValidAnagram {
     }
 
     /*
-    * We are keep tracking of all the characters present in the strings and the storing it in map
-    * in last checking if both maps are equals
-    * */
+     * We are keep tracking of all the characters present in the strings and the storing it in map
+     * in last checking if both maps are equals
+     * */
     public static boolean isAnagram(String s, String t) {
-        if (s.length() != t.length()) return false;
+        if (s.length() != t.length())
+            return false;
 
         Map<Character, Integer> map1 = new HashMap<>();
         Map<Character, Integer> map2 = new HashMap<>();
@@ -26,13 +27,13 @@ public class ValidAnagram {
         for (int i = 0; i < s.length(); i++) {
             final var c1 = s.charAt(i);
             final var c2 = t.charAt(i);
-            if(!map1.containsKey(c1)) {
+            if (!map1.containsKey(c1)) {
                 map1.put(c1, 1);
             } else {
                 map1.computeIfPresent(c1, (a, b) -> b + 1);
             }
 
-            if(!map2.containsKey(c2)) {
+            if (!map2.containsKey(c2)) {
                 map2.put(c2, 1);
             } else {
                 map2.computeIfPresent(c2, (a, b) -> b + 1);
@@ -44,9 +45,10 @@ public class ValidAnagram {
 
     /**
      * We can sort both the string and then compare strings if bot are same then they are anagram
-     * */
+     */
     public static boolean isAnagram2(String s, String t) {
-        if (s.length() != t.length()) return false;
+        if (s.length() != t.length())
+            return false;
 
         final var charArray = s.toCharArray();
         Arrays.sort(charArray);

@@ -5,8 +5,8 @@ import com.ravi.learnings.dsa.linkedList.ListNode;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ravi.learnings.dsa.linkedList.ListNode.*;
 import static com.ravi.learnings.dsa.linkedList.ListNode.from;
+import static com.ravi.learnings.dsa.linkedList.ListNode.print;
 
 /**
  * <a href="https://leetcode.com/problems/sort-list/description/">Problem Link</a>
@@ -17,7 +17,7 @@ import static com.ravi.learnings.dsa.linkedList.ListNode.from;
  */
 public class SorLinkedList {
     public static void main(String[] args) {
-        final var integers = List.of(1, 3, 4, 2,2);  // 1 3 5 2 4 6
+        final var integers = List.of(1, 3, 4, 2, 2);  // 1 3 5 2 4 6
         final var head = from(integers);
         final var listNode = sortList(head);
         print(listNode);
@@ -76,14 +76,14 @@ public class SorLinkedList {
         return merge(sortedHead, sortedRightHead);
     }
 
-    private static ListNode merge( ListNode leftHead,  ListNode rightHead) {
+    private static ListNode merge(ListNode leftHead, ListNode rightHead) {
         ListNode listNode = new ListNode(-1);
         ListNode temp = listNode;
-        while (leftHead != null && rightHead !=null) {
+        while (leftHead != null && rightHead != null) {
             int leftVal = leftHead.val;
             int rightVal = rightHead.val;
 
-            if(leftVal > rightVal) {
+            if (leftVal > rightVal) {
                 temp.next = rightHead;
                 rightHead = rightHead.next;
             } else {
@@ -92,20 +92,19 @@ public class SorLinkedList {
             }
 
             temp = temp.next;
-
         }
 
-      if(leftHead != null) {
-          temp.next = leftHead;
-      } else {
-          temp.next = rightHead;
-      }
+        if (leftHead != null) {
+            temp.next = leftHead;
+        } else {
+            temp.next = rightHead;
+        }
 
         return listNode.next;
     }
 
     private static ListNode findMiddle(final ListNode head) {
-        if(head == null || head.next == null) {
+        if (head == null || head.next == null) {
             return head;
         }
 

@@ -31,16 +31,16 @@ public class ImplementLinkedList {
         printNodes(head);
 
         System.out.println("================");
-//        final var node = add(head, 22, 7);
-//        printNodes(node);
+        //        final var node = add(head, 22, 7);
+        //        printNodes(node);
 
-//        final var node = MyNode.addBeforeValue(head, 22, 1);
-//        printNodes(node);
+        //        final var node = MyNode.addBeforeValue(head, 22, 1);
+        //        printNodes(node);
 
-//        final var myNode1 = MyNode.deleteHead(head);
-//        final var myNode1 = MyNode.deleteTail(head);
-//        final var myNode1 = MyNode.deleteKthElement(head, 1);
-//        final var myNode1 = MyNode.deleteDataNode(head, 6);
+        //        final var myNode1 = MyNode.deleteHead(head);
+        //        final var myNode1 = MyNode.deleteTail(head);
+        //        final var myNode1 = MyNode.deleteKthElement(head, 1);
+        //        final var myNode1 = MyNode.deleteDataNode(head, 6);
         final var idx = MyNode.getPosition(head, 6);
         System.out.println(idx);
     }
@@ -87,7 +87,6 @@ public class ImplementLinkedList {
             }
             return count;
         }
-
 
         public static int getPosition(MyNode head, int number) {
             MyNode temp = head;
@@ -220,7 +219,6 @@ public class ImplementLinkedList {
 
             return head;
         }
-
 
         /**
          * if  we have [9 4 5 3 8 10] and given 3 we need to delete element that is on 3rd place so this

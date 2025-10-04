@@ -1,4 +1,5 @@
 package com.ravi.learnings.dsa.poisonPill;
+
 import java.util.concurrent.BlockingQueue;
 
 public class NumbersConsumer implements Runnable {
@@ -9,6 +10,7 @@ public class NumbersConsumer implements Runnable {
         this.queue = queue;
         this.poisonPill = poisonPill;
     }
+
     public void run() {
         try {
             while (true) {

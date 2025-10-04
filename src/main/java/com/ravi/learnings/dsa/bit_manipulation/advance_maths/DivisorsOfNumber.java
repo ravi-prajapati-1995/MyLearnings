@@ -11,17 +11,17 @@ public class DivisorsOfNumber {
     /**
      * In brute force approach we are just dividing the number from 1 - n/2
      * and at last adding the number itself as that will be also divisor
-     *
+     * <p>
      * TC - O(N/2) as we traversing till n/2
      * SC - O(sqrt(N)) as numbers will not be greater than sqrt
-     * */
+     */
     public static void print_divisors(int n) {
-       for(int i = 1;i <= n/2; i++) {
+        for (int i = 1; i <= n / 2; i++) {
 
-           if(n % i == 0) {
-               System.out.println(i);
-           }
-       }
+            if (n % i == 0) {
+                System.out.println(i);
+            }
+        }
         System.out.println(n);
     }
 
@@ -40,7 +40,7 @@ public class DivisorsOfNumber {
      * 36 * 1
      * Carefully observe that after  6 * 6 we start repeating number
      * TC:
-     * */
+     */
     public static void optimal(int n) {
         Set<Integer> set = new TreeSet<>();
         for (int i = 1; i * i <= n; i++) {

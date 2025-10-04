@@ -1,11 +1,12 @@
 package com.ravi.learnings.dsa;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeSet;
 
 public class FindGCDAndHCF {
     public static void main(String[] args) {
-//        lcmAndGcd(354293l, 125208l);
+        //        lcmAndGcd(354293l, 125208l);
         lcmAndGcd(14l, 8l);
     }
 
@@ -14,27 +15,30 @@ public class FindGCDAndHCF {
         final var gcd = getGcd(a, b);
         final var gcd1 = getGcd1(Math.min(a, b), Math.max(a, b));
         final var lcm = (a * b) / gcd;
-        System.out.println("GCD: " + gcd+" GCD 1: "+gcd1+" , LCM: "+lcm);
+        System.out.println("GCD: " + gcd + " GCD 1: " + gcd1 + " , LCM: " + lcm);
         return new Long[]{lcm, gcd};
     }
 
     private static Long getGcd1(Long min, Long max) {
         var result = min;
         var reminder = max % min;
-        while(reminder != 0){
+        while (reminder != 0) {
             max = min;
             min = reminder;
             result = min;
             reminder = max % min;
         }
         return result;
-    };
+    }
+
+    ;
+
     private static Long getGcd(Long a, Long b) {
         final var allMultiple = getAllMultiple(a);
         final var allMultiple1 = getAllMultiple(b);
         var smallList = allMultiple;
         var bigList = allMultiple1;
-        if(allMultiple.size() != allMultiple1.size()) {
+        if (allMultiple.size() != allMultiple1.size()) {
             smallList = allMultiple.size() < allMultiple1.size() ? allMultiple : allMultiple1;
             bigList = allMultiple.size() > allMultiple1.size() ? allMultiple : allMultiple1;
         }

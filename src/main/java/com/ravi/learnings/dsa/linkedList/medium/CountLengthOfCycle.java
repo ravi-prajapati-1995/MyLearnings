@@ -3,7 +3,9 @@ package com.ravi.learnings.dsa.linkedList.medium;
 import com.ravi.learnings.dsa.linkedList.ListNode;
 import com.ravi.learnings.dsa.linkedList.Node;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Given the head of a linked list, determine whether the list contains a loop.

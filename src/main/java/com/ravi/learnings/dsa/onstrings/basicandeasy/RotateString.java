@@ -22,19 +22,19 @@ public class RotateString {
     }
 
     /**
-     *  clever way to exploit this is by concatenating s with itself. Why? Because this effectively creates a string
-     *  that contains all possible rotations of s within it. For example, if s = "abcde", then s + s = "abcdeabcde".
-     *  Notice how every possible rotation of s appears somewhere in this concatenated string.
+     * clever way to exploit this is by concatenating s with itself. Why? Because this effectively creates a string
+     * that contains all possible rotations of s within it. For example, if s = "abcde", then s + s = "abcdeabcde".
+     * Notice how every possible rotation of s appears somewhere in this concatenated string.
      * Check if the lengths of strings s and goal are different:
-     *
+     * <p>
      * If they are, return false because a rotation of s cannot match goal.
      * Create a new string doubledString by concatenating s with itself.
-     *
+     * <p>
      * Use a string search method to find the substring goal within doubledString:
-     *
+     * <p>
      * If goal is found, check if this index is less than the length of doubledString.
      * If it is, return true, indicating that goal is a valid rotation of s. Otherwise, return false.
-     * */
+     */
     public static boolean rotateStringOptimal(String s, String goal) {
         if (s.length() != goal.length()) {
             return false;

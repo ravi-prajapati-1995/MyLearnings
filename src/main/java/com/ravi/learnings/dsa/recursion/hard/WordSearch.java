@@ -17,7 +17,7 @@ import java.util.Map;
 public class WordSearch {
 
     public static void main(String[] args) {
-        char[][] board = {{'C','A','A'},{'A','A','A'},{'B','C','D'}};
+        char[][] board = {{'C', 'A', 'A'}, {'A', 'A', 'A'}, {'B', 'C', 'D'}};
         String word = "AAB";
         System.out.println(exist(board, word));
     }
@@ -86,9 +86,7 @@ public class WordSearch {
                     if (isPossible) {
                         return true;
                     }
-
                 }
-
             }
         }
         return isPossible;
@@ -98,7 +96,6 @@ public class WordSearch {
             char[][] board, String word, int row, int col, String str, int idx, Map<Integer,
                     String> map, List<Boolean> b
     ) {
-
 
         if (word.equals(str)) {
             b.add(true);
@@ -114,7 +111,6 @@ public class WordSearch {
         if (board[row][col] == ' ') {
             return;
         }
-
 
         final var currentChar = board[row][col];
 
@@ -134,7 +130,7 @@ public class WordSearch {
 
         // Go to left
         checkKar(board, word, row, col - 1, str, idx, map, b);
-//         check up
+        //         check up
         checkKar(board, word, row - 1, col, str, idx, map, b);
 
         // check down

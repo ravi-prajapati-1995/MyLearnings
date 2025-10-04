@@ -22,15 +22,15 @@ public class QueueUsingLinkedList {
         System.out.println(linkedListStack.pop());
         System.out.println(linkedListStack.pop());
         System.out.println(linkedListStack.pop());
-
     }
 }
+
 /**
  * According to striver we have node and to use it as stack below steps needs to be done:
  * 1. Create a new node on push operation: 5 | null
  * 2. push(4) : So 4.next should be 5 to do it: after creating new node we will 4.next = node
- *  and node = newNode
- * */
+ * and node = newNode
+ */
 class LinkedListQueueStriver {
     private Node head;
     private Node tail;
@@ -54,7 +54,7 @@ class LinkedListQueueStriver {
 
     /**
      * So we are always referencing to the top element so directly get the top and move the node to next
-     * */
+     */
     public int pop() {
         final var data = head.data;
         head = head.next;
@@ -63,7 +63,7 @@ class LinkedListQueueStriver {
     }
 
     public int top() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             return -1;
         }
         return head.data;
@@ -73,7 +73,6 @@ class LinkedListQueueStriver {
         return size == 0;
     }
 
-
     static class Node {
         int data;
         Node next;
@@ -81,6 +80,7 @@ class LinkedListQueueStriver {
         private Node(final int data) {
             this.data = data;
         }
+
         private Node() {}
     }
 }

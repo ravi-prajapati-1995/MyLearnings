@@ -5,7 +5,6 @@ public class MaximumSumSubarray {
         int[] nums = {-2, -3, 4, -1, -2, 1, 5, -3};
         final var i = maxSubArrayUsingKadanesAlgo(nums);
         System.out.println(i);
-
     }
 
     public static int maxSubArray(int[] nums) {
@@ -13,9 +12,9 @@ public class MaximumSumSubarray {
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < nums.length; i++) {
             int sum = 0;
-            for(int j = i; j< nums.length; j++) {
+            for (int j = i; j < nums.length; j++) {
                 sum = sum + nums[j];
-                if(sum > max) {
+                if (sum > max) {
                     max = sum;
                 }
             }
@@ -31,21 +30,20 @@ public class MaximumSumSubarray {
         int left = 0;
         int right = 0;
 
-        for(int i=0;i< nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
             sum = sum + nums[i];
-            if(sum ==0) {
+            if (sum == 0) {
                 left = i;
             }
-            if(sum > max ) {
+            if (sum > max) {
                 max = sum;
                 right = i;
             }
-            if(sum < 0) {
+            if (sum < 0) {
                 sum = 0;
             }
         }
         System.out.println(left + "\t" + right);
         return max;
     }
-
 }

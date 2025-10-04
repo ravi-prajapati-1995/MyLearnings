@@ -30,11 +30,11 @@ public class PowerSet {
      * Leave 1 and increase idx
      * In this way we will add recursion
      * Base Case: When reaches equal to nums length then store it in list
-     *
+     * <p>
      * TC -> O(2^n)
      * SC -> O(N) for recursive space + O(N) list that we are using to create elements + O(2^n + N) for storing final
      * result
-     * */
+     */
     public static List<List<Integer>> subsets(int[] nums) {
         final var l1 = new ArrayList<Integer>();
         final var l2 = new ArrayList<List<Integer>>();

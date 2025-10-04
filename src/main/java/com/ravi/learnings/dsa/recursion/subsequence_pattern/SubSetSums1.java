@@ -36,7 +36,7 @@ public class SubSetSums1 {
      * Same as powerset problem we will carry sum instead of list
      * TC - 2^n (generating 2 raise to power n subsequence) * N(We have n steps for generating each sum)
      * for [2, 3] -> [0, 2, 3, 5] for 2 element we have 4
-     * */
+     */
     private static void getAllSubsequenceStriver(
             final int[] nums,
             int idx,

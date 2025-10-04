@@ -1,6 +1,6 @@
 package com.ravi.learnings.systemdesign.designpatterns.behaviroal.observer.weather_app;
 
-public class EmailWeatherSubscriber implements WeatherSubscriber{
+public class EmailWeatherSubscriber implements WeatherSubscriber {
     private final String email;
 
     public EmailWeatherSubscriber(final String email) {

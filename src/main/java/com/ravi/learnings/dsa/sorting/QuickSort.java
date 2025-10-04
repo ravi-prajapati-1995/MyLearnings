@@ -18,30 +18,30 @@ public class QuickSort {
         System.out.println(Arrays.toString(arr));
     }
 
-    private static void sortArray(final int[] arr, int low , final int high) {
-        System.out.println(low+"\t"+high);
-       if(low < high) {
-           int partitionIndex = fun(arr, low, high);
-           sortArray(arr, low, partitionIndex - 1);
-           sortArray(arr, partitionIndex + 1, high);
-       }
+    private static void sortArray(final int[] arr, int low, final int high) {
+        System.out.println(low + "\t" + high);
+        if (low < high) {
+            int partitionIndex = fun(arr, low, high);
+            sortArray(arr, low, partitionIndex - 1);
+            sortArray(arr, partitionIndex + 1, high);
+        }
     }
 
     private static int fun(final int[] arr, final int low, final int high) {
         int pivot = arr[low];
-        int i = low ;
+        int i = low;
         int j = high;
 
         while (i < j) {
-            while(arr[i] <= pivot && i < high) {
+            while (arr[i] <= pivot && i < high) {
                 i++;
             }
 
-            while(arr[j] > pivot && j > low) {
+            while (arr[j] > pivot && j > low) {
                 j--;
             }
 
-            if(i < j) {
+            if (i < j) {
                 swap(arr, i, j);
             }
         }

@@ -17,8 +17,8 @@ package com.ravi.learnings.dsa.recursion.strong_hold;
 public class StringToInteger_Atoi {
 
     public static void main(String[] args) {
-//        final var myAtoi = atoi("   -042");
-//        System.out.println(myAtoi);
+        //        final var myAtoi = atoi("   -042");
+        //        System.out.println(myAtoi);
         final var atoi = atoi("000000000000000000");
         System.out.println(atoi);
     }
@@ -30,6 +30,7 @@ public class StringToInteger_Atoi {
      * 3. Check if it has 0(zeros) intially if yes then skip
      * 4. When we reach to real number then start a recursive call which will have result(previously calculated integer)
      * 5. Do it til we reaches to end or a non digit or a value which crosses the integer MAX
+     *
      * @param s
      * @return
      */
@@ -89,7 +90,8 @@ public class StringToInteger_Atoi {
         long result = 0;
         int sign = 1;
         s = s.trim(); // trim leading
-        if (s.isEmpty()) return 0;
+        if (s.isEmpty())
+            return 0;
 
         final var _1stChar = s.charAt(0);
         if (_1stChar == '-') {
@@ -100,7 +102,8 @@ public class StringToInteger_Atoi {
         }
 
         for (char c : s.toCharArray()) {
-            if (c < '0' || c > '9') break;
+            if (c < '0' || c > '9')
+                break;
 
             final var value = Integer.valueOf(c + "");
             result = (result * 10 + value);

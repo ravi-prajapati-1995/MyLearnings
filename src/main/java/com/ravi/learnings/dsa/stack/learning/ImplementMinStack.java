@@ -6,8 +6,7 @@ import java.util.LinkedList;
  * <a href="https://leetcode.com/problems/min-stack/description/">Problem Link</a> </br>
  * Need to design a stack that will return the min element in the O(1) time
  * We can also go through all the elements of the stack and check for min but that will take O(N) TC for each getMin operation
- *
- * */
+ */
 public class ImplementMinStack {
     public static void main(String[] args) {
         final var minStack = new MinStackOptimal();
@@ -55,54 +54,52 @@ public class ImplementMinStack {
  * when we are pushing 3 then minVal = 4
  * val < minval => val-minVal < 0  => adding val both sides => val+val-minVal < val  => 2Val-minVal < val
  * 2*val - minVal = newVal so when newVal<val we modified value
- *
- *
- * */
+ */
 class MinStackOptimal {
-    private  final LinkedList<Long> stack;
+    private final LinkedList<Long> stack;
     private long minVal;
+
     public MinStackOptimal() {
         stack = new LinkedList<>();
     }
 
     public void push(int val) {
-        if(stack.isEmpty()) {
+        if (stack.isEmpty()) {
             minVal = val;
             stack.push((long) val);
             return;
         }
 
-       if(val < minVal) {
-           long newVal = (2 * val) - minVal; // Need to remember this formula
-           stack.push(newVal);
-           minVal = val;
-       } else {
-           stack.push((long) val);
-       }
+        if (val < minVal) {
+            long newVal = (2 * val) - minVal; // Need to remember this formula
+            stack.push(newVal);
+            minVal = val;
+        } else {
+            stack.push((long) val);
+        }
     }
 
     /*
-    * While pop element
-    * */
+     * While pop element
+     * */
     public void pop() {
         final var pop = stack.pop();
-        if(pop < minVal) {
+        if (pop < minVal) {
             minVal = 2 * minVal - pop;
         }
     }
 
     public int top() {
         final long peek = stack.peek();
-        if(peek < minVal) { //Then it is modified value we need to revert it
+        if (peek < minVal) { //Then it is modified value we need to revert it
             return (int) minVal;
         }
         return (int) peek;
     }
 
     public int getMin() {
-        return (int)minVal;
+        return (int) minVal;
     }
-
 }
 
 /**
@@ -110,18 +107,19 @@ class MinStackOptimal {
  * that is pushed to the stack and second is the min element that we have seen till now
  * In push operation are checking if stack is already empty then directly push to the stack
  * or else push val and min value of current or top element
- *
+ * <p>
  * TC = O(1) -- Doing all operations in one go
  * SC = O(2*N) -- Storing value and min value in pair
- * */
+ */
 class MinStack {
-    private  final LinkedList<Entry> stack;
+    private final LinkedList<Entry> stack;
+
     public MinStack() {
         stack = new LinkedList<>();
     }
 
     public void push(int val) {
-        if(stack.isEmpty()) {
+        if (stack.isEmpty()) {
             stack.push(new Entry(val, val));
         } else {
             stack.push(new Entry(val, Math.min(stack.peek().min, val)));

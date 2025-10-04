@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-
 public class Box implements PriceAble {
     private final List<PriceAble> items;
 
-    public Box(){
+    public Box() {
         items = new ArrayList<>();
     }
 
@@ -19,6 +18,7 @@ public class Box implements PriceAble {
     public void addItem(PriceAble item) {
         this.items.add(item);
     }
+
     public void addItems(Collection<PriceAble> items) {
         this.items.addAll(items);
     }
@@ -26,7 +26,6 @@ public class Box implements PriceAble {
     public boolean removeItem(PriceAble item) {
         return items.remove(item);
     }
-
 
     @Override
     public double getPrice() {

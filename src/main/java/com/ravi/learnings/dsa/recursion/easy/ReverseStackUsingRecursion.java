@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * <a href="https://www.geeksforgeeks.org/problems/reverse-a-stack/1">Problem Link</a>
  * You are given a stack St. You have to reverse the stack using recursion.
- *
+ * <p>
  * Input:
  * St = {3,2,1,7,6}
  * Output:
@@ -31,10 +31,10 @@ public class ReverseStackUsingRecursion {
 
     /**
      * Mostly same as sort stack just different insert function logic
-     * */
+     */
     static void reverse(Stack<Integer> s) {
         // add your code here
-        if(s.empty()) {
+        if (s.empty()) {
             return;
         }
 
@@ -46,9 +46,9 @@ public class ReverseStackUsingRecursion {
 
     /**
      * This function will add current element at the end of the stack
-     * */
+     */
     static void insertAtLast(Stack<Integer> s, Integer element) {
-        if(s.isEmpty()) {
+        if (s.isEmpty()) {
             s.push(element);
             return;
         }
@@ -57,5 +57,4 @@ public class ReverseStackUsingRecursion {
         insertAtLast(s, element);
         s.push(pop);
     }
-
 }

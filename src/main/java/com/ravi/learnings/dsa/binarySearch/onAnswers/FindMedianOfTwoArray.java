@@ -1,9 +1,9 @@
 package com.ravi.learnings.dsa.binarySearch.onAnswers;
 
 /**
- *Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+ * Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
  * The overall run time complexity should be O(log (m+n)).
- * */
+ */
 public class FindMedianOfTwoArray {
 
     public static void main(String[] args) {
@@ -16,16 +16,16 @@ public class FindMedianOfTwoArray {
     /**
      * To get the median of and sorted array there are two ways if array has odd elements the arr[length/2] will be median
      * if array has 9 elements the arr[9/2] = arr[4] will be median
-     *
+     * <p>
      * if array has even number of elements like 10 we need to sum of central elements and the divide them by two
      * i.e len = 10; mid = 10/2 = 5 median = (arr[mid-1] + arr[mid])/2
-     *
+     * <p>
      * So Here we created a new array which will have all the elements from nums1 and nums2 in sorted order
      * and after that we will find out median
-     *
+     * <p>
      * TC - O(n+m) -- For storing element in sorted order +
      * SC - O(n+m) -- For creating new array
-     * */
+     */
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int arr[] = new int[nums1.length + nums2.length];
         int x = 0;
@@ -59,8 +59,7 @@ public class FindMedianOfTwoArray {
      * nums1 = {1, 3, 5, 7, 9};
      * nums2 = {2, 4, 6, 8};
      * We only need mid and mid-1 element to calculate median so  will will loop till mid
-     *
-     * */
+     */
     public static double findMedianSortedArraysOptimized(int[] nums1, int[] nums2) {
         int n = nums1.length + nums2.length;
         int mid = n / 2;
@@ -139,41 +138,46 @@ public class FindMedianOfTwoArray {
      * r2  - right array min element from arr2
      * Valid symmetry will be if l1 < r2 and l2 < r1
      * we will point l1 to the mid and l2
-     * */
+     */
     public static double findMedianSortedArraysMinimal(int[] nums1, int[] nums2) {
-       int n1 = nums1.length;
-       int n2 = nums2.length;
+        int n1 = nums1.length;
+        int n2 = nums2.length;
 
-       // we will always getting nums1 as smaller array
-       if(n1 > n2) return findMedianSortedArraysOptimized(nums2, nums1);
+        // we will always getting nums1 as smaller array
+        if (n1 > n2)
+            return findMedianSortedArraysOptimized(nums2, nums1);
 
-       int low = 0;
-       int high = n1;
-       //n1 = 3, n2 = 6 so left = (n1 +n2 +1)/2 ==> 10/2 = 5;
+        int low = 0;
+        int high = n1;
+        //n1 = 3, n2 = 6 so left = (n1 +n2 +1)/2 ==> 10/2 = 5;
         int left = (n1 + n2 + 1) / 2;
         int n = n1 + n2;
-        while(low <= high) {
-            int mid1 = (low + high) /2;
+        while (low <= high) {
+            int mid1 = (low + high) / 2;
             int mid2 = left - mid1;
             int l1 = Integer.MIN_VALUE;
             int l2 = Integer.MIN_VALUE;
             int r1 = Integer.MAX_VALUE;
             int r2 = Integer.MAX_VALUE;
 
-            if(mid1 < n1) r1 = nums1[mid1];
-            if(mid2 < n2) r2 = nums2[mid2];
-            if(mid1 -1 >=0) l1 = nums1[mid1 - 1];
-            if(mid2-1 >=0) l2 = nums2[mid1 - 1];
+            if (mid1 < n1)
+                r1 = nums1[mid1];
+            if (mid2 < n2)
+                r2 = nums2[mid2];
+            if (mid1 - 1 >= 0)
+                l1 = nums1[mid1 - 1];
+            if (mid2 - 1 >= 0)
+                l2 = nums2[mid1 - 1];
 
-            if(l1 < r2 && l2 < r1) {
-                if(n % 2 == 0) {
+            if (l1 < r2 && l2 < r1) {
+                if (n % 2 == 0) {
                     return (double) (Math.max(l1, l2) + Math.min(r1, r2)) / 2;
                 } else {
                     return Math.max(l1, l2);
                 }
             }
 
-            if(l1 > r2) {
+            if (l1 > r2) {
                 high = mid1 - 1;
             } else {
                 low = mid1 + 1;
@@ -182,5 +186,4 @@ public class FindMedianOfTwoArray {
 
         return -1;
     }
-
 }

@@ -99,28 +99,28 @@ public class IntersectionPointLL {
         ListNode temp1 = headA;
         ListNode temp2 = headB;
 
-        while(temp1 != null && temp2 != null) {
+        while (temp1 != null && temp2 != null) {
             temp1 = temp1.next;
             temp2 = temp2.next;
         }
 
-        if(temp1 == null) {
+        if (temp1 == null) {
             temp1 = headB;
-            while(temp2 != null) {
+            while (temp2 != null) {
                 temp1 = temp1.next;
                 temp2 = temp2.next;
             }
             temp2 = headA;
         } else {
             temp2 = headA;
-            while(temp1 != null) {
+            while (temp1 != null) {
                 temp1 = temp1.next;
                 temp2 = temp2.next;
             }
             temp1 = headB;
         }
 
-        while(temp1 != temp2) {
+        while (temp1 != temp2) {
             temp1 = temp1.next;
             temp2 = temp2.next;
         }
@@ -128,33 +128,29 @@ public class IntersectionPointLL {
         return temp1;
     }
 
-
-/**
- * TC = O(n1 + n2)
- *
- *
- * */
+    /**
+     * TC = O(n1 + n2)
+     */
     private static ListNode intersectionPointOptimalStriverMethod(final ListNode headA, final ListNode headB) {
         ListNode temp1 = headA;
         ListNode temp2 = headB;
 
-        while(temp1 != temp2) {
+        while (temp1 != temp2) {
             temp1 = temp1.next;
             temp2 = temp2.next;
 
-            if(temp1 == temp2) {
-                return  temp1;
+            if (temp1 == temp2) {
+                return temp1;
             }
 
-            if(temp1 == null) {
+            if (temp1 == null) {
                 temp1 = headB;
             }
 
-            if(temp2 == null) {
+            if (temp2 == null) {
                 temp2 = headA;
             }
         }
-
 
         return temp1;
     }

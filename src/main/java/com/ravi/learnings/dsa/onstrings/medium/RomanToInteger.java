@@ -24,7 +24,7 @@ package com.ravi.learnings.dsa.onstrings.medium;
  */
 public class RomanToInteger {
     public static void main(String[] args) {
-//        System.out.println(romanToInt("MCMXCIV"));
+        //        System.out.println(romanToInt("MCMXCIV"));
         System.out.println(intToRoman(3749));
     }
 
@@ -44,7 +44,7 @@ public class RomanToInteger {
                 default -> 0;
             };
 
-            if(val > preValue) {
+            if (val > preValue) {
                 val = val - (2 * preValue);
             }
 
@@ -54,18 +54,17 @@ public class RomanToInteger {
         return total;
     }
 
-
     public static String intToRoman(int num) {
 
         StringBuilder sb = new StringBuilder();
-        if(num >= 1000) {
+        if (num >= 1000) {
             final var i = num / 1000;
             sb.append("M".repeat(i));
             num = num % 1000;
         }
 
-        if(num >= 500) {
-            if(num >= 900) {
+        if (num >= 500) {
+            if (num >= 900) {
                 sb.append("CM");
                 num = num - 900;
             } else {
@@ -74,8 +73,8 @@ public class RomanToInteger {
             }
         }
 
-        if(num >= 100) {
-            if(num >= 400) {
+        if (num >= 100) {
+            if (num >= 400) {
                 sb.append("CD");
                 num = num - 400;
             } else {
@@ -85,8 +84,8 @@ public class RomanToInteger {
             }
         }
 
-        if(num >= 50) {
-            if(num >= 90) {
+        if (num >= 50) {
+            if (num >= 90) {
                 sb.append("XC");
                 num = num - 90;
             } else {
@@ -95,8 +94,8 @@ public class RomanToInteger {
             }
         }
 
-        if(num >= 10) {
-            if(num >= 40) {
+        if (num >= 10) {
+            if (num >= 40) {
                 sb.append("XL");
                 num = num - 40;
             } else {
@@ -106,8 +105,8 @@ public class RomanToInteger {
             }
         }
 
-        if(num >= 5) {
-            if(num >= 9) {
+        if (num >= 5) {
+            if (num >= 9) {
                 sb.append("IX");
                 num = num - 9;
             } else {
@@ -116,11 +115,11 @@ public class RomanToInteger {
             }
         }
 
-        if(num >= 4) {
+        if (num >= 4) {
             sb.append("IV");
             num = num - 4;
         }
-        if(num > 0) {
+        if (num > 0) {
 
             sb.append("I".repeat(num));
         }

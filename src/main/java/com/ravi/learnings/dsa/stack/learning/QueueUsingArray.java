@@ -5,7 +5,7 @@ import java.util.EmptyStackException;
 /**
  * In Queue it will be First-in-First-Out
  * Example of queue is simple bank line waiting for their turn
- * */
+ */
 public class QueueUsingArray {
     public static void main(String[] args) {
         final var myQueue = new MyQueue(5);
@@ -34,10 +34,7 @@ public class QueueUsingArray {
 
         System.out.println("Size is: " + myQueue.size());
         System.out.println(myQueue.pop());
-
-
     }
-
 }
 
 class MyQueue {
@@ -60,21 +57,21 @@ class MyQueue {
             throw new StackOverflowError("Stack is fully filled");
         }
         // We are adding first element in the stack
-        if(start == -1 && end == -1) {
-            start ++;
+        if (start == -1 && end == -1) {
+            start++;
             end++;
             arr[end] = element;
         } else { // We are already having element in the stack
-            end = (end + 1) % size; // When we are adding element when end is at last position, and currsize is not equal to size
+            end = (end + 1) %
+                    size; // When we are adding element when end is at last position, and currsize is not equal to size
             arr[end] = element;
         }
 
         currSize++;
-
     }
 
     public int pop() {
-        if(currSize == 0) {
+        if (currSize == 0) {
             throw new EmptyStackException();
         }
         start = (start) % size;
@@ -89,10 +86,9 @@ class MyQueue {
     }
 
     public int top() {
-        if(currSize != 0) {
+        if (currSize != 0) {
             return arr[start];
         }
         throw new EmptyStackException();
     }
-
 }

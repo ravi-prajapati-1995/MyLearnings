@@ -15,7 +15,6 @@ import java.util.LinkedList;
 public class BalancedParanthesis {
     public static void main(String[] args) {
         System.out.println(isValidStriver("([)]"));
-
     }
 
     /**
@@ -25,38 +24,39 @@ public class BalancedParanthesis {
      * Then ) came then check stack is it having opening bracket for this if yes continue else return false
      * Then [ push to stack and then { push to stack
      * after that } came  pop from stack if top element is {
-     *
+     * <p>
      * in that way we can solve this
      * TC: O(N)
      * SC: O(N) --- to storing the closing brackets
+     *
      * @return
      */
     public static boolean isValidStriver(String s) {
         final var linkedList = new LinkedList<Character>();
         final var charArray = s.toCharArray();
-        for(char c: charArray) {
-            if(c == '(' || c == '{' || c == '[') {
+        for (char c : charArray) {
+            if (c == '(' || c == '{' || c == '[') {
                 linkedList.push(c);
             } else {
-                if(linkedList.isEmpty()) {
+                if (linkedList.isEmpty()) {
                     return false;
                 }
                 final var pop = linkedList.pop();
-                if((c == ']' && pop != '[')) {
+                if ((c == ']' && pop != '[')) {
                     return false;
-                } else if((c == ')' && pop != '(')) {
+                } else if ((c == ')' && pop != '(')) {
                     return false;
-                } else if((c == '}' && pop != '{')) {
+                } else if ((c == '}' && pop != '{')) {
                     return false;
                 }
             }
         }
-        return  linkedList.isEmpty();
+        return linkedList.isEmpty();
     }
 
     /**
      * below logic will not work for String: ([)]
-     * */
+     */
     public static boolean isValid(String s) {
         final var charArray = s.toCharArray();
         int small = 0;

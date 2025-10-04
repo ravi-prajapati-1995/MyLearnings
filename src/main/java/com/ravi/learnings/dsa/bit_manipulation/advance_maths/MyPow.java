@@ -42,7 +42,6 @@ public class MyPow {
         return res;
     }
 
-
     public static double myPowRecursive(double x, int n) {
         long num = n;
         if (num < 0) {
@@ -52,15 +51,15 @@ public class MyPow {
 
         double res = 1;
         // Base case when n == 0
-        if(n == 0) {
+        if (n == 0) {
             return 1;
         }
 
         // When is odd number then we will do x * (x) ^ n-1
-        if(n % 2 == 1) {
+        if (n % 2 == 1) {
             return x * myPowRecursive(x, n - 1);
         }
-         return myPowRecursive(x * x, n/2);
+        return myPowRecursive(x * x, n / 2);
     }
 
     /**

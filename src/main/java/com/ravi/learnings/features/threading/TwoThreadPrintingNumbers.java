@@ -4,11 +4,11 @@ public class TwoThreadPrintingNumbers {
     boolean printEven = false;
 
     /*
-    * We need to put wait in condition because if it is without condition then thread will start and it will go in wait
-    * state, thread will wait until some other thready notify it
-    *
-    * Earlier we are adding wait without condition then both thread goes in wait state and noting is printing
-    * */
+     * We need to put wait in condition because if it is without condition then thread will start and it will go in wait
+     * state, thread will wait until some other thready notify it
+     *
+     * Earlier we are adding wait without condition then both thread goes in wait state and noting is printing
+     * */
     synchronized public void printOdd() {
         for (int i = 1; i < 50; i = i + 2) {
             try {
@@ -68,6 +68,4 @@ public class TwoThreadPrintingNumbers {
         thread1.start();
         thread2.start();
     }
-
-
 }

@@ -1,7 +1,6 @@
 package com.ravi.learnings.dsa.bit_manipulation.advance_maths;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

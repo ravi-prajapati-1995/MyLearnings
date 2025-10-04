@@ -12,16 +12,16 @@ import java.util.LinkedList;
  * st.top() --- Now as it is queue FIFO it will give us 4 so we will need to make adjustment so that it return 9
  * to make it work as stack we will move all the elements before 9 after the 9
  * So after moving when we call st.top() then it will return 9 queue look like [9, 4]
- *  st.push(2) -- [9, 4, 2]
- *  st.top() -- 9
- *  So move all the element before to after 2 -- [2, 9, 4]
- *  st.push(5)
- *  st.top() --- 5
- *  move items after 5 --- [5, 2, 9, 4]
- *  st.pop() -- 5
- *  st.pop() -- 2
- *  st.top() -- 9 -- [9, 4 ]
- * */
+ * st.push(2) -- [9, 4, 2]
+ * st.top() -- 9
+ * So move all the element before to after 2 -- [2, 9, 4]
+ * st.push(5)
+ * st.top() --- 5
+ * move items after 5 --- [5, 2, 9, 4]
+ * st.pop() -- 5
+ * st.pop() -- 2
+ * st.top() -- 9 -- [9, 4 ]
+ */
 public class StackUsingQueue {
 
     public static void main(String[] args) {
@@ -30,25 +30,23 @@ public class StackUsingQueue {
         myStack.push(4);
         myStack.push(3);
 
-//        System.out.println(myStack.top());
+        //        System.out.println(myStack.top());
         myStack.pop();
-//        System.out.println(myStack.top());
+        //        System.out.println(myStack.top());
 
         myStack.push(2);
         myStack.push(1);
 
         System.out.println(myStack.top());
-
     }
 }
 
 /**
  * TC - push operation taking O(n) other taking O(1)
- * */
+ */
 
 class MyNewStack {
     private final LinkedList<Integer> queue;
-
 
     MyNewStack() {
         queue = new LinkedList<>();

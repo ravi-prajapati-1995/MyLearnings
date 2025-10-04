@@ -29,6 +29,7 @@ fetched_data = {
 }
 start_date = ""
 
+
 async def search_with_serpapi(query: str, location: str, site: str, num: int = 15) -> List[Dict[str, Any]]:
     params = {
         "engine": "google",
@@ -57,6 +58,7 @@ async def search_with_serpapi(query: str, location: str, site: str, num: int = 1
     logger.info(f"Total result : {len(results)} for: {location}")
     return results
 
+
 async def search_with_google_job_api(location: str, num: int = 15) -> List[Dict[str, Any]]:
     all_jobs = []
     for kw in SPONSORSHIP_KEYWORDS:
@@ -65,7 +67,7 @@ async def search_with_google_job_api(location: str, num: int = 15) -> List[Dict[
             "q": f"Java developer {kw}",
             "num": num,
             "location": location,
-            "tbs": "qdr:m",# Getting data for pas month qdr:d For past 24 hrs
+            "tbs": "qdr:m",  # Getting data for pas month qdr:d For past 24 hrs
             "api_key": os.environ.get("SERPAPI_KEY"),
         }
         __search = GoogleSearch(params)
@@ -86,7 +88,8 @@ async def search_with_google_job_api(location: str, num: int = 15) -> List[Dict[
         results.append({
             "title": item.get("title"),
             "link": item.get("apply_options")[0]["link"] if item.get('apply_options') else None,
-            "snippet": (item.get("description")[:200] + "…") if item.get("description") and len(item.get("description")) > 200 else item.get("description"),
+            "snippet": (item.get("description")[:200] + "…") if item.get("description") and len(
+                item.get("description")) > 200 else item.get("description"),
             "source": item.get("via"),
             "location": item.get("location"),
             "date": date_obj
@@ -97,6 +100,7 @@ async def search_with_google_job_api(location: str, num: int = 15) -> List[Dict[
 
     logger.info(f"Total result is: {len(results)} for country:{location}")
     return results
+
 
 async def eu_job_search(location=GOOGLE_SEARCH) -> List[Dict[str, Any]]:
     global fetched_data
@@ -185,8 +189,7 @@ async def search(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await send_job_message(data, update)
 
 
-
-async def send_job_message(results, update:Update):
+async def send_job_message(results, update: Update):
     filtered_results = [
         item for item in results
         if not any(keyword.lower() in item["snippet"].lower() for keyword in FILTER_KEYWORD)
@@ -205,6 +208,7 @@ async def check(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "dat ja bhai search kar reya hu"
     )
+
 
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
     print(f"⚠️ Exception: {context.error}")

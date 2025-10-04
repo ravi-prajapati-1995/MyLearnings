@@ -3,9 +3,10 @@ package com.ravi.learnings.systemdesign.designpatterns.behaviroal.observer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ObservableImpl implements Observable<Integer>{
+public class ObservableImpl implements Observable<Integer> {
     private int data;
     private static final List<Observer<Integer>> observers = new ArrayList<>();
+
     @Override
     public void add(final Observer<Integer> observer) {
         observers.add(observer);

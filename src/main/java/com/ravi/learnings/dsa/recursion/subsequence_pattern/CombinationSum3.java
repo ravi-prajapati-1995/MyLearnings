@@ -77,7 +77,7 @@ public class CombinationSum3 {
             int targetSum
     ) {
         count++;
-        if(number > 9) {
+        if (number > 9) {
             return;
         }
         if (sum > targetSum || l1.size() > k) {
@@ -85,7 +85,7 @@ public class CombinationSum3 {
         }
 
         if (l1.size() == k) {
-            if(sum == targetSum)
+            if (sum == targetSum)
                 l2.add(new ArrayList<>(l1));
             return;
         }
@@ -96,7 +96,7 @@ public class CombinationSum3 {
             if (sum < targetSum && l1.size() <= k) {
                 l1.add(i);
                 sum = sum + i;
-                getNumberStriverWay(k, l1, l2, i , sum, targetSum);
+                getNumberStriverWay(k, l1, l2, i, sum, targetSum);
 
                 sum = sum - i;
                 l1.removeLast();

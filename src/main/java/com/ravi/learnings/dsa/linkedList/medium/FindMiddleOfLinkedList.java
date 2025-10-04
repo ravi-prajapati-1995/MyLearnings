@@ -19,7 +19,7 @@ public class FindMiddleOfLinkedList {
      * When fast pointer will at end low will be at mid
      * we need to check if fastPointer != null and fastPointer.next != null because in case of odd number .next
      * points to null and in case of even number of elements it will stand fastPointer to null
-     *
+     * <p>
      * TC = O(n/2)
      * SC -> O(1)
      */

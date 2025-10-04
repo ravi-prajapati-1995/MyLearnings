@@ -2,9 +2,9 @@ package com.ravi.learnings.systemdesign.designpatterns.creational.factory.patter
 
 /**
  * Shape has 3 subclasses Circle, Square and Rectangle
- *
+ * <p>
  * These classes has a relation ship with Shape
- * */
+ */
 public interface Shape {
     void draw();
 }

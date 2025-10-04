@@ -8,9 +8,9 @@ public class SwapNumberUsingBitOperators {
     /**
      * when we do 5 ^ 5 = 0
      * lets take example a = 4 (100) and b = 6(110)
-     *
+     * <p>
      * 4 ^ 4 = 100 ^ 100
-     * */
+     */
     public static void swap(int a, int b) {
 
     }

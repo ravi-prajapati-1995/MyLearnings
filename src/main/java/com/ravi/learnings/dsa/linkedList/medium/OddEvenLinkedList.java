@@ -68,7 +68,7 @@ public class OddEvenLinkedList {
     /**
      * Given: 1 -> 2 -> 3 -> 4 -> 5 -> 6
      * Result: 1 -> 3 -> 5 -> 2 -> 4 -> 6
-     * */
+     */
     public static ListNode oddEvenListOptimal(ListNode head) {
         if (head == null || head.next == null) {
             return head;

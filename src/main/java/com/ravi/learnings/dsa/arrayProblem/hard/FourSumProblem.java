@@ -1,12 +1,14 @@
 package com.ravi.learnings.dsa.arrayProblem.hard;
 
-import java.math.BigInteger;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 public class FourSumProblem {
     public static void main(String[] args) {
-        int[] nums = {-1,0,-5,-2,-2,-4,0,1,-2};
+        int[] nums = {-1, 0, -5, -2, -2, -4, 0, 1, -2};
         System.out.println(fourSumOptimal(nums, -9));
     }
 
@@ -17,10 +19,10 @@ public class FourSumProblem {
         for (int i = 0; i < n - 2; i++) {
             for (int j = i + 1; j < n - 1; j++) {
                 for (int k = j + 1; k < n; k++) {
-                    for (int l = k + 1; l < n;l++) {
-                        if (nums[i] + nums[j] + nums[k] + nums[l] ==target) {
+                    for (int l = k + 1; l < n; l++) {
+                        if (nums[i] + nums[j] + nums[k] + nums[l] == target) {
                             final var list = Stream.of(nums[i], nums[j], nums[k], nums[l]).sorted().toList();
-                                output.add(list);
+                            output.add(list);
                         }
                     }
                 }
@@ -37,12 +39,17 @@ public class FourSumProblem {
             for (int j = i + 1; j < n - 1; j++) {
                 Set<Long> set = new HashSet<>();
                 for (int k = j + 1; k < n; k++) {
-                    long rem = (long)target - ((long)nums[i] + (long)nums[j] + (long)nums[k]);
+                    long rem = (long) target - ((long) nums[i] + (long) nums[j] + (long) nums[k]);
                     if (set.contains(rem)) {
-                        final var list = Stream.of(nums[i], nums[j], nums[k], rem).map(Number::intValue).sorted().toList();
+                        final var list = Stream.of(
+                                nums[i],
+                                nums[j],
+                                nums[k],
+                                rem
+                        ).map(Number::intValue).sorted().toList();
                         output.add(list);
                     }
-                    set.add((long)nums[k]);
+                    set.add((long) nums[k]);
                 }
             }
         }
@@ -58,11 +65,11 @@ public class FourSumProblem {
         Set<List<Integer>> output = new HashSet<>();
 
         final var n = nums.length;
-        for (int i = 0; i < n ; i++) {
-            if(i > 0 && nums[i] == nums[i-1]) {
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
-            for (int j = i + 1; j < n ; j++) {
+            for (int j = i + 1; j < n; j++) {
                 if (j > i + 1 && nums[j] == nums[j - 1]) {
                     continue;
                 }
@@ -78,8 +85,10 @@ public class FourSumProblem {
                         output.add(list);
                         k++;
                         l--;
-                        while(k < l && nums[k] == nums[k+1]) k++;
-                        while(l > k && nums[l] == nums[l-1]) l--;
+                        while (k < l && nums[k] == nums[k + 1])
+                            k++;
+                        while (l > k && nums[l] == nums[l - 1])
+                            l--;
                     } else if (sum > target) {
                         l--;
                     } else {

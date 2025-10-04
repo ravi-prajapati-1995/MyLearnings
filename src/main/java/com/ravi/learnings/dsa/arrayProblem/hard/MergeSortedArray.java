@@ -57,7 +57,6 @@ public class MergeSortedArray {
                 j++;
             }
         }
-
     }
 
     /*
@@ -109,7 +108,6 @@ public class MergeSortedArray {
 
         System.out.println(Arrays.toString(nums1));
         System.out.println(Arrays.toString(nums2));
-
     }
 
     /*
@@ -137,7 +135,6 @@ public class MergeSortedArray {
 
         Arrays.sort(nums1);
         Arrays.sort(nums2);
-
 
         System.out.println(Arrays.toString(nums1));
         System.out.println(Arrays.toString(nums2));

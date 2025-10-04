@@ -1,7 +1,6 @@
 package com.ravi.learnings.dsa.recursion.subsequence_pattern;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * <a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/">Problem Link</a>
@@ -34,14 +33,14 @@ public class LetterCombinationPhoneNumber {
      * To solve this problem followed below :
      * 1. Create a map that will have characters corresponding to number
      * 2. Then for each character on that number call recursively this function i.e 23
-     *  While for 0th idx process for 2 -> we can have a, b, c so we will process for all chars separately to get all
-     *  the combinations then increase the idx so we reach with a -> (def) and for b and c also
-     *  3. Base case when idx become equal to the length of string mean we processed all the string
-     *  4. if string is empty return empty list.
-     *
-     *  TC -> O(4^N * N) -> As for each number in wrost case we have 4 characters so we call recursion 4 times * N
-     *  for each time processing
-     *  SC -> O(N) for storing the result
+     * While for 0th idx process for 2 -> we can have a, b, c so we will process for all chars separately to get all
+     * the combinations then increase the idx so we reach with a -> (def) and for b and c also
+     * 3. Base case when idx become equal to the length of string mean we processed all the string
+     * 4. if string is empty return empty list.
+     * <p>
+     * TC -> O(4^N * N) -> As for each number in wrost case we have 4 characters so we call recursion 4 times * N
+     * for each time processing
+     * SC -> O(N) for storing the result
      */
     private static void myFunction(
             List<String> strings, final String digits, int idx,

@@ -3,7 +3,7 @@ package com.ravi.learnings.systemdesign.designpatterns.behaviroal.observer.weath
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeatherInfoPublisherImpl implements  WeatherInfoPublisher{
+public class WeatherInfoPublisherImpl implements WeatherInfoPublisher {
     private final List<WeatherSubscriber> subscribers = new ArrayList<>();
     private int temperature;
 
@@ -24,10 +24,9 @@ public class WeatherInfoPublisherImpl implements  WeatherInfoPublisher{
 
     @Override
     public void update(final int temperature) {
-        if(temperature != this.temperature) {
+        if (temperature != this.temperature) {
             this.temperature = temperature;
             notifySubscribers();
         }
-
     }
 }

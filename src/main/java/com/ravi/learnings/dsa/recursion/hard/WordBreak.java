@@ -28,7 +28,7 @@ public class WordBreak {
 
     public static void main(String[] args) {
         //        final var wordBreak = wordBreak1("cars", List.of("car","ca","rs"));
-        final var wordBreak = wordBreak2("cbca", List.of("bc","ca"), 0);
+        final var wordBreak = wordBreak2("cbca", List.of("bc", "ca"), 0);
         System.out.println(wordBreak);
     }
 
@@ -102,9 +102,9 @@ public class WordBreak {
      * @return
      */
     public static boolean wordBreak2(String s, List<String> wordDict, int idx) {
-       if(idx == s.length()) {
-           return true;
-       }
+        if (idx == s.length()) {
+            return true;
+        }
         String st = "";
         boolean result = false;
         for (int i = idx; i < s.length(); i++) {

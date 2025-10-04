@@ -4,7 +4,7 @@ public interface LogHandler {
     int INFO = 1;
     int DEBUG = 2;
     int WARN = 3;
-    int ERROR =4;
+    int ERROR = 4;
 
     String RESET = "\u001B[0m";
     String RED = "\u001B[31m";
@@ -16,5 +16,6 @@ public interface LogHandler {
     String WHITE = "\u001B[37m";
 
     void setNext(LogHandler handler);
+
     void log(int level, String message);
 }

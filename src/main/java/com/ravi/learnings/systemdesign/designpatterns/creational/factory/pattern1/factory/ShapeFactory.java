@@ -8,15 +8,14 @@ import com.ravi.learnings.systemdesign.designpatterns.creational.factory.pattern
 public class ShapeFactory {
 
     public static Shape getShape(String type) {
-        if("circle".equalsIgnoreCase(type)){
+        if ("circle".equalsIgnoreCase(type)) {
             return new Circle();
-        } else if("square".equalsIgnoreCase(type)) {
+        } else if ("square".equalsIgnoreCase(type)) {
             return new Square();
-        } else if("rectangle".equalsIgnoreCase(type)) {
+        } else if ("rectangle".equalsIgnoreCase(type)) {
             return new Rectangle();
         } else {
             throw new IllegalArgumentException("Invalid shape type");
         }
-
     }
 }

@@ -14,7 +14,7 @@ public class CountGoodNumbers {
     public static void main(String[] args) {
         final var goodNumbers = countGoodNumbersOptimal(806166225460393l);
         System.out.println(goodNumbers);
-//        System.out.println(myPow(2, 10, 10000000));
+        //        System.out.println(myPow(2, 10, 10000000));
     }
 
     /**
@@ -46,7 +46,7 @@ public class CountGoodNumbers {
             return (x * (myPow(x, n - 1, mod) % mod)) % mod;
         }
 
-        return myPow((x * x) % mod,  n / 2, mod) % mod;
+        return myPow((x * x) % mod, n / 2, mod) % mod;
     }
 
     /**

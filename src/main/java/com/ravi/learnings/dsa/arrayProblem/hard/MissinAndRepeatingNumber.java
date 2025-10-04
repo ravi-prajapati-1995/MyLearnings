@@ -1,6 +1,5 @@
 package com.ravi.learnings.dsa.arrayProblem.hard;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 /**
@@ -44,7 +43,6 @@ public class MissinAndRepeatingNumber {
             if (missing != 0 && repeating != 0) {
                 break;
             }
-
         }
 
         integers.add(missing);
@@ -54,11 +52,10 @@ public class MissinAndRepeatingNumber {
 
     /**
      * Here we are maintaining a extra array with len + 1 array length because we are storing n natural numbers
-     *
-     * */
+     */
     static ArrayList<Integer> findTwoElementBetterSolution(int arr[]) {
         final var integers = new ArrayList<Integer>();
-        int temp[] = new int[arr.length+1];
+        int temp[] = new int[arr.length + 1];
         int missing = 0;
         int repeating = 0;
         for (int i = 0; i < arr.length; i++) {
@@ -67,9 +64,9 @@ public class MissinAndRepeatingNumber {
         }
 
         for (int i = 1; i <= arr.length; i++) {
-            if(temp[i] == 0) {
+            if (temp[i] == 0) {
                 missing = i;
-            } else if(temp[i] == 2) {
+            } else if (temp[i] == 2) {
                 repeating = i;
             }
         }
@@ -82,14 +79,13 @@ public class MissinAndRepeatingNumber {
      * Here assume missing number is X and repeating number is Y
      * So then we observe if we subtract s1 - sum1 = someNumber we only get x-y = someNumber
      * Same when we did square of s1^2 + sum2^2 = someNumber which is        x^2 - y^2 = someNumber1
-     *
+     * <p>
      * Using these equation we can drive formula
      * x^2 - y^2 = (x+y) * (x-y)  = someNumber
      * Here we can put value of x-y so we got value for x+y = someNewNumber
-     *
+     * <p>
      * so We have value for x+y and x-y
-     *
-     * */
+     */
     static ArrayList<Integer> findTwoElementOptimalSolution(int arr[]) {
         final var integers = new ArrayList<Integer>();
         long n = arr.length;
@@ -98,28 +94,25 @@ public class MissinAndRepeatingNumber {
         for (final int j : arr) {
             s1 += j;
             s2 += (long) j * j;
-
         }
 
-
-        long sum = (n*(n + 1)) / 2; // for getting sum of n natural numbers
-        long sum2 = (n*(n + 1) * ((2*n)+1)) / 6; // for getting sum of squares of n natural numbers
+        long sum = (n * (n + 1)) / 2; // for getting sum of n natural numbers
+        long sum2 = (n * (n + 1) * ((2 * n) + 1)) / 6; // for getting sum of squares of n natural numbers
 
         long firstValue = s1 - sum; // This is our x-y
         long secondValue = s2 - sum2; // this is x^2 - Y^2 which is  equals to (x+y)(x-y)
 
-        secondValue = secondValue/firstValue; // x+y
+        secondValue = secondValue / firstValue; // x+y
         /*
-        * x+y = secondValue
-        * x-y = firstValue
-        * -------------------------
-        * 2x = secondValue + firstValue
-        * ----------------------------
-        * x = secondValue + firstValue/2
-        * */
+         * x+y = secondValue
+         * x-y = firstValue
+         * -------------------------
+         * 2x = secondValue + firstValue
+         * ----------------------------
+         * x = secondValue + firstValue/2
+         * */
         long x = (firstValue + secondValue) / 2;
         long y = secondValue - x;
-
 
         integers.add(Long.valueOf(x).intValue());
         integers.add(Long.valueOf(y).intValue());

@@ -1,4 +1,4 @@
---- 
+---
 apiVersion: apps/v1 # Api version 
 kind: Deployment # Kind of kubernetes object we want to create
 metadata:
@@ -17,20 +17,20 @@ spec:
         app: pod-info
     spec:
       containers: # Containers that we want to run in the pods
-      - name: pod-info-container
-        image: kimschles/pod-info-app:latest
-        ports:
-        - containerPort: 3000
-        env: # Env name for the container
-          - name: POD_NAME
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.name
-          - name: POD_NAMESPACE
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.namespace
-          - name: POD_IP
-            valueFrom:
-              fieldRef:
-                fieldPath: status.podIP
+        - name: pod-info-container
+          image: kimschles/pod-info-app:latest
+          ports:
+            - containerPort: 3000
+          env: # Env name for the container
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP

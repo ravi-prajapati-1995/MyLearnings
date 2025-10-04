@@ -7,7 +7,7 @@ import java.util.Stack;
  *
  * <a href="https://www.youtube.com/watch?v=MOGBRkkOhkY">Video Link by Aditya Verma</a>
  * Given a stack, the task is to sort it such that the top of the stack has the greatest element.
- *
+ * <p>
  * Input:
  * Stack: 11 2 32 3 41
  * Output: 41 32 11 3 2
@@ -34,9 +34,9 @@ public class SortStack {
      * 2. We will pop out current element and store it and call sort function for remianing
      * 3. After calling sort method call insert function that will insert current element at right position
      * 4. Then return the sorted stack
-     * */
+     */
     public static Stack<Integer> sort(Stack<Integer> s) {
-        if(s.size() == 1) {
+        if (s.size() == 1) {
             return s;
         }
 
@@ -55,9 +55,9 @@ public class SortStack {
      * 3. if no then pop out element and store it
      * 4. Call insert for remaining elements
      * 5. After that push back popped element
-     * */
+     */
     private static void insert(final Stack<Integer> sortedStack, final Integer currentElement) {
-        if(sortedStack.isEmpty() || sortedStack.peek() < currentElement) {
+        if (sortedStack.isEmpty() || sortedStack.peek() < currentElement) {
             sortedStack.push(currentElement);
             return;
         }

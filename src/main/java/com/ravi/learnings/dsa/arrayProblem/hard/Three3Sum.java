@@ -57,19 +57,17 @@ public class Three3Sum {
                 }
 
                 set.add(nums[j]);
-
             }
         }
         return output.stream().toList();
     }
-
 
     /**
      * For better solution time complexity is okay O(n2) but we can further reduce space complexity
      * {-1,0,1,2,-1,-4} -> {-4, -1, -1, 0, 1, 2}
      * Time Complexity: O(nlogn) -- For sorting the array + O(n2) we are using one for loop and while loop in it so it
      * will be nearly so time complexity will be: O(n2)
-     *
+     * <p>
      * Space Complexity: O(n) for storing the output as we are not using any other space
      */
     public static List<List<Integer>> threeSum1OptionOtimal(int[] nums) {
@@ -77,20 +75,22 @@ public class Three3Sum {
         Set<List<Integer>> output = new HashSet<>();
         final var n = nums.length;
         for (int i = 0; i < n; i++) {
-            int j = i+1;
-            int k = n-1;
-            if(i > 0 && nums[i] == nums[i-1]) {
+            int j = i + 1;
+            int k = n - 1;
+            if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
             while (k > j) {
                 final var sum = nums[i] + nums[j] + nums[k];
-                if(sum == 0) {
+                if (sum == 0) {
                     output.add(List.of(nums[i], nums[j], nums[k]));
                     j++;
                     k--;
-                    while(nums[j] == nums[j+1]) j++;
-                    while(nums[k] == nums[k-1]) k--;
-                } else if(sum < 0) {
+                    while (nums[j] == nums[j + 1])
+                        j++;
+                    while (nums[k] == nums[k - 1])
+                        k--;
+                } else if (sum < 0) {
                     j++;
                 } else {
                     k--;
@@ -99,5 +99,4 @@ public class Three3Sum {
         }
         return output.stream().toList();
     }
-
 }

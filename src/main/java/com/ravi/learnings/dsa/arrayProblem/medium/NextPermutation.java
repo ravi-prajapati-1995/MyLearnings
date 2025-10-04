@@ -1,38 +1,41 @@
 package com.ravi.learnings.dsa.arrayProblem.medium;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static com.ravi.learnings.dsa.sorting.InsertionSort.swap;
 
 public class NextPermutation {
     /*
-    *   For most optimal solution we need to keep in mind 3 things
-    * 1. Longer prefix match where a[i] < a[i+1]
-    * 2. find someone which is greater than 1 but smallest one so that you stay close
-    * 3. Try to place remaining in sorted order
-    */
+     *   For most optimal solution we need to keep in mind 3 things
+     * 1. Longer prefix match where a[i] < a[i+1]
+     * 2. find someone which is greater than 1 but smallest one so that you stay close
+     * 3. Try to place remaining in sorted order
+     */
     public static void main(String[] args) {
-        int[] arr = {2,3,1};
+        int[] arr = {2, 3, 1};
         findNextPermunation(arr);
         System.out.println(Arrays.toString(arr));
     }
 
     private static int[] findNextPermunation(final int[] arr) {
         int breakPointIdx = -1;
-       int n = arr.length;
-        for(int i = n-2; i >= 0; i--) {
-            if(arr[i] < arr[i+1]) {
+        int n = arr.length;
+        for (int i = n - 2; i >= 0; i--) {
+            if (arr[i] < arr[i + 1]) {
                 breakPointIdx = i;
                 break;
             }
         }
 
         List<Integer> list = new ArrayList<>();
-        for(int i = breakPointIdx + 1; i < arr.length ; i++) {
+        for (int i = breakPointIdx + 1; i < arr.length; i++) {
             list.add(arr[i]);
         }
         Collections.reverse(list);
-        if(breakPointIdx == -1) {
+        if (breakPointIdx == -1) {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = list.get(i);
             }
@@ -49,6 +52,4 @@ public class NextPermutation {
         }
         return null;
     }
-
-
 }

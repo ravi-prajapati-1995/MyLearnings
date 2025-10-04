@@ -12,11 +12,9 @@ public class RotateMatrixBy90Degree {
 
      */
     public static void main(String[] args) {
-        int[][] matrix = {{1,2, 3},{4,5, 6},{7, 8, 9}};
+        int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         rotateMatrixBy90OptimalSOl(matrix);
         System.out.println(Arrays.deepToString(matrix));
-
-
     }
 
     private static void rotateMatrixBy90(final int[][] matrix) {
@@ -42,41 +40,41 @@ public class RotateMatrixBy90Degree {
      */
     private static void rotateMatrixBy90OptimalSOl(final int[][] matrix) {
         transposeMatrix(matrix);
-        for (int i = 0; i < matrix.length ; i++) {
+        for (int i = 0; i < matrix.length; i++) {
             reverse(matrix[i]);
         }
     }
-        /**
-            In transpose we will change rows to column and column to rows
-            transpose of : [1, 2, 3]
-                           [4, 5, 6]
-                           [7, 8, 9]
-            will be:
-                           [1, 4, 7]
-                           [2, 5, 8]
-                           [3, 6, 9]
 
-            Here we can carefully observe that every a[i][j] swap with a[j][i]
-         we will run loop till n-2 rows because if we swap things above diagonal all values swapped like a[1][3] swapped with a[3][1]
-         **/
+    /**
+     * In transpose we will change rows to column and column to rows
+     * transpose of : [1, 2, 3]
+     * [4, 5, 6]
+     * [7, 8, 9]
+     * will be:
+     * [1, 4, 7]
+     * [2, 5, 8]
+     * [3, 6, 9]
+     * <p>
+     * Here we can carefully observe that every a[i][j] swap with a[j][i]
+     * we will run loop till n-2 rows because if we swap things above diagonal all values swapped like a[1][3] swapped with a[3][1]
+     **/
 
-
-        private static void transposeMatrix(final int[][] matrix) {
-            int size = matrix.length;
-            for (int i = 0; i < size - 1 ; i++) {
-                for (int j = i+1; j < size; j++) {
-                    int temp = matrix[i][j];
-                    matrix[i][j] = matrix[j][i];
-                    matrix[j][i] = temp;
-                }
+    private static void transposeMatrix(final int[][] matrix) {
+        int size = matrix.length;
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = i + 1; j < size; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
             }
         }
+    }
 
     private static void reverse(final int[] arr) {
         int p1 = 0;
-        int p2 = arr.length-1;
+        int p2 = arr.length - 1;
 
-        while(p1 < p2) {
+        while (p1 < p2) {
             int temp = arr[p1];
             arr[p1] = arr[p2];
             arr[p2] = temp;

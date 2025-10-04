@@ -36,14 +36,14 @@ public class InfixToPostfix {
             } else if (ch == '(') {
                 st.push(ch); // In case opening bracket we will directly push to stack
             } else if (ch == ')') { // when we got closing bracket we will got till opening bracket and push all the
-                                    // elements in the result
+                // elements in the result
                 while (!st.empty() && st.peek() != '(') {
                     result.append(st.pop());
                 }
                 // as we got starting bracket (
                 st.pop();
             } else { // When we got operator then we need pop all the operator from stack which has
-                     // greater than or equal priority
+                // greater than or equal priority
                 // like the comming operator
                 while (!st.isEmpty() && priority(st.peek()) >= priority(ch) && ch != '^') {
                     result.append(st.pop());

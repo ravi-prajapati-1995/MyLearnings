@@ -8,7 +8,7 @@ public class WarnLogHandler extends BaseLogHandler {
     @Override
     public void log(final int level, final String message) {
         if (level == WARN) {
-            System.out.println(CYAN  + message + RESET);
+            System.out.println(CYAN + message + RESET);
         } else {
             super.log(level, message);
         }

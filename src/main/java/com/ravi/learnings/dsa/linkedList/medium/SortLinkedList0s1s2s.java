@@ -77,7 +77,7 @@ public class SortLinkedList0s1s2s {
      * 2. Take dummy0, dummy1 and dummy2 to track the head
      * 3. Add elements in each node depending on value
      * 4. after all iteration connect head0 with dummy1 and head1 with dummy 2 based on conditions
-     * */
+     */
     static Node segregateOptimal(Node head) {
         if (head == null || head.next == null) {
             return head;
@@ -109,7 +109,7 @@ public class SortLinkedList0s1s2s {
         }
 
         //When we don't have any 1s we will directly add dummy2.next,
-        if(dummy1.next == null) {
+        if (dummy1.next == null) {
             head0.next = dummy2.next;
         } else {
             head0.next = dummy1.next;

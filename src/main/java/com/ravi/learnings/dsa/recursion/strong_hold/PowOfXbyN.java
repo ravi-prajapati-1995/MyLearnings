@@ -43,9 +43,9 @@ public class PowOfXbyN {
             x = 1 / x;
         }
         double res = 1;
-        if(n % 2 ==0) {
+        if (n % 2 == 0) {
             res = x;
-            n = n-1;
+            n = n - 1;
         }
 
         while (n > 0) {

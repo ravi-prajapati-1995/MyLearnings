@@ -13,11 +13,10 @@ public class PreOrderTraversal {
         root.right = new TreeNode(2);
         root.right.left = new TreeNode(3);
         root.right.right = new TreeNode(4);
-//        root.left.right = new TreeNode(5);
+        //        root.left.right = new TreeNode(5);
 
         final var integers = preorderTraversal(root);
         System.out.println(integers);
-
     }
 
     public static List<Integer> preorderTraversal(TreeNode root) {
@@ -25,6 +24,7 @@ public class PreOrderTraversal {
         preOrderTraversal(root, arrayList);
         return arrayList;
     }
+
     public static List<Integer> preorderTraversalItrative(TreeNode root) {
         final var arrayList = new ArrayList<Integer>();
 

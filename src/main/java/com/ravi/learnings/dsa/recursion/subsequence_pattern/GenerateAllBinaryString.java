@@ -6,10 +6,10 @@ import java.util.List;
 /**
  * <a href="https://www.geeksforgeeks.org/problems/generate-all-binary-strings/1">Problem Link</a>
  * Given an integer N , Print all binary strings of size N which do not contain consecutive 1s.
- *
+ * <p>
  * A binary string is that string which contains only 0 and 1.
  * Example 1:
- *
+ * <p>
  * Input:
  * N = 3
  * Output:
@@ -31,17 +31,16 @@ public class GenerateAllBinaryString {
      * 3. For each step we have 2 values either 0 or 1
      * 4. So we recursively call for 0 and 1
      * 5. Finally return the list
-     * */
+     */
     public static List<String> generateBinaryStrings(int n) {
         // code here
         var list = new ArrayList<String>();
         generateNumbers(n, "", list);
         return list;
-
     }
 
-    public  static void generateNumbers(int curr, String str, List<String> list) {
-        if(curr == 0) {
+    public static void generateNumbers(int curr, String str, List<String> list) {
+        if (curr == 0) {
             list.add(str);
             return;
         }

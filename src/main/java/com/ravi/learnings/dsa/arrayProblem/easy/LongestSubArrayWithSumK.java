@@ -34,17 +34,17 @@ public class LongestSubArrayWithSumK {
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
-            if(sum == k) {
-                maxLen = i+1;
+            if (sum == k) {
+                maxLen = i + 1;
             }
             int rem = sum - k;
-            if(map.containsKey(rem)) {
+            if (map.containsKey(rem)) {
                 final var index = map.get(rem);
                 maxLen = Math.max(maxLen, i - index);
             }
 
             //we need to add element only when that sum is not existed previously
-            if(!map.containsKey(sum)) {
+            if (!map.containsKey(sum)) {
                 map.put(sum, i);
             }
         }
@@ -57,18 +57,16 @@ public class LongestSubArrayWithSumK {
         int j = 0;
         int sum = 0;
         while (i < arr.length) {
-            if(sum > k) {
+            if (sum > k) {
                 sum = sum - arr[j];
                 j++;
             } else {
-                if(sum == k) {
+                if (sum == k) {
                     maxLen = Math.max(i - j, maxLen);
                 }
                 sum += arr[i];
                 i++;
-
             }
-
         }
 
         return maxLen;

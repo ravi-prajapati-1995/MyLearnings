@@ -8,7 +8,7 @@ public class ErrorLogHandler extends BaseLogHandler {
     @Override
     public void log(final int level, final String message) {
         if (level == ERROR) {
-            System.out.println(RED  + message + RESET);
+            System.out.println(RED + message + RESET);
         } else {
             super.log(level, message);
         }

@@ -7,8 +7,8 @@ public class PrintPascalTriangle {
     public static void main(String[] args) {
         final var generate = generateOptimal(6);
         System.out.println(generate);
-//        final var integers = printNthRowOptimal(6);
-//        System.out.println(integers);
+        //        final var integers = printNthRowOptimal(6);
+        //        System.out.println(integers);
 
     }
 
@@ -20,8 +20,8 @@ public class PrintPascalTriangle {
      */
     public static int getNumberAtRowAndColInPascalTriangle(int row, int col) {
         int number = 1;
-        for(int i = 0; i < col; i++) {
-            number = (number * (row - i)) / (i+1);
+        for (int i = 0; i < col; i++) {
+            number = (number * (row - i)) / (i + 1);
         }
         return number;
     }
@@ -35,12 +35,13 @@ public class PrintPascalTriangle {
      */
     public static List<Integer> printNthRow(int n) {
         List<Integer> list = new ArrayList<>();
-        for(int i=0; i<n;i++) {
-            final var numberAtRowAndColInPascalTriangle = getNumberAtRowAndColInPascalTriangle(n-1, i);
+        for (int i = 0; i < n; i++) {
+            final var numberAtRowAndColInPascalTriangle = getNumberAtRowAndColInPascalTriangle(n - 1, i);
             list.add(numberAtRowAndColInPascalTriangle);
         }
         return list;
     }
+
     /**
      * Below solution we drived from intuition:
      * 6th row elements : [1, 5, 10, 10, 5, 1]
@@ -53,13 +54,14 @@ public class PrintPascalTriangle {
         int result = 1;
         List<Integer> list = new ArrayList<>();
         list.add(result);
-        for(int i=1; i<n;i++) {
+        for (int i = 1; i < n; i++) {
             result = result * (n - i);
             result = result / (i);
             list.add(result);
         }
         return list;
     }
+
     public static List<List<Integer>> generateOptimal(int numRows) {
         List<List<Integer>> list = new ArrayList<>();
         for (int i = 1; i <= numRows; i++) {
@@ -68,15 +70,14 @@ public class PrintPascalTriangle {
         return list;
     }
 
-
     public static List<List<Integer>> generate(int numRows) {
         List<List<Integer>> list = new ArrayList<>();
         list.add(List.of(1));
-        if(numRows == 1)
+        if (numRows == 1)
             return list;
 
         for (int i = 1; i < numRows; i++) {
-            List<Integer> pre = list.get(i-1);
+            List<Integer> pre = list.get(i - 1);
             List<Integer> curr = new ArrayList<>();
             curr.add(1);
             for (int j = 1; j < i; j++) {

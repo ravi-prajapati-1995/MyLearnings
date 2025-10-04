@@ -2,6 +2,7 @@ package com.ravi.learnings.interviewquestions;
 
 //import com.google.gson.Gson;
 //import com.google.gson.GsonBuilder;
+
 import lombok.val;
 
 import java.io.IOException;
@@ -15,11 +16,11 @@ import java.util.stream.Collectors;
 
 class InterviewQuestion {
     static final String baseUrl = "https://jsonmock.hackerrank.com/api/tvseries?page=%d";
+
     public static void main(String[] args) {
         String action = bestInGenre("Action");
         System.out.println(action);
     }
-
 
     public static String bestInGenre(String genre) {
         // Write your code here
@@ -33,11 +34,10 @@ class InterviewQuestion {
                         (existing, replace) -> existing.compareTo(replace) < 0 ? existing : replace,
                         LinkedHashMap::new
                 ));
-//        System.out.println(showbyRatings);
+        //        System.out.println(showbyRatings);
 
         val next = showbyRatings.entrySet().iterator().next().getValue();
         return next;
-
     }
 
     private static List<ShowDetails> getAllShowList() {
@@ -62,8 +62,8 @@ class InterviewQuestion {
 
             HttpRequest httpRequest = HttpRequest.newBuilder().uri(uri).GET().build();
             HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
-            if(httpResponse.statusCode() == 200) {
-//                Gson gson = new GsonBuilder().setLenient().create();
+            if (httpResponse.statusCode() == 200) {
+                //                Gson gson = new GsonBuilder().setLenient().create();
                 return null;
             }
         } catch (IOException | InterruptedException | URISyntaxException e) {
@@ -129,6 +129,7 @@ class InterviewQuestion {
                     ", data=" + data +
                     '}';
         }
+
         static ApiResponse emptyResponse() {
             ApiResponse apiResponse = new ApiResponse();
             apiResponse.setData(Collections.emptyList());
@@ -136,7 +137,7 @@ class InterviewQuestion {
         }
     }
 
-    class ShowDetails{
+    class ShowDetails {
         private String name;
         private String imdb_rating;
         private String genre;

@@ -1,6 +1,5 @@
 package com.ravi.learnings.systemdesign.designpatterns.structural.composite;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

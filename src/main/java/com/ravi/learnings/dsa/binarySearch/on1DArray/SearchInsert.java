@@ -8,8 +8,8 @@ You must write an algorithm with O(log n) runtime complexity.
 * */
 public class SearchInsert {
     public static void main(String[] args) {
-        int[] arr = {1,3,5,6};
-        System.out.println(searchInsert(arr,2));
+        int[] arr = {1, 3, 5, 6};
+        System.out.println(searchInsert(arr, 2));
     }
 
     public static int searchInsert(int[] nums, int target) {
@@ -17,11 +17,11 @@ public class SearchInsert {
         int low = 0;
         int high = nums.length - 1;
 
-        while(low <= high) {
+        while (low <= high) {
             int mid = (low + high) / 2;
 
             //When we found any element that is equal to less than k than there can
-            if(nums[mid] >= target) {
+            if (nums[mid] >= target) {
                 number = mid;
                 high = mid - 1;
             } else {

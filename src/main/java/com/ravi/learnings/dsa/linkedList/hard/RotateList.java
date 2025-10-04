@@ -68,7 +68,7 @@ public class RotateList {
      * 4. Traverse list till to find the kth element
      * 5. Update head to kthNode.next
      * 6. Then mark kthNode.next = null, to break the circle
-     * */
+     */
     public static ListNode rotateRightStriver(ListNode head, int k) {
         if (head == null || k == 0) {
             return head;
@@ -80,7 +80,8 @@ public class RotateList {
             tail = tail.next;
             len++;
         }
-        if (k % len == 0) return head;
+        if (k % len == 0)
+            return head;
 
         k = k % len;
 

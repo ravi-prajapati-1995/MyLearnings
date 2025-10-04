@@ -9,11 +9,11 @@ import java.util.Map;
  * [2, 2, 6]--->  2^2 = 0 XOR of similar elements is always 0
  * [6] 0^6 = 6 --> if we XOR any element with 0 we will get same element
  * [4, 2, 2, 6, 4] --> 4 ^ 4 = 0, 2 ^ 2 = 0 then 6 remained
- *
+ * <p>
  * For finding optimal solution for this we need to keep in mind that if from 0 to 3rd index XOR is XR
  * and from 1st to 3rd XOR is K and XOR of 0th element is X then:
  * X = XR ^ K
- * */
+ */
 public class CountSubarrayWithGivenXORK {
     public static void main(String[] args) {
         int[] arr = {4, 2, 2, 6, 4};
@@ -27,14 +27,13 @@ public class CountSubarrayWithGivenXORK {
             int xor = 0;
             for (int j = i; j < arr.length; j++) {
                 xor = xor ^ arr[j];
-                if(xor == k) {
+                if (xor == k) {
                     count++;
                 }
             }
         }
         return count;
     }
-
 
     public static int solveOpt(int[] arr, int k) {
         int count = 0;
@@ -45,11 +44,11 @@ public class CountSubarrayWithGivenXORK {
         for (int i = 0; i < arr.length; i++) {
             xor = xor ^ arr[i];
             int x = xor ^ k;
-            if(map.containsKey(x)) {
+            if (map.containsKey(x)) {
                 count = count + map.get(x);
             }
 
-            if(map.containsKey(xor)) {
+            if (map.containsKey(xor)) {
                 map.put(xor, map.get(xor) + 1);
             } else {
                 map.put(xor, 1);

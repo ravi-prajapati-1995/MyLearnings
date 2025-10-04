@@ -32,7 +32,7 @@ public class FindXorOfNumbers {
      * after that XOR both again to get final xor
      */
     public static int findXOR(int l, int r) {
-        return xor(l-1) ^ xor(r);
+        return xor(l - 1) ^ xor(r);
     }
 
     private static int xor(int n) {

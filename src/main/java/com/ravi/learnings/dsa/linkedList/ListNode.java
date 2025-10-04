@@ -31,8 +31,8 @@ public class ListNode {
     public static void print(ListNode head) {
         var temp = head;
 
-        while(temp != null) {
-            System.out.print(temp.val+" ");
+        while (temp != null) {
+            System.out.print(temp.val + " ");
             temp = temp.next;
         }
         System.out.println();

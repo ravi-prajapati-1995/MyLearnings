@@ -5,7 +5,7 @@ import java.util.EmptyStackException;
 /**
  * Stack is the data structure in which element last-in-first-out
  * You can assume stack of plate in which top plate came in last and out first
- * */
+ */
 public class StackUsingArray {
     public static void main(String[] args) {
         final var myStackUsingArray = new MyStack(5);
@@ -16,7 +16,6 @@ public class StackUsingArray {
         System.out.println(myStackUsingArray.size());
 
         System.out.println(myStackUsingArray.top());
-
     }
 }
 
@@ -42,7 +41,7 @@ class MyStack {
     }
 
     public int pop() {
-        if(top == -1) {
+        if (top == -1) {
             throw new EmptyStackException();
         }
         return arr[top--];
@@ -53,10 +52,9 @@ class MyStack {
     }
 
     public int top() {
-        if(top != -1) {
+        if (top != -1) {
             return arr[top];
         }
         throw new EmptyStackException();
     }
-
 }

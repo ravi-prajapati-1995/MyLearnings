@@ -11,14 +11,14 @@ public class MargheritaPizza extends BasePizza {
 
     @Override
     public int price() {
-        int price =  switch (getSize()){
+        int price = switch (getSize()) {
             case REGULAR -> 109;
             case MEDIUM -> 239;
             case LARGE -> 449;
             case EXTRA_LARGE -> 599;
         };
 
-        System.out.println("Have MargheritaPizza: "+ price);
+        System.out.println("Have MargheritaPizza: " + price);
         return price;
     }
 }

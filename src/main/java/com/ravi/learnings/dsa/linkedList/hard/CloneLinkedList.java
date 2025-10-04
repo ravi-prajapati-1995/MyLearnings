@@ -30,13 +30,13 @@ public class CloneLinkedList {
      * 1. Create a new node and insert newly created node next to current node, do it for all nodes
      * 2. After that connect the random pointers, traverse from head and new random will be next from the templ.random
      * 3. After connecting random, remove the newNodes from the existing node and return new head
-     *
+     * <p>
      * TC =  O(N) + O(N) + O(N) -- Traversing the node three time
      * SC  = O(N) -- For creating new list
      */
     public static Node copyRandomListStriverOptimal(Node head) {
         Node temp = head;
-        while(temp != null) {
+        while (temp != null) {
             Node newNode = new Node(temp.val);
             temp.next = newNode;
             newNode.next = temp.next;
@@ -45,10 +45,10 @@ public class CloneLinkedList {
         }
 
         temp = head;
-        while(temp != null) {
+        while (temp != null) {
             final var copyNode = temp.next;
             final var random = temp.random;
-            if(random != null) {
+            if (random != null) {
                 copyNode.random = random.next;
             }
             temp = temp.next.next;
@@ -58,7 +58,7 @@ public class CloneLinkedList {
         temp = head;
         Node newHead = new Node(-1);
         Node res = newHead;
-        while(temp != null) {
+        while (temp != null) {
             res.next = temp.next;
             temp.next = temp.next.next;
 

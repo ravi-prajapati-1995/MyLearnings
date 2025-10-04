@@ -1,6 +1,8 @@
 package com.ravi.learnings.dsa.recursion;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class PrintAllPermutationsOfArrayOrString {
     public static void main(String[] args) {
@@ -11,12 +13,12 @@ public class PrintAllPermutationsOfArrayOrString {
 
     private static void printAllPermuntation(final int[] arr, final List<Integer> set) {
 
-        if(set.size() == arr.length) {
+        if (set.size() == arr.length) {
             System.out.println(set);
             return;
         }
         for (int i = 0; i < arr.length; i++) {
-            if(!set.contains(arr[i])) {
+            if (!set.contains(arr[i])) {
                 set.add(arr[i]);
                 printAllPermuntation(arr, set);
                 set.remove(Integer.valueOf(arr[i]));

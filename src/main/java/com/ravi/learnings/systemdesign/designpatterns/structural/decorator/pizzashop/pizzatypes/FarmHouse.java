@@ -11,14 +11,14 @@ public class FarmHouse extends BasePizza {
 
     @Override
     public int price() {
-        int price =  switch (getSize()){
+        int price = switch (getSize()) {
             case REGULAR -> 259;
             case MEDIUM -> 459;
             case LARGE -> 689;
             case EXTRA_LARGE -> 849;
         };
 
-        System.out.println("Have FarmHouse: "+ price);
+        System.out.println("Have FarmHouse: " + price);
         return price;
     }
 }

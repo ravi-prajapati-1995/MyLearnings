@@ -2,8 +2,8 @@ package com.ravi.learnings.systemdesign.designpatterns.behaviroal.strategy.witho
 
 /**
  * This class will have same drive method as Sports Vehicle, code duplication is there
- * */
-public class OffRoadVehicle extends Vehicle{
+ */
+public class OffRoadVehicle extends Vehicle {
 
     @Override
     public void drive() {

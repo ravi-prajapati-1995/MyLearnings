@@ -62,9 +62,9 @@ public class SearchIn2DMatrix {
             int row = mid / columns;
             int col = mid % columns;
 
-            if(matrix[row][col] == target) {
+            if (matrix[row][col] == target) {
                 return true;
-            }else if (matrix[row][col] < target) {
+            } else if (matrix[row][col] < target) {
                 low = mid + 1;
             } else {
                 high = mid - 1;

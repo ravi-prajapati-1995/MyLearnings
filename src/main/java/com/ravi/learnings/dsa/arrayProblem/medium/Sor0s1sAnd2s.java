@@ -6,7 +6,7 @@ import static com.ravi.learnings.dsa.sorting.InsertionSort.swap;
 
 public class Sor0s1sAnd2s {
     public static void main(String[] args) {
-        int[] nums = {2, 1,0, 1, 1, 1, 0, 0};
+        int[] nums = {2, 1, 0, 1, 1, 1, 0, 0};
         sortColorsStriverMethod(nums);
         System.out.println(Arrays.toString(nums));
     }
@@ -16,19 +16,19 @@ public class Sor0s1sAnd2s {
         int oneCount = 0;
         int twoCount = 0;
         for (int i = 0; i < nums.length; i++) {
-            if(nums[i] == 0) {
+            if (nums[i] == 0) {
                 zeroCount++;
-            } else if(nums[i] ==1) {
+            } else if (nums[i] == 1) {
                 oneCount++;
             } else {
                 twoCount++;
             }
         }
         for (int i = 0; i < nums.length; i++) {
-            if(zeroCount != 0) {
+            if (zeroCount != 0) {
                 nums[i] = 0;
                 zeroCount--;
-            } else if(oneCount != 0 ) {
+            } else if (oneCount != 0) {
                 nums[i] = 1;
                 oneCount--;
             } else {
@@ -43,13 +43,13 @@ public class Sor0s1sAnd2s {
         int mid = 0;
         int high = nums.length - 1;
 
-        while(mid <= high) {
+        while (mid <= high) {
 
-            if(nums[mid] == 0) {
+            if (nums[mid] == 0) {
                 swap(nums, low, mid);
                 low++;
                 mid++;
-            } else if(nums[mid] == 1) {
+            } else if (nums[mid] == 1) {
                 mid++;
             } else {
                 swap(nums, mid, high);
@@ -57,5 +57,4 @@ public class Sor0s1sAnd2s {
             }
         }
     }
-
 }

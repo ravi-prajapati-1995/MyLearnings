@@ -73,7 +73,7 @@ public class Add1ToLinkedListNumber {
      * 2. Add one to element till we have carry 1 if carry 0 then return from loop
      * 3. After that check if we have carry 1 then add new node
      * 4. After that reverse again LL
-     *
+     * <p>
      * TC - O(n) (Reverse LL) + O(n) (Traversing) + O(n) (reversing) ----> o(3n)
      * SC - O(1)
      */

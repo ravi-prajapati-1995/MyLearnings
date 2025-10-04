@@ -9,14 +9,13 @@
 
 import asyncio
 import os
-import time
-from datetime import datetime, date
+from datetime import datetime
 from typing import List, Dict, Any
 
 from serpapi import GoogleSearch
 from telegram import Update
 from telegram.constants import ParseMode
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from telegram.ext import ApplicationBuilder, ContextTypes
 
 from utils import get_file_logger
 
@@ -57,7 +56,8 @@ async def search_with_google_job_api(query: str, location: str, num: int = 15) -
         results.append({
             "title": item.get("title"),
             "link": item.get("apply_options")[0]["link"] if item.get('apply_options') else None,
-            "snippet": (item.get("description")[:200] + "…") if item.get("description") and len(item.get("description")) > 200 else item.get("description"),
+            "snippet": (item.get("description")[:200] + "…") if item.get("description") and len(
+                item.get("description")) > 200 else item.get("description"),
             "source": item.get("via"),
             "location": item.get("location"),
             "date": date_obj
@@ -90,10 +90,8 @@ async def eu_job_search() -> List[Dict[str, Any]]:
     return final
 
 
-
 async def check(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logger.info("I am in update")
     await update.message.reply_text(
         "dat ja bhai search kar reya hu"
     )
-

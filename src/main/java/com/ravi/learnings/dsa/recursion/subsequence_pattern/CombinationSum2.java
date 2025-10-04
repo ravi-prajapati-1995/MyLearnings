@@ -128,7 +128,7 @@ public class CombinationSum2 {
         while (low <= high) {
             int mid = (low + high) / 2;
 
-            if(arr[mid] > target) {
+            if (arr[mid] > target) {
                 result = mid;
                 high = mid - 1;
             } else {

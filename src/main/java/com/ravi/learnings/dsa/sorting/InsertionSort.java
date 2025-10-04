@@ -21,8 +21,8 @@ public class InsertionSort {
 
     public static void main(String[] args) {
         int[] arr = {64, 25, 12, 22, 11};
-//        insertionSort(arr, 5);
-//        striverInsertionSort(arr, 5);
+        //        insertionSort(arr, 5);
+        //        striverInsertionSort(arr, 5);
         recursiveInsertionSort(arr, 1);
         System.out.println(Arrays.toString(arr));
     }
@@ -30,15 +30,16 @@ public class InsertionSort {
     private static void striverInsertionSort(int[] arr, int n) {
         for (int i = 0; i < n; i++) {
             int j = i;
-            while(j > 0 && arr[j] < arr[j-1]) {
-                swap(arr, j, j-1);
+            while (j > 0 && arr[j] < arr[j - 1]) {
+                swap(arr, j, j - 1);
                 j--;
             }
         }
     }
 
     private static void recursiveInsertionSort(int[] arr, int from) {
-        if (from >= arr.length) return;
+        if (from >= arr.length)
+            return;
 
         int j = from;
         while (j > 0 && arr[j] < arr[j - 1]) {
@@ -46,15 +47,14 @@ public class InsertionSort {
             j--;
         }
 
-        recursiveInsertionSort(arr, from+1);
+        recursiveInsertionSort(arr, from + 1);
     }
 
     private static void insertionSort(int[] arr, int n) {
-        for(int i = 1; i < n; i++) {
-            for(int j = i; j > 0 ; j--) {
-                if(arr[j] < arr[j-1])
-                    swap(arr, j, j-1);
-
+        for (int i = 1; i < n; i++) {
+            for (int j = i; j > 0; j--) {
+                if (arr[j] < arr[j - 1])
+                    swap(arr, j, j - 1);
             }
         }
     }
@@ -64,6 +64,4 @@ public class InsertionSort {
         arr[i] = arr[j];
         arr[j] = temp;
     }
-
-
 }

@@ -1,13 +1,10 @@
 package com.ravi.learnings.dsa.onstrings.medium;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-/** [TODO] Need to revisit
+/**
+ * [TODO] Need to revisit
  * <a href="https://www.geeksforgeeks.org/problems/count-number-of-substrings4528/1">Problem</a>
  * <p>
  * Given a string s of lowercase alphabets, count all possible substrings (not necessarily distinct)
@@ -33,7 +30,8 @@ public class SubStrWithKDist {
      */
     static int countSubstrOptimal(String s, int k) {
         // if k is less than 0, return 0
-        if (k < 0) return 0;
+        if (k < 0)
+            return 0;
 
         // initialize variables
         int left = 0;
@@ -48,7 +46,8 @@ public class SubStrWithKDist {
             charArray[(s.charAt(right) - 'a')]++;
 
             // if frequency becomes 1, increase the count
-            if (charArray[(s.charAt(right) - 'a')] == 1) cnt++;
+            if (charArray[(s.charAt(right) - 'a')] == 1)
+                cnt++;
 
             // while the count is greater than k
             while (cnt > k) {
@@ -57,7 +56,8 @@ public class SubStrWithKDist {
                 charArray[position]--;
 
                 // if frequency becomes 0, decrease the count
-                if (charArray[position] == 0) cnt--;
+                if (charArray[position] == 0)
+                    cnt--;
 
                 // move the start index to the right
                 left++;
@@ -90,7 +90,7 @@ public class SubStrWithKDist {
 
                 if (map.size() == k) {
                     count++;
-//                    System.out.println(map.keySet());
+                    //                    System.out.println(map.keySet());
                 } else if (map.size() > k) {
                     break;
                 }

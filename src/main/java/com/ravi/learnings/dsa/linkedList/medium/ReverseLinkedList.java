@@ -10,7 +10,7 @@ public class ReverseLinkedList {
         final var integers = List.of(3, 2, 1, 0, -1, -2, 8);
         final var head = ListNode.from(integers);
         final var listNode = reverseUsingPointers(head);
-//        final var listNode = reverseRecursion(head);
+        //        final var listNode = reverseRecursion(head);
         ListNode.print(listNode);
     }
 
@@ -64,15 +64,15 @@ public class ReverseLinkedList {
      * After that we make link 5.next = 4 and 4.next = null
      * and return newHead which will be 5 -> 4
      * then in recursion head -> 3, newHead = 5, 4
-     *
+     * <p>
      * In this way we can reverse it
      *
      * <a href="https://takeuforward.org/data-structure/reverse-a-linked-list/">SOlution Article</a>
      * [TODO] Revisit it after recursion completion
-     * */
+     */
     public static ListNode reverseRecursion(ListNode head) {
-        if(head == null || head.next == null) {
-             return head;
+        if (head == null || head.next == null) {
+            return head;
         }
 
         ListNode newHead = reverseRecursion(head.next);
