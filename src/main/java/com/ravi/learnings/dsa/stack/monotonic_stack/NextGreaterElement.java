@@ -55,6 +55,7 @@ public class NextGreaterElement {
         }
         return res;
     }
+    
     public static int[] nextGreaterElementOptimal(int[] nums1, int[] nums2) {
         final var res = new int[nums1.length];
         final var nge = new int[nums2.length];
