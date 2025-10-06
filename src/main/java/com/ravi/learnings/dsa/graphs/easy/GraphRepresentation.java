@@ -1,22 +1,65 @@
 package com.ravi.learnings.dsa.graphs.easy;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class GraphRepresentation {
     public static void main(String[] args) {
         //        usingMatrix();
+        //        createGraphUsingList();
+        graph();
+    }
+
+    private static void graph() {
+        // I am having 4 nodes and 5 edges
+        int nodes = 4;
+
+        final var initialCapacity = nodes + 1;
+        List<List<Integer>> graph = new ArrayList<>();
+        for (int i = 0; i < initialCapacity; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        graph.get(1).add(2);
+        graph.get(1).add(3);
+
+        graph.get(2).add(1);
+        graph.get(2).add(3);
+        graph.get(2).add(4);
+
+        graph.get(3).add(1);
+        graph.get(3).add(2);
+        graph.get(3).add(4);
+
+        graph.get(4).add(3);
+        graph.get(4).add(2);
+
+        printGraph(graph);
+    }
+
+    /**
+     * In graph if it is undirection
+     * SC: O(2E) where E is the edges as we are using space twice of edges
+     *
+     * In directional graph SC will be O(E) as there will be only one side relationship 1 2
+     * */
+    private static void createGraphUsingList() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter Nodes: ");
         int nodes = sc.nextInt();
         System.out.print("Enter Edges: ");
         int edges = sc.nextInt();
 
-        List<List<Integer>> graph = new ArrayList<>(nodes + 1);
+        final var initialCapacity = nodes + 1;
+        List<List<Integer>> graph = new ArrayList<>();
+        for (int i = 0; i < initialCapacity; i++) {
+            graph.add(new ArrayList<>());
+        }
+
         for (int i = 0; i < edges; i++) {
             int u = sc.nextInt();
             int v = sc.nextInt();
+            // Here we require two input like 1 2 (meaning 1 is connected with 2) and here we also adding 2 1 meaning
+            // 2 is connected with 1 as this is undirectional graph
             graph.get(u).add(v);
             graph.get(v).add(u);
         }
@@ -26,7 +69,7 @@ public class GraphRepresentation {
 
     private static void printGraph(final List<List<Integer>> graph) {
         for (int i = 0; i < graph.size(); i++) {
-            System.out.println(i + " ----> " + graph.get(0));
+            System.out.println(i + " ----> " + graph.get(i));
         }
     }
 

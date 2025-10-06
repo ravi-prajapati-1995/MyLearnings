@@ -37,6 +37,8 @@ Representation of Graph:
        \   /
          5
 
+    Nodes are: 1, 2, 3, 4, 5
+    Edges: Connecting lines between 1 to 2 , 1 to 3 ...etc known as edges
     above example is un-directional graph having 5 nodes(n) and 6 edges(m) so we will create a 2D matrix
     in question we will have m lines represents edges: In un directional graph [1 2] and [2 1] is same
     [1 2]
@@ -56,6 +58,7 @@ This matrix will be represented by:
              4 |  0   0   0   1   0   1
              5 |  0   0   1   1   1   0
 
+In matrix representation we waste lot of space so there is better way to stor it in lis
 We can store graph in list also we will create a list with [n+1] here n is nodes
 list will look like:
 0 -> {}
@@ -67,3 +70,29 @@ list will look like:
 
 Above given graph is un-directional graph that's why we need to keep relation vice versa like 1 is having
 relation with 2 and 3, then 2 and 3 also having relation with 1
+
+Weighted Graph: When edges of the matrix has some weight it is known as weighted graph
+1. To store the weighted graph in matrix we will instead of storing 1 where we found edges we will store the edge weight instead
+    [1 2] -- 3 (weight)
+    [2 4] --- 5
+    [1 3] --- 7
+    [3 5] --- 1
+    [3 4] --- 4
+    [5 4] --- 2
+
+This matrix will be represented by:
+                  0   1   2   3   4   5
+                ------------------------
+             0 |  0   0   0   0   0   0
+             1 |  0   0   3   7   0   0
+             2 |  0   3   0   0   5   0
+             3 |  0   7   0   0   4   1
+             4 |  0   0   5   4   0   2
+             5 |  0   0   0   1   2   0
+2. In List instead of storing direct number we will store pairs where 1st element of pair denotes node and 2nd edge weight
+0 -> {}
+1 -> {(2, 3), (3, 7)}
+2 -> {(1, 3), (4, 5)}
+3 -> {(1, 7), (4, 4), (5, 1)}
+4 -> {(2, 5), (3, 4), (5, 2)}
+5 -> {(3, 1), (4, 2)}
