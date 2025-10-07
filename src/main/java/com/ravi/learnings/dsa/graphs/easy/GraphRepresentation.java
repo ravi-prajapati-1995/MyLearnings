@@ -67,7 +67,7 @@ public class GraphRepresentation {
         printGraph(graph);
     }
 
-    private static void printGraph(final List<List<Integer>> graph) {
+    public static void printGraph(final List<List<Integer>> graph) {
         for (int i = 0; i < graph.size(); i++) {
             System.out.println(i + " ----> " + graph.get(i));
         }

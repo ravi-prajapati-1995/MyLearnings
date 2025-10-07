@@ -1,0 +1,3 @@
+To traverse any graph we have two approaches:
+BFS : Breadth First Search
+DFS: Depth First Search

@@ -89,6 +89,7 @@ This matrix will be represented by:
              3 |  0   7   0   0   4   1
              4 |  0   0   5   4   0   2
              5 |  0   0   0   1   2   0
+
 2. In List instead of storing direct number we will store pairs where 1st element of pair denotes node and 2nd edge weight
 0 -> {}
 1 -> {(2, 3), (3, 7)}
