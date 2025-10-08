@@ -1,7 +1,11 @@
 package com.ravi.learnings.dsa.graphs.easy;
 
+import javax.print.DocFlavor.INPUT_STREAM;
+import java.sql.Array;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 import static com.ravi.learnings.dsa.graphs.easy.GraphRepresentation.printGraph;
 
@@ -55,23 +59,63 @@ public class ConnectedComponents {
      * 3. If we found a number that is not traversed, we will traverse all the nodes of that component
      */
     public static ArrayList<ArrayList<Integer>> getComponents(int V, int[][] edges) {
+        var adjacencyList = getAdjacencyList(V, edges);
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        int[] visited = new int[V];
+
+        // Adding starting node in the queue
+        Queue<Integer> queue = new ArrayDeque<>();
+        for (int i = 0; i < V; i++) {
+            if(visited[i] == 0) {
+                queue.add(i);
+                res.add(traverse(queue, visited, adjacencyList));
+            }
+        }
+        return res;
+    }
+
+    private static ArrayList<Integer> traverse(
+            final Queue<Integer> queue,
+            final int[] visited,
+            final ArrayList<ArrayList<Integer>> adjacencyList
+    ) {
+        ArrayList<Integer> traversal = new ArrayList<>();
+        // traverse till queue is not empty
+        while (!queue.isEmpty()) {
+            final var node = queue.poll();
+            if(visited[node] == 1) { // if current node is already visited not process further
+                continue;
+            }
+            traversal.add(node);
+            //Mark node as visited
+            visited[node] = 1;
+
+            final var neighbours = adjacencyList.get(node);
+            for (int a : neighbours) { // get neighbours and filter that are not visited and push to queue
+                if (visited[a] == 0) {
+                    queue.add(a);
+                }
+            }
+        }
+        System.out.println(traversal);
+        return traversal;
+    }
+
+    private static ArrayList<ArrayList<Integer>> getAdjacencyList(final int V, final int[][] edges) {
         final var initialCapacity = V + 1;
         ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
 
         for (int i = 0; i < initialCapacity; i++) {
             graph.add(new ArrayList<>());
         }
-        int[] visited = new int[V];
 
         for (int[] edge : edges) {
             int a = edge[0];
             int b = edge[1];
 
-
             graph.get(a).add(b);
             graph.get(b).add(a);
         }
-
         return graph;
     }
 }

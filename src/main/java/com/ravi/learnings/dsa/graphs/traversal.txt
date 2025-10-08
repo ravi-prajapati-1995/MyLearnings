@@ -1,3 +1,28 @@
 To traverse any graph we have two approaches:
 BFS : Breadth First Search
 DFS: Depth First Search
+
+                   (1)
+                  /    \
+                (2)      (6)
+               /  \      / \
+             (3)  (4)   (7) (9)
+                   |     |
+                  (5)---(8)
+BFS: In BFS or level wise traversal we will have a starting node, and then from that starting node we need to traverse
+graph level wise i.e
+if Starting node is 1 so we start from 1 and it will be level-0
+level-0 --- 1
+level-1 --- 2, 6
+level-2 --- 3, 4, 7, 9
+level-3 --- 5, 8
+
+Note: On level 0 there can be only 1 node
+if starting node is 6 then
+level-0 --- 6
+level-1 --- 1, 7, 9 (from 6, 1 is on level 1 and 7, 9 also level 1)
+level-2 --- 2, 8
+level-3 --- 3, 4, 5
+
+To traverse the graph we need a visited array that will be size of N+1 where n is the edges, if we traversed a node
+we will mark that position 1
