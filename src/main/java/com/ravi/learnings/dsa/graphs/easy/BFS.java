@@ -1,8 +1,50 @@
 package com.ravi.learnings.dsa.graphs.easy;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Queue;
+
+/**
+ * <a href="https://www.geeksforgeeks.org/problems/bfs-traversal-of-graph/1">Problem</a>
+ * <p>
+ * Given a connected undirected graph containing V vertices, represented by a 2-d adjacency list adj[][],
+ * where each adj[i] represents the list of vertices connected to vertex i. Perform a Breadth First Search (BFS)
+ * traversal starting from vertex 0, visiting vertices from left to right according to the given adjacency list,
+ * and return a list containing the BFS traversal of the graph.
+ * <p>
+ * Note: Do traverse in the same order as they are in the given adjacency list.
+ *
+ * Input: adj[][] = [[2, 3, 1], [0], [0, 4], [0], [2]]
+ * Output: [0, 2, 3, 1, 4]
+ *            (0)
+ *          /  |  \
+ *        /    |    \
+ *      (1)   (2)   (3)
+ *             |
+ *            (4)
+ *
+ *
+ *            [[1, 2], [0, 2], [0, 1, 3, 4], [2], [2]]
+ */
 public class BFS {
     public static void main(String[] args) {
+        final var arrayLists = new ArrayList<ArrayList<Integer>>();
+        arrayLists.add(addElements(1, 2));
+        arrayLists.add(addElements(0, 2));
+        arrayLists.add(addElements(0, 1, 3, 4));
+        arrayLists.add(addElements(2));
+        arrayLists.add(addElements(2));
 
+        System.out.println(bfs(arrayLists));
+
+    }
+
+    private static ArrayList<Integer> addElements(final int ... ele) {
+        final var list = new ArrayList<Integer>();
+        for(int a: ele) {
+            list.add(a);
+        }
+        return list;
     }
 
     /***
@@ -16,7 +58,45 @@ public class BFS {
      * 4. Reapeat above three steps for all the elements
      *
      * */
-    public static void bfsTraversal() {
+    public static ArrayList<Integer> bfs(ArrayList<ArrayList<Integer>> adj) {
+        final var size = adj.size();
+        int[] visited = new int[size];
+        Queue<Integer> queue = new ArrayDeque<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            if(visited[i] == 0) {
+                queue.add(i);
+                list.addAll(traverse(queue, visited, adj));
+            }
+        }
 
+        return list;
+    }
+
+    private static ArrayList<Integer> traverse(
+            final Queue<Integer> queue,
+            final int[] visited,
+            final ArrayList<ArrayList<Integer>> adjacencyList
+    ) {
+        ArrayList<Integer> traversal = new ArrayList<>();
+        // traverse till queue is not empty
+        while (!queue.isEmpty()) {
+            final var node = queue.poll();
+            if (visited[node] == 1) { // if current node is already visited not process further
+                continue;
+            }
+            traversal.add(node);
+            //Mark node as visited
+            visited[node] = 1;
+
+            final var neighbours = adjacencyList.get(node);
+            for (int a : neighbours) { // get neighbours and filter that are not visited and push to queue
+                if (visited[a] == 0) {
+                    queue.add(a);
+                }
+            }
+        }
+        System.out.println(traversal);
+        return traversal;
     }
 }
