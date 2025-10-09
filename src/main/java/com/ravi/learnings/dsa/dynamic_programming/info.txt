@@ -1,0 +1,4 @@
+Dynamic Programming:
+    We have 2 type of DP
+    Memoization: Top - down approach
+    
