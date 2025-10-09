@@ -1,5 +1,6 @@
 package com.ravi.learnings.dsa.graphs.easy;
 
+import java.sql.Array;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Queue;
@@ -13,18 +14,18 @@ import java.util.Queue;
  * and return a list containing the BFS traversal of the graph.
  * <p>
  * Note: Do traverse in the same order as they are in the given adjacency list.
- *
+ * <p>
  * Input: adj[][] = [[2, 3, 1], [0], [0, 4], [0], [2]]
  * Output: [0, 2, 3, 1, 4]
- *            (0)
- *          /  |  \
- *        /    |    \
- *      (1)   (2)   (3)
- *             |
- *            (4)
- *
- *
- *            [[1, 2], [0, 2], [0, 1, 3, 4], [2], [2]]
+ * (0)
+ * /  |  \
+ * /    |    \
+ * (1)   (2)   (3)
+ * |
+ * (4)
+ * <p>
+ * <p>
+ * [[1, 2], [0, 2], [0, 1, 3, 4], [2], [2]]
  */
 public class BFS {
     public static void main(String[] args) {
@@ -35,16 +36,45 @@ public class BFS {
         arrayLists.add(addElements(2));
         arrayLists.add(addElements(2));
 
-        System.out.println(bfs(arrayLists));
-
+        System.out.println(bfsStriverWay(arrayLists));
     }
 
-    private static ArrayList<Integer> addElements(final int ... ele) {
+    private static ArrayList<Integer> addElements(final int... ele) {
         final var list = new ArrayList<Integer>();
-        for(int a: ele) {
+        for (int a : ele) {
             list.add(a);
         }
         return list;
+    }
+
+    /**
+     * Below is the bfs search by striver
+     * 1. Start from 0 and mark it as visited and that in queue
+     * 2. Run while loop till we it is not empty
+     * 3. for each get connected nodes from adjacency list
+     * 4. Mark all member of adj list as visited and add them to queue
+     * 5. Repeat this till queue is not empty
+     *  */
+    public static ArrayList<Integer> bfsStriverWay(ArrayList<ArrayList<Integer>> adj) {
+        final var size = adj.size();
+        int[] visited = new int[size];
+        Queue<Integer> queue = new ArrayDeque<>();
+        queue.add(0);
+        visited[0] = 1;
+        final var bfs = new ArrayList<Integer>();
+
+        while (!queue.isEmpty()) {
+            final var poll = queue.poll();
+            bfs.add(poll);
+
+            for (int a : adj.get(poll)) {
+                if (visited[a] == 0) { //Meaning this element is not visited
+                    visited[a] = 1;
+                    queue.add(a);
+                }
+            }
+        }
+        return bfs;
     }
 
     /***
@@ -64,7 +94,7 @@ public class BFS {
         Queue<Integer> queue = new ArrayDeque<>();
         ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            if(visited[i] == 0) {
+            if (visited[i] == 0) {
                 queue.add(i);
                 list.addAll(traverse(queue, visited, adj));
             }
