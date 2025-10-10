@@ -28,3 +28,26 @@ Consider the following job schedules:
 Schedule	Is balanced?	Jobs scheduled on the kth processor
 [1, 2, 3, 4, 1]	No	-
 [1, 2, 3, 3, 2]	Yes	3
+
+---------------10-10-2025----------------
+How to ensure idempotency if I receive duplicate messages from the queue
+
+
+ CREATE TABLE payment_attempt(
+  id BIGINT PRIMARY KEY,
+  appointment_id BIGINT NOT NULL,
+  amount_cents INT NOT NULL,
+  status ENUM('PENDING','SUCCESS','FAILED','REFUNDED') NOT NULL,
+  updated_at TIMESTAMP NOT NULL
+);
+
+Write a SQL query that returns all appointments whose latest payment attempt in the past 7 days has status = 'FAILED'
+(i.e., there is no later SUCCESS).
+Return: appointment_id, last_status, last_update, amount_cents.
+
+
+Select appointment_id, last_status, last_update, amount_cents from payment_attempt where
+
+Calculate the total amount (in cents) collected from SUCCESS payment attempts.
+
+select sum(amount_cents) from payment_attempt where status = 'SUCCESS'
