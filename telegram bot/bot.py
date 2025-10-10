@@ -19,7 +19,7 @@ from telegram.constants import ParseMode
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
 from utils import get_file_logger, parse_date, GOOGLE_SEARCH, API_GOOGLE_JOBS, DEFAULT_QUERY, EU_COUNTRIES, SOURCES, \
-    FILTER_KEYWORD, SPONSORSHIP_KEYWORDS
+    FILTER_KEYWORD, SPONSORSHIP_KEYWORDS, EU_COUNTRIES_ENGLISH_LANGUAGE
 
 logger = get_file_logger("jobBot", "logs/app.log")
 
@@ -105,7 +105,7 @@ async def search_with_google_job_api(location: str, num: int = 15) -> List[Dict[
 async def eu_job_search(location=GOOGLE_SEARCH) -> List[Dict[str, Any]]:
     global fetched_data
     all_results = []
-    for country in EU_COUNTRIES:
+    for country in EU_COUNTRIES_ENGLISH_LANGUAGE:
         if location == GOOGLE_SEARCH:
             await fetch_using_google(all_results, country, location)
         else:
