@@ -28,3 +28,10 @@ Consider the following job schedules:
 Schedule	Is balanced?	Jobs scheduled on the kth processor
 [1, 2, 3, 4, 1]	No	-
 [1, 2, 3, 3, 2]	Yes	3
+
+--------------------------------------------------
+I am having a list of strings: cat, atc, tac, dog, god, odg, ac, ca
+Using stream need to distinguse like cat, atc, tac in one list and dog, god, odg in another
+in one go ac and ca in another list
+
+-------------------------------------------

@@ -1,4 +1,42 @@
 Dynamic Programming:
     We have 2 type of DP
     Memoization: Top - down approach
-    
+    Tabularization: Bottom-up approach
+
+Lets take a recursion example to find the fibonacci series of f(6)
+
+f(6)
+├── f(5)
+│   ├── f(4)
+│   │   ├── f(3)
+│   │   │   ├── f(2)
+│   │   │   │   ├── f(1) = 1
+│   │   │   │   └── f(0) = 0
+│   │   │   └── f(1) = 1
+│   │   └── f(2)
+│   │       ├── f(1) = 1
+│   │       └── f(0) = 0
+│   └── f(3)
+│       ├── f(2)
+│       │   ├── f(1) = 1
+│       │   └── f(0) = 0
+│       └── f(1) = 1
+└── f(4)
+    ├── f(3)
+    │   ├── f(2)
+    │   │   ├── f(1) = 1
+    │   │   └── f(0) = 0
+    │   └── f(1) = 1
+    └── f(2)
+        ├── f(1) = 1
+        └── f(0) = 0
+
+So in fibonacci f(6)  = f(5) + f(4)
+f(5)  = f(4) + f(3)
+f(4) = f(3) + f(2)
+
+So in this process we are computing f(4) 2 times, f(3)-- 3 times and f(2) 4 times, which is inefficient so to solve
+this problem we can store the pre calculated values and use when we need
+So we will have an dpArray with n+1 size and in that array for each number we put the value if we have calculated
+
+So in DP we will save the calculated value so that we can use that in near future
