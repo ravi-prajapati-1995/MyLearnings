@@ -9,12 +9,16 @@ EU_COUNTRIES = [
     "Germany", "Netherlands", "Sweden", "Norway", "Finland", "Denmark", "Ireland", "Switzerland", "Spain", "Austria",
     "Portugal", "Estonia"
 ]
+EU_COUNTRIES_ENGLISH_LANGUAGE = [
+    "Netherlands", "Sweden", "Norway", "Finland", "Denmark", "Ireland"
+]
 DEFAULT_QUERY = (
     'Java developer ("visa sponsorship" OR "work permit" OR relocation OR "mobility package")'
 )
 SPONSORSHIP_KEYWORDS = ['visa sponsorship', 'work permit', 'relocation', 'mobility package']
 FILTER_KEYWORD = ["unable to support", "cannot offer", "Not Available", "not offer", "not currently available",
-                  "do not provide", "without the need for visa"]
+                  "do not provide", "without the need for visa", "no sponsorship", "No visa sponsorship",
+                  "no relocation", " work permit restrictions"]
 
 SOURCES = {
     "linkedin": "linkedin.com/jobs",
