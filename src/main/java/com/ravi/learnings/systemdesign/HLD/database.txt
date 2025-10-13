@@ -1,0 +1,86 @@
+Window Function:
+
+Suppose we have an employee table you can find structure and insert query in resource employee_db_and_insert.sql
+
+If we want to get the max salary from all of the employee we can use
+select max(salary) from employee;
+-- Here max is aggregator function, there are multiple aggregator functions like MAX, MIN, AVG, SUM, COUNT
+
+Now I want to max salary of employee for each department
+select dept_name, max(salary) from employee group by dept_name;
+So result of above query is like this:
++---------+-----+
+|dept_name|max  |
++---------+-----+
+|Finance  |6500 |
+|Admin    |5000 |
+|IT       |11000|
+|HR       |8000 |
++---------+-----+
+
+If we want to get max salary of employee and along with other details like emp_name, emp_id etc
+we can't do that as we are using group by clause
+So to do that we can use the window function
+
+select e.*, max(salary) over() as max_salary from employee e;
+
+Above query will give us normal details along with a new column that will have the max salary
+Here in over() there is nothing so sql create a window for all the records present in the table
+and find the max salary
+
+If want to get max salary by the department along with other employee details so we can write
+
+select e.*, max(salary) over(partition by dept_name) as max_salary from employee e;
+
+Here we create window for each dept_name and on that dept_name we find out the max salary in result we will get
+max salary for each department along with other details
+
+row_number() -- It will assign the unique value to each record
+select e.*, row_number() over() from employee e;
+
+Here in over() we didn't provide anything so the sql server treated all the records as single window
+select e.*, row_number() over(partition by dept_name) from employee e;
+so the query will group/window records by dept_name and for each department we have unique values
+
+Fetch first two employee in each department which joined the company first, emp_id we will take emp old id will also
+be old
+
+select * from (select e.*, row_number() over (partition by dept_name order by emp_id) as rn from employee e) as x
+where x.rn < 3;
+
+We used window function and row_number in inner query and then add where clause on row number to get the top 2 employee
+per department
+
+fetch top 3 employees in each department who is earning max salary
+if we use below query:
+select *
+from (select e.*, row_number() over (partition by dept_name order by salary desc) as rn from employee e) as x
+where x.rn < 4;
+
+Then if employee has similar salary so they will come in query i.e if in IT department all employee has 4000 salary
+then only 3 will come
+So to overcome this we can use of rank instead of row number
+
+if we run:
+select e.*, rank() over (order by salary) from employee e;
+Above query create rank for each record based on salary, in rank if multiple record has same value like in our case
+if multiple  record has same salary it will give them same rank, and also skip numbers in case of duplicate
+
+if we have total 24 record it will give total 24 ranks
+
+To group rank by dept_name we can use  below query:
+select e.*, rank() over (partition by dept_name order by salary) from employee e;
+
+To fetch top 3 employee in each dept with max salary we can use below query
+select *
+from (select e.*, rank() over (partition by dept_name order by salary) as rn from employee e) as x
+where x.rn < 4;
+
+Dense Rank:
+    Then only difference is that it will not skip the value if we got duplicate records
+select e.*, dense_rank() over (order by salary) from employee e;
+
+In rank query for total records: 24 it gives rank till 24 as skipping numbers
+In dense rank we are getting rank till 13 as not skipping numbers
+
+

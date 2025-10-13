@@ -50,7 +50,6 @@ Select appointment_id, last_status, last_update, amount_cents from payment_attem
 
 Calculate the total amount (in cents) collected from SUCCESS payment attempts.
 
-select sum(amount_cents) from payment_attempt where status = 'SUCCESS'
 --------------------------------------------------
 I am having a list of strings: cat, atc, tac, dog, god, odg, ac, ca
 Using stream need to distinguse like cat, atc, tac in one list and dog, god, odg in another

@@ -1,0 +1,61 @@
+DROP TABLE IF EXISTS payment_attempt;
+CREATE TYPE transaction_status AS ENUM ('PENDING','SUCCESS','FAILED','REFUNDED');
+CREATE TABLE payment_attempt
+(
+    id             BIGINT PRIMARY KEY,
+    appointment_id BIGINT    NOT NULL,
+    amount_cents   INT       NOT NULL,
+    status         transaction_status   NOT NULL,
+    updated_at     TIMESTAMP NOT NULL
+);
+
+
+-- Insert data showing multiple attempts per appointment
+INSERT INTO payment_attempt (id, appointment_id, amount_cents, status, updated_at)
+VALUES
+    -- Appointment 1001: Failed first, then succeeded
+    (1, 1001, 5000, 'FAILED', '2024-01-15 10:30:00'),
+    (2, 1001, 5000, 'SUCCESS', '2024-01-15 10:35:00'),
+
+    -- Appointment 1002: Still pending
+    (3, 1002, 7500, 'PENDING', '2024-01-15 11:15:00'),
+
+    -- Appointment 1003: Multiple failures, then refunded
+    (4, 1003, 3000, 'FAILED', '2024-01-15 12:00:00'),
+    (5, 1003, 3000, 'FAILED', '2024-01-15 12:05:00'),
+    (6, 1003, 3000, 'REFUNDED', '2024-01-15 12:10:00'),
+
+    -- Appointment 1004: Success on first try
+    (7, 1004, 12000, 'SUCCESS', '2024-01-15 13:45:00'),
+
+    -- Appointment 1005: Success, then refunded
+    (8, 1005, 8500, 'SUCCESS', '2024-01-15 14:20:00'),
+    (9, 1005, 8500, 'REFUNDED', '2024-01-15 16:30:00'),
+
+    -- Appointment 1006: Multiple attempts, still pending
+    (10, 1006, 6000, 'FAILED', '2024-01-15 15:00:00'),
+    (11, 1006, 6000, 'PENDING', '2024-01-15 15:30:00');
+
+    -- Additional realistic scenarios
+    INSERT INTO payment_attempt (id, appointment_id, amount_cents, status, updated_at)
+    VALUES
+        -- Appointment 2001: Multiple failures before success
+        (12, 2001, 2500, 'FAILED', '2024-01-16 09:00:00'),
+        (13, 2001, 2500, 'FAILED', '2024-01-16 09:05:00'),
+        (14, 2001, 2500, 'SUCCESS', '2024-01-16 09:10:00'),
+
+        -- Appointment 2002: Long pending status
+        (15, 2002, 15000, 'PENDING', '2024-01-16 09:30:00'),
+
+        -- Appointment 2003: Success then refunded due to cancellation
+        (16, 2003, 8000, 'SUCCESS', '2024-01-16 10:15:00'),
+        (17, 2003, 8000, 'REFUNDED', '2024-01-16 11:00:00'),
+
+        -- Appointment 2004: Failed multiple times, gave up
+        (18, 2004, 4500, 'FAILED', '2024-01-16 11:00:00'),
+        (19, 2004, 4500, 'FAILED', '2024-01-16 11:05:00'),
+        (20, 2004, 4500, 'FAILED', '2024-01-16 11:10:00'),
+
+        -- Appointment 2005: Partial refund scenario
+        (21, 2005, 11000, 'SUCCESS', '2024-01-16 11:45:00'),
+        (22, 2005, 5500, 'REFUNDED', '2024-01-16 12:00:00');
