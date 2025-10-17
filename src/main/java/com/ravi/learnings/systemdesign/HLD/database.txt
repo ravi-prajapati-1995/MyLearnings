@@ -111,3 +111,27 @@ I can also use the other aggregate function in window function like:sum, max, mi
 If I want to get number of employee in each department along with other details I can use below query
     select *, count(*) over (partition by dept_name) from employee;
 
+From payment_attempt table if I have an requirement like I need to get the initial and final status of the payment
+as we can have multiple payment attempts
+So if we try to do it with min(status) and Max(status) it calculate based on char values not a correct choice
+we can use first_value and last_value window function and give the column we want in that particular window
+    select *,
+       first_value(status) over (partition by appointment_id order by updated_at) as initial_status,
+       last_value(status) over (partition by appointment_id order by updated_at) as final_status
+from payment_attempt;
+In last_value we need to understand it will show details till the current row , so if a payment has 3 attempt for 1st
+it FAILED, also for 2nd it FAILED and for 3rd it SUCCESS, then for 1st and 2nd last_value came as FAILED not SUCCESS
+
+to make last_value scan all the window we need to modify it to tell scan all window
+select *,
+       first_value(status) over (partition by appointment_id order by updated_at) as initial_status,
+       last_value(status) over (partition by appointment_id order by updated_at ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) as final_status
+
+
+UNBOUNDED PRECEDING --- Start of the partition
+UNBOUNDED FOLLOWING --- End of the partition
+
+ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW --- Includes all rows up to current row
+ROWS BETWEEN 1 PRECEDING AND CURRENT ROW --- Includes current + previous row
+ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING --- From current to end of partition
+ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING -- Includes every row — often for LAST_VALUE()
