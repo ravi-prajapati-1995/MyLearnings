@@ -9,7 +9,69 @@ public class TrappingWater {
 
     public static void main(String[] args) {
         int[] height = {4,2,0,3,2,5};
-        System.out.println(trap(height));
+        System.out.println(trapOptimalStriver(height));
+    }
+
+    /**
+     * So we are using extra space where we are calculating the prefix and postfix max, we need to avoid that
+     * 1. we need only one min either from left or right -- only need smaller max
+     * 2. So we take two pointer l and r , from left l and from right r
+     * 3. Take leftMax and rightMax, and start traversing from 0
+     * 4. We are working with on the smaller on i.e {4, 2, 0, 3, 2, 5}
+     * 5. Then we will use the same formula to calculate the trap water min(leftmax, rightmax) - arr[i]
+     */
+    public static int trapOptimal(int[] height) {
+        // We need to get left and right max as water is trap between these towers
+        int l = 0;
+        int r = height.length - 1;
+
+        int leftMax = height[l];
+        int rightMax = height[r];
+        int res = 0;
+        while(r > l) {
+            if(height[l] <= height[r]) {
+                res = res + (Math.min(leftMax, rightMax) - height[l]);
+                l++;
+                leftMax = Math.max(leftMax, height[l]);
+            } else {
+                res = res + (Math.min(leftMax, rightMax) - height[r]);
+                r--;
+                rightMax = Math.max(rightMax, height[r]);
+            }
+        }
+        return res;
+    }
+
+
+    public static int trapOptimalStriver(int[] height) {
+        // We need to get left and right max as water is trap between these towers
+        int l = 0;
+        int r = height.length - 1;
+
+        int leftMax = height[l];
+        int rightMax = height[r];
+        int res = 0;
+        while(r > l) {
+            // We are working with the smaller element so that's why it worked
+            if(height[l] <= height[r]) {
+                if(leftMax > height[l]) { // In case left max is greater than the current element in that case we can
+                    // store water
+                    res = res + (leftMax - height[l]);
+                } else {
+                    leftMax = height[l];
+                }
+
+                l++;
+            } else {
+                if(rightMax > height[r]) {
+                    res = res + (rightMax - height[r]);
+                } else {
+                    rightMax = height[r];
+                }
+                r--;
+            }
+        }
+        return res;
     }
 
     /**
@@ -19,7 +81,7 @@ public class TrappingWater {
      * so formula will be: min(leftMax, rightMax) - arr[i], where i is the current building
      * Keep in mind if both the left max and right max are greater than arr[i] in that case only
      * if I have 3 building and all have 2 height then water will not be stored
-     *
+     * <p>
      * TC - O(N) (suffixmax) + O(N) (prefix max) + O(n) to get the trap water  == O(3N)
      * SC - O(3N) --> O(N) -- For get prefix max + O(N) get suffix Max + O(N) to return the result
      */
