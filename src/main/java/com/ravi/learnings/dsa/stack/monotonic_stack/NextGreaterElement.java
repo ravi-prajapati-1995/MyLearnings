@@ -57,7 +57,6 @@ public class NextGreaterElement {
     }
     
     public static int[] nextGreaterElementOptimal(int[] nums1, int[] nums2) {
-        final var res = new int[nums1.length];
         final var nge = new int[nums2.length];
         final Stack<Integer> st = new Stack<>();
         for (int i = nums2.length - 1; i >= 0; i--) {//Traversing from right to left
@@ -87,6 +86,7 @@ public class NextGreaterElement {
             }
         }
 
+        final var res = new int[nums1.length];
         for (int i = 0; i < nums1.length; i++) {
             final var idx = getElementIndex(nums2, nums1[i]);
             res[i] = nge[idx];

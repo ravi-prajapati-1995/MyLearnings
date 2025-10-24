@@ -38,7 +38,7 @@ import static com.ravi.learnings.dsa.graphs.easy.GraphRepresentation.printGraph;
 public class ConnectedComponents {
 
     public static void main(String[] args) {
-        int[][] edges = {{0, 1}, {2, 1}, {3, 4}};
+        int[][] edges = {{1,1,0},{1,1,0},{0,0,1}};
         int nodes = 5;
         final var components = getComponents(5, edges);
         printGraph(components);
@@ -54,7 +54,7 @@ public class ConnectedComponents {
      * To get all the components of the graph for traversal we need to keep an array that will tell if the current
      * element is visited or not
      * If we have a graph of 10 elements we need an array of 11 length that will store if element is visited of not
-     * 1. Run a loop from 1-n, here n is the number of nodes in graph
+     * 1. Run a loop from 1----n, here n is the number of nodes in graph
      * 2. When we traverse any node then we will mark it as 1
      * 3. If we found a number that is not traversed, we will traverse all the nodes of that component
      */
