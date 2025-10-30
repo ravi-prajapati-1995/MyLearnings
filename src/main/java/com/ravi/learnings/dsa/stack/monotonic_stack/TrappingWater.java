@@ -8,7 +8,7 @@ package com.ravi.learnings.dsa.stack.monotonic_stack;
 public class TrappingWater {
 
     public static void main(String[] args) {
-        int[] height = {4,2,0,3,2,5};
+        int[] height = {4, 2, 0, 3, 2, 5};
         System.out.println(trapOptimalStriver(height));
     }
 
@@ -28,8 +28,8 @@ public class TrappingWater {
         int leftMax = height[l];
         int rightMax = height[r];
         int res = 0;
-        while(r > l) {
-            if(height[l] <= height[r]) {
+        while (r > l) {
+            if (height[l] <= height[r]) {
                 res = res + (Math.min(leftMax, rightMax) - height[l]);
                 l++;
                 leftMax = Math.max(leftMax, height[l]);
@@ -42,7 +42,6 @@ public class TrappingWater {
         return res;
     }
 
-
     public static int trapOptimalStriver(int[] height) {
         // We need to get left and right max as water is trap between these towers
         int l = 0;
@@ -51,10 +50,10 @@ public class TrappingWater {
         int leftMax = height[l];
         int rightMax = height[r];
         int res = 0;
-        while(r > l) {
+        while (r > l) {
             // We are working with the smaller element so that's why it worked
-            if(height[l] <= height[r]) {
-                if(leftMax > height[l]) { // In case left max is greater than the current element in that case we can
+            if (height[l] <= height[r]) {
+                if (leftMax > height[l]) { // In case left max is greater than the current element in that case we can
                     // store water
                     res = res + (leftMax - height[l]);
                 } else {
@@ -63,7 +62,7 @@ public class TrappingWater {
 
                 l++;
             } else {
-                if(rightMax > height[r]) {
+                if (rightMax > height[r]) {
                     res = res + (rightMax - height[r]);
                 } else {
                     rightMax = height[r];

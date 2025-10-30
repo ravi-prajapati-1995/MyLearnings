@@ -12,9 +12,9 @@ import java.util.Stack;
  * Example: (a+b)*c-d+f
  * 1. Reverse: f+d-c*)b+a( -- After reversing make the opening bracket to closing bracket and closing bracket to
  * opening bracket
- * In control conversion : 
- *  For ^ we will pop out all the operator which has <= priority than the ^
- *  for other operator we pop out all operator which has < priority than the current stack element
+ * In control conversion :
+ * For ^ we will pop out all the operator which has <= priority than the ^
+ * for other operator we pop out all operator which has < priority than the current stack element
  */
 public class InfixToPrefix {
     public static void main(String[] args) {
@@ -36,26 +36,26 @@ public class InfixToPrefix {
         Stack<Character> st = new Stack<>();
         charArray = replace1.toCharArray();
         StringBuilder res = new StringBuilder();
-        for(char ch: charArray) {
-            if(isOperand(ch)) {
+        for (char ch : charArray) {
+            if (isOperand(ch)) {
                 res.append(ch);
             } else {
-                if(ch == ')'){
+                if (ch == ')') {
                     while (!st.isEmpty() && st.peek() != '(') {
                         res.append(st.pop());
                     }
                     st.pop();
-                } else if(ch == '^') { // In case of ^ we will get all the operator which has less priority than
+                } else if (ch == '^') { // In case of ^ we will get all the operator which has less priority than
                     // this: Control conversion
-                    while(!st.isEmpty() && priority(ch) <= priority(st.peek())) {
+                    while (!st.isEmpty() && priority(ch) <= priority(st.peek())) {
                         res.append(st.pop());
                     }
 
                     st.push(ch);
-                } else if(ch == '(') {
+                } else if (ch == '(') {
                     st.push(ch);
                 } else { // When I got operator other than ^ or got opening bracket
-                    while(!st.isEmpty() && priority(ch) < priority(st.peek())) {
+                    while (!st.isEmpty() && priority(ch) < priority(st.peek())) {
                         res.append(st.pop());
                     }
 
@@ -97,5 +97,4 @@ public class InfixToPrefix {
 
         return 0;
     }
-
 }

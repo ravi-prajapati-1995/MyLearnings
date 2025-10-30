@@ -9,8 +9,6 @@ import java.util.Stack;
  * 2. When got operand then add that to the stack
  * 3. When got operator then pick last two elements and add operator before them
  * and add back to stack without brackets
- * 
- * 
  */
 public class PrefixToPostfix {
 
@@ -32,7 +30,6 @@ public class PrefixToPostfix {
             }
         }
         return st.pop();
-
     }
 
     private static boolean isOperand(final char ch) {

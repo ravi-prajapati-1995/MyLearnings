@@ -18,17 +18,16 @@ public class PrefixToInfix {
         Stack<String> st = new Stack<>();
         int size = pre_exp.length();
         for (int i = size - 1; i >= 0; i--) {
-           String c =  pre_exp.charAt(i) + "";
-           if(isOperand(pre_exp.charAt(i))) {
-            st.push(c);
-           } else { //Get last two elements and add operator add back to stack
-            
-            String r = "(" + st.pop() + c + st.pop() +")";
-            st.push(r);
-           }
+            String c = pre_exp.charAt(i) + "";
+            if (isOperand(pre_exp.charAt(i))) {
+                st.push(c);
+            } else { //Get last two elements and add operator add back to stack
+
+                String r = "(" + st.pop() + c + st.pop() + ")";
+                st.push(r);
+            }
         }
         return st.pop();
-
     }
 
     private static boolean isOperand(final char ch) {

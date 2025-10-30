@@ -18,7 +18,7 @@ public class GroupSimilarWords {
 
     private static Integer getWordVal(final String ele) {
         int res = 0;
-        for(char c: ele.toCharArray()) {
+        for (char c : ele.toCharArray()) {
             res += c;
         }
         return res;

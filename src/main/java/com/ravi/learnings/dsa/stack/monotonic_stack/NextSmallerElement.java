@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 /**
  * <a href="https://takeuforward.org/data-structure/next-smaller-element">Solution</a>
- * */
+ */
 public class NextSmallerElement {
     public static void main(String[] args) {
         int[] nums = {8, 8, 2, 2, 4, 9, 1, 1, 5, 10};

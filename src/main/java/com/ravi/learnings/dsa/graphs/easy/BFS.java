@@ -54,7 +54,7 @@ public class BFS {
      * 3. for each get connected nodes from adjacency list
      * 4. Mark all member of adj list as visited and add them to queue
      * 5. Repeat this till queue is not empty
-     *  */
+     */
     public static ArrayList<Integer> bfsStriverWay(ArrayList<ArrayList<Integer>> adj) {
         final var size = adj.size();
         int[] visited = new int[size];

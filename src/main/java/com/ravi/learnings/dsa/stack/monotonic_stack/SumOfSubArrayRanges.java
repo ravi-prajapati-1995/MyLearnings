@@ -1,5 +1,8 @@
 package com.ravi.learnings.dsa.stack.monotonic_stack;
 
+import java.util.Arrays;
+import java.util.Stack;
+
 /**
  * Problem link:
  * https://leetcode.com/problems/sum-of-subarray-ranges/description/
@@ -25,8 +28,158 @@ public class SumOfSubArrayRanges {
 
     public static void main(String[] args) {
             int arr[] = {4,-2,-3,4,1};
-            System.out.println(subArrayRanges(arr));
+            System.out.println(subArrayRangesOptimal(arr));
     }
+
+    /**
+     * To get the sub array ranges we will use sum or subarray min and sum of subarray max
+     * then to get the sub array ranges we will do (sum of subarray max) - (sum of subarray min)
+     * 
+     * @param nums
+     * @return
+     */
+    public static long subArrayRangesOptimal(int[] nums) {
+        return  sumSubarrayMax(nums) - sumSubarrayMins(nums);
+    }
+
+     public static long sumSubarrayMax(int[] arr) {
+        int[] nse = getNextMaxElement(arr);
+        int[] pse = getPrevMaxElement(arr);
+        long res = 0;
+
+        // So to get the how many time a number contribute in mins
+        for(int i = 0;i< arr.length; i++) {
+            int left = i - pse[i];
+            int right = nse[i] - i;
+            long freq = left * right * 1L;
+            long val = (int)((freq * arr[i]));
+
+            res = (res +val );
+        }
+
+        return res;
+    }
+
+    private static int[] getNextMaxElement(final int[] arr) {
+        final var length = arr.length;
+        int[] nse = new int[length];
+
+        Stack<Integer> st = new Stack<>();
+
+        for (int i = length - 1; i >= 0; i--) {
+            final var num = arr[i];
+
+
+            while (!st.isEmpty() && arr[st.peek()] <= num) {
+                st.pop();
+            }
+
+            if (st.isEmpty()) {
+                nse[i] = length;
+            } else {
+                nse[i] = st.peek();
+            }
+
+            st.push(i);
+
+        }
+        return nse;
+    }
+
+    private static int[] getPrevMaxElement(final int[] arr) {
+        final var length = arr.length;
+        int[] pse = new int[length];
+
+        Stack<Integer> st = new Stack<>();
+
+        for (int i = 0; i < length; i++) {
+            final var num = arr[i];
+            while (!st.isEmpty() && arr[st.peek()] < num) {
+                st.pop();
+            }
+
+            if (st.isEmpty()) {
+                pse[i] = -1;
+            } else {
+                pse[i] = st.peek();
+            }
+
+            st.push(i);
+
+        }
+        return pse;
+    }
+
+    public static long sumSubarrayMins(int[] arr) {
+        int[] nse = getNextSmallerElement(arr);
+        int[] pse = getPrevSmallerElement(arr);
+        System.out.println("NSE: "+ Arrays.toString(nse));
+        System.out.println("PSE: "+ Arrays.toString(pse));
+        long res = 0;
+
+        // So to get the how many time a number contribute in mins
+        for(int i = 0;i< arr.length; i++) {
+            int left = i - pse[i];
+            int right = nse[i] - i;
+            long freq = left * right * 1L;
+            long val = (int)((freq * arr[i]));
+
+            res = (res +val );
+        }
+
+        return res;
+    }
+
+    private static int[] getNextSmallerElement(final int[] arr) {
+        final var length = arr.length;
+        int[] nse = new int[length];
+
+        Stack<Integer> st = new Stack<>();
+
+        for (int i = length - 1; i >= 0; i--) {
+            final var num = arr[i];
+
+
+            while (!st.isEmpty() && arr[st.peek()] >= num) {
+                st.pop();
+            }
+
+            if (st.isEmpty()) {
+                nse[i] = length;
+            } else {
+                nse[i] = st.peek();
+            }
+
+            st.push(i);
+
+        }
+        return nse;
+    }
+
+    private static int[] getPrevSmallerElement(final int[] arr) {
+        final var length = arr.length;
+        int[] pse = new int[length];
+
+        Stack<Integer> st = new Stack<>();
+
+        for (int i = 0; i < length; i++) {
+            final var num = arr[i];
+            while (!st.isEmpty() && arr[st.peek()] > num) {
+                st.pop();
+            }
+
+            if (st.isEmpty()) {
+                pse[i] = -1;
+            } else {
+                pse[i] = st.peek();
+            }
+
+            st.push(i);
+
+        }
+        return pse;
+    }
+
 
     /**
      * Here we created 2 inner loop as we need to generate all subarray i.e {1, 2, 3, 4}

@@ -13,7 +13,6 @@ public class hashMap_learning {
         userIntegerHashMap.put(User.getUser(), 2);
 
         System.out.println(userIntegerHashMap);
-
     }
 }
 
@@ -24,7 +23,6 @@ class User {
     private static Random rand = new Random();
     private Integer id;
     private String name;
-
 
     public static User getUser() {
         final var id1 = rand.nextInt(100);

@@ -18,7 +18,6 @@ public class NextGreaterElement {
         System.out.println(Arrays.toString(nextGreaterElementStriver(nums1, nums2)));
     }
 
-
     /**
      * For getting next greater element we will use the monotonic stack
      * 1. Start traversing from right to left, and take a stack and push elements in stack
@@ -55,7 +54,7 @@ public class NextGreaterElement {
         }
         return res;
     }
-    
+
     public static int[] nextGreaterElementOptimal(int[] nums1, int[] nums2) {
         final var nge = new int[nums2.length];
         final Stack<Integer> st = new Stack<>();
@@ -125,7 +124,6 @@ public class NextGreaterElement {
         }
         return res;
     }
-
 
     /**
      * Given an array arr = [6, 0, 8, 1, 3] for each element in the array we need to find out next greater element

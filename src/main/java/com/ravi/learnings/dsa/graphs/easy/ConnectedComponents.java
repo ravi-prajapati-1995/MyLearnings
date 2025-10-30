@@ -38,7 +38,7 @@ import static com.ravi.learnings.dsa.graphs.easy.GraphRepresentation.printGraph;
 public class ConnectedComponents {
 
     public static void main(String[] args) {
-        int[][] edges = {{1,1,0},{1,1,0},{0,0,1}};
+        int[][] edges = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
         int nodes = 5;
         final var components = getComponents(5, edges);
         printGraph(components);
@@ -66,7 +66,7 @@ public class ConnectedComponents {
         // Adding starting node in the queue
         Queue<Integer> queue = new ArrayDeque<>();
         for (int i = 0; i < V; i++) {
-            if(visited[i] == 0) {
+            if (visited[i] == 0) {
                 queue.add(i);
                 res.add(traverse(queue, visited, adjacencyList));
             }
@@ -83,7 +83,7 @@ public class ConnectedComponents {
         // traverse till queue is not empty
         while (!queue.isEmpty()) {
             final var node = queue.poll();
-            if(visited[node] == 1) { // if current node is already visited not process further
+            if (visited[node] == 1) { // if current node is already visited not process further
                 continue;
             }
             traversal.add(node);

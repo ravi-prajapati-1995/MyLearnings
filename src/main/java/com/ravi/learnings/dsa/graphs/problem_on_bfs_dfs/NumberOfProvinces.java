@@ -8,7 +8,7 @@ import java.util.Queue;
  * <a href=
  * "https://leetcode.com/problems/number-of-provinces/description/">Problem
  * Link</a><br/>
- *
+ * <p>
  * There are n cities. Some of them are connected, while some are not.
  * If city a is connected directly with city b, and city b is connected directly
  * with city c,
@@ -19,13 +19,11 @@ import java.util.Queue;
  * ith city and the jth city are directly connected, and isConnected[i][j] = 0
  * otherwise.
  * Return the total number of provinces.
- *
  */
 public class NumberOfProvinces {
     public static void main(String[] args) {
-        int[][] edges = { {1,1,0} ,{1,1,0},{0,0,1} };
+        int[][] edges = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
         System.out.println(numProvinces(edges));
-
     }
 
     public static int numProvinces(int[][] adj) {
@@ -34,7 +32,7 @@ public class NumberOfProvinces {
         final var size = adjacencyList.size();
         int[] visited = new int[size];
         for (int i = 0; i < size; i++) {
-            if (visited[i] == 1 ) {
+            if (visited[i] == 1) {
                 continue;
             }
             count++;
@@ -45,15 +43,15 @@ public class NumberOfProvinces {
     }
 
     private static void dfs(int num, final ArrayList<ArrayList<Integer>> adjacencyList, final int[] visited) {
-        if(visited[num] == 1) return;
+        if (visited[num] == 1)
+            return;
 
         visited[num] = 1;
-        for(int i: adjacencyList.get(num)) {
-            if(visited[i] != 1) {
+        for (int i : adjacencyList.get(num)) {
+            if (visited[i] != 1) {
                 dfs(i, adjacencyList, visited);
             }
         }
-
     }
 
     private static void BFS(
@@ -76,7 +74,7 @@ public class NumberOfProvinces {
      * This will return the connected element i.e if with 1 two nodes are connected
      * 2 and 3
      * it will give for get(1) -- 2, 3
-     * 
+     * <p>
      * While we are creating adjacency matrix we need to care about the condition where for 1 1 we have 1 value or for
      * 2 2 we have 1, we need to skip it
      */

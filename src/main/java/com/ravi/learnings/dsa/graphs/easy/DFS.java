@@ -44,12 +44,12 @@ public class DFS {
     }
 
     /**
-     *  1. For DFS we will use recursion, we will start from 0
-     *  2. Check if the node is already visited of not, if not process further
-     *  3. mark current element as visited and add to result
-     *  4. Start for loop and get the neighbours from adj list
-     *  5. Check if it is visited or not if not then recursively call dfs function with that number
-     *  */
+     * 1. For DFS we will use recursion, we will start from 0
+     * 2. Check if the node is already visited of not, if not process further
+     * 3. mark current element as visited and add to result
+     * 4. Start for loop and get the neighbours from adj list
+     * 5. Check if it is visited or not if not then recursively call dfs function with that number
+     */
     public static ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj) {
         final var size = adj.size();
         int[] visited = new int[size];

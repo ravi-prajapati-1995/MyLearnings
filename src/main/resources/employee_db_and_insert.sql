@@ -1,9 +1,11 @@
 drop table employee;
 create table employee
-( emp_ID int
-    , emp_NAME varchar(50)
-    , DEPT_NAME varchar(50)
-    , SALARY int);
+(
+    emp_ID    int,
+    emp_NAME  varchar(50),
+    DEPT_NAME varchar(50),
+    SALARY    int
+);
 
 insert into employee values(101, 'Mohan', 'Admin', 4000);
 insert into employee values(102, 'Rajkumar', 'HR', 3000);
