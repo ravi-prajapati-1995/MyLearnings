@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ImplementMaxHeap {
     public static void main(String[] args) {
-        final var myMaxHeap = new MyMaxHeap();
+        final var myMaxHeap = new MyMinHeap();
         myMaxHeap.insert(5);
         myMaxHeap.insert(6);
 
