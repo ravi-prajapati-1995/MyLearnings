@@ -3,23 +3,38 @@ package com.ravi.learnings.dsa.heap;
 import java.util.Arrays;
 
 /**
- * We have given a heap and need to update the value at particular index
+ * We have given a max heap and need to update the value at particular index
  * int[] arr = {10, 7, 6, 4, 5, 4, 5, 3, 2};
- *          10
- *        /    \
- *       7      6
- *      / \    / \
- *     4   5  4   5
- *    / \
- *   3   2
- *
- *   In above max heap we need to replace value at certain places
- * */
+ * 10
+ * /    \
+ * 7      6
+ * / \    / \
+ * 4   5  4   5
+ * / \
+ * 3   2
+ * <p>
+ * In above max heap we need to replace value at certain places
+ */
 public class HeapifyAlgo {
     public static void main(String[] args) {
-        int[] arr = {10, 7, 6, 4, 5, 4, 5, 3, 2};
-        heapifyDown(arr, 0, 1);
+        int[] arr = {1, 4, 5, 5, 7, 6};
+        heapify(arr, 5, 2);
         System.out.println(Arrays.toString(arr));
+    }
+
+    /**
+     * This method will be called for heapify
+     * In case @val will be greater than the existing element in the heap I need to do heapify UP
+     * In case val is smaller we need to heapify down
+     */
+    public static void heapify(int[] nums, int ind, int val) {
+        if (val < nums[ind]) {
+            nums[ind] = val;
+            heapifyUpMinHeap(nums, ind, val);
+        } else {
+            nums[ind] = val;
+            heapifyDown(nums, ind);
+        }
     }
 
     /**
@@ -28,16 +43,15 @@ public class HeapifyAlgo {
      * 1. we will check left and right child, and get the child which has higher value
      * 2. Swap that child with the root value
      * 3. Repeat this process till it follow the heap properties
-     * */
-    public static void heapifyDown(int[] nums, int ind, int val) {
-        nums[ind] = val;
+     */
+    public static void heapifyDown(int[] nums, int ind) {
         int leftChild = ind * 2 + 1;
         int rightChild = ind * 2 + 2;
 
-        if(leftChild >= nums.length || rightChild >= nums.length) {
+        if (leftChild >= nums.length || rightChild >= nums.length) {
             return;
         }
-        if(nums[ind] >= nums[leftChild] && nums[ind] > nums[rightChild]) {
+        if (nums[ind] >= nums[leftChild] && nums[ind] > nums[rightChild]) {
             return;
         }
 
@@ -47,7 +61,7 @@ public class HeapifyAlgo {
         //Now we will replace the ind with the maxIdx value and maxIdx with ind val
         replace(nums, ind, maxIdx);
 
-        heapifyDown(nums, maxIdx, nums[maxIdx]);
+        heapifyDown(nums, maxIdx);
     }
 
     /**
@@ -56,27 +70,16 @@ public class HeapifyAlgo {
      *
      * @param nums
      * @param ind
-     * @param val
      */
-    public static void heapifyUp(int[] nums, int ind, int val) {
-        nums[ind] = val;
-        int leftChild = ind * 2 + 1;
-        int rightChild = ind * 2 + 2;
-
-        if(leftChild >= nums.length || rightChild >= nums.length) {
-            return;
+    public static void heapifyUpMinHeap(int[] nums, int ind, int val) {
+        // Getting the parent or current node
+        int parent = (int) Math.ceil(ind / 2) - 1;
+        // if parent is smaller than the val, then we need to move up val
+        if (nums[parent] < val) {
+            nums[ind] = val;
+            replace(nums, ind, parent);
+            heapifyUpMinHeap(nums, parent, val);
         }
-        if(nums[ind] >= nums[leftChild] && nums[ind] > nums[rightChild]) {
-            return;
-        }
-
-        // Getting max value element from the child
-        int maxIdx = nums[leftChild] > nums[rightChild] ? leftChild : rightChild;
-
-        //Now we will replace the ind with the maxIdx value and maxIdx with ind val
-        replace(nums, ind, maxIdx);
-
-        heapifyUp(nums, maxIdx, nums[maxIdx]);
     }
 
     private static void replace(final int[] nums, final int ind, final int maxIdx) {

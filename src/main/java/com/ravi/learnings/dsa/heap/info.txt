@@ -4,7 +4,7 @@ Binary Tree: Where each node is having at most 2 child node is called binary tre
 Complete Binary Tree: A tree which has exact two nodes for each node except the last node.
 
 Almost Complete Binary Tree: It is the tree which follows the below two conditions.
-1. All the nodes except last and second last node two elements
+1. All the nodes except last and second last node have two elements
 2. The last level is filled from left to right, i.e If in last level we have 4 nodes A, B, C, D
 First we will add child with A, then with B and so on
 We can't have child like 1 at A then 2nd with B or C or D
