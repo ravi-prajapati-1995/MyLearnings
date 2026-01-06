@@ -24,10 +24,9 @@ public class LargestRectangleInHistogram {
      *      0, 1, 2, 3, 4, 5
      * We are at 2nd index 5 length histogram
      * next smaller element for 5(idx 2) is 2(idx 4)
-     * Prevsious Smaller element is 1(idx 1)
+     * Previous Smaller element is 1(idx 1)
      * so we do nse - pse - 1
      * in our case 4-1-1 = 2
-     * 
      * TC --> for NSE O(2n) + for PSE O(2n) + for getting larest O(n) = O(5n)
      * SC --- > In NSE we are using array for return and stack for internal use o(2n) + sam for PSE O(2n) = O(4N)
      */
@@ -98,17 +97,11 @@ public class LargestRectangleInHistogram {
 
     /**
      * So in brute force technique I have used a loop and inside calling function
-     * that will give me number of time that historgram can be added
-     * for that I am going to the left side for each element, if I found element
-     * with current element then keep adding
-     * Other wise break
-     * Same for the right side
-     * After getting both the side count then multiply this with the element so that
-     * we can caculate total area
+     * that will give me number of time that histogram can be added
+     * for that I am going to the left side for each element, if I found element with current element then keep adding
+     * Other wise break Same for the right side
+     * After getting both the side count then multiply this with the element so that we can calculate total area
      * and then getting max for each element
-     * 
-     * @param heights
-     * @return
      */
     public static int largestRectangleArea(int[] heights) {
         int res = 0;

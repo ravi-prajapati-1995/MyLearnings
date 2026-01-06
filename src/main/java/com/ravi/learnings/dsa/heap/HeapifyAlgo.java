@@ -56,20 +56,20 @@ public class HeapifyAlgo {
         }
     }
 
-    /**
+   /* *//**
      * This method will be called for heapify
      * In case @val will be greater than the existing element in the heap I need to do heapify UP
      * In case val is smaller we need to heapify down
-     */
+     *//*
     public static void heapify(int[] nums, int ind, int val) {
         if (val < nums[ind]) {
             nums[ind] = val;
-            heapifyUpMinHeap(nums, ind, val);
+//            heapifyUpMinHeap(nums, ind, val);
         } else {
             nums[ind] = val;
             heapifyDown(nums, ind);
         }
-    }
+    }*/
 
     /**
      * When we set a value that is smaller than the current value i.e if at index 0 we set 1 , then we need to do
