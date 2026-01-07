@@ -72,7 +72,7 @@ Above tree has 9 nodes in above tree leaf nodes are: 11 10 8 7 6
 which starts from the index: 5 6 7 8 9
 Leaf nodes are start from:  n/2 --- till n-1 where n is the number of nodes
 
-in our case n = 9 (0 based index) 9/2 -- 9-1 --> 4 --- 8
+in our case n = 9 (0 based index) 9/2 ----> 4(n/2) --to-- 8(n-1)
 
  Index of internal node = 0 --- N/2 - 1
  as from N/2 leaf node start so internal nodes which are note leaf node
