@@ -26,3 +26,5 @@ docker build --build-arg APP_ENV=production -t my-app .
 docker stats --> This gives us information about the memory and cpu utilization of each and every running docker image
 
 docker run -d -p 4566:4566 localstack/localstack
+
+docker pull [url] -- To get the docker image
