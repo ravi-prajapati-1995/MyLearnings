@@ -100,7 +100,6 @@ public class HeapifyAlgo {
             swap(nums, ind, smallest);
             // Now we need to check if we can move this item further in tree
             heapifyDown(nums, smallest);
-
         }
         //Now we will replace the ind with the maxIdx value and maxIdx with ind val
 

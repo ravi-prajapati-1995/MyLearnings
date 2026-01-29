@@ -13,7 +13,7 @@ import java.util.Stack;
  */
 public class LargestRectangleInHistogram {
     public static void main(String[] args) {
-        int heights[] = { 2, 1, 5, 6, 2, 3 };
+        int heights[] = {1, 1};
         System.out.println(largestRectangleAreaNgeAndNse(heights));
     }
 

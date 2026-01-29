@@ -82,3 +82,10 @@ print(1 < 2 and 3 > 4)
 print('------------------------Python Conditional statements------------------------------------')
 if 1 < 2:
     print("1 is less than 2")
+
+if 1 == 2:
+    print("one is equals to 2")
+elif  3 == 3:
+    print("yess i did it")
+else:
+    print("not equal")
