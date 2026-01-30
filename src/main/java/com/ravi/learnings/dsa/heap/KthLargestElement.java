@@ -64,4 +64,17 @@ public class KthLargestElement {
         System.out.println(pq);
         return pq.poll();
     }
+
+
+    /**
+     * We need to learn about the algorithm: Quick, Select and Partition Algorithm
+     * 1. We will take an element from the array randomly
+     * 2. Then we will place large element from the selected element in left side
+     * 3. And smaller element in the right side
+     *
+     * */
+    public static int kthLargestElement_optimal_striver(int[] nums, int k) {
+        return 0;
+    }
+
 }
