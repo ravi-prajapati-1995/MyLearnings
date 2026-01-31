@@ -1,11 +1,11 @@
 package com.ravi.learnings.dsa.binarysearchtree.easy;
 
-import com.ravi.learnings.dsa.binartree.TreeNode;
+import com.ravi.learnings.dsa.binarytree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ravi.learnings.dsa.binartree.easy.PreOrderTraversal.preOrderTraversal;
+import static com.ravi.learnings.dsa.binarytree.easy.PreOrderTraversal.preOrderTraversal;
 
 public class Traversal {
     public static void main(String[] args) {

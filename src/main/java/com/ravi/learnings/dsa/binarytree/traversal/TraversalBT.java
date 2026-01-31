@@ -1,6 +1,6 @@
-package com.ravi.learnings.dsa.binartree.traversal;
+package com.ravi.learnings.dsa.binarytree.traversal;
 
-import com.ravi.learnings.dsa.binartree.TreeNode;
+import com.ravi.learnings.dsa.binarytree.TreeNode;
 
 import java.util.List;
 

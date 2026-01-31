@@ -1,6 +1,6 @@
-package com.ravi.learnings.dsa.binartree.easy;
+package com.ravi.learnings.dsa.binarytree.easy;
 
-import com.ravi.learnings.dsa.binartree.TreeNode;
+import com.ravi.learnings.dsa.binarytree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
