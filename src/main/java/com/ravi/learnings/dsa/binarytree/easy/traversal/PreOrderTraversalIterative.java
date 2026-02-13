@@ -1,4 +1,4 @@
-package com.ravi.learnings.dsa.binarytree.traversal;
+package com.ravi.learnings.dsa.binarytree.easy.traversal;
 
 import com.ravi.learnings.dsa.binarytree.TreeNode;
 

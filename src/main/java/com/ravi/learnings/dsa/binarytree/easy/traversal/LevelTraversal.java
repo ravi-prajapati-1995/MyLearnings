@@ -1,4 +1,4 @@
-package com.ravi.learnings.dsa.binarytree.traversal;
+package com.ravi.learnings.dsa.binarytree.easy.traversal;
 
 // Binary Tree representation for: [3, 9, 20, null, null, 15, 7]
 //
