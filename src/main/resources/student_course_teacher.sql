@@ -65,3 +65,10 @@ INSERT INTO studentcourse (courseId, studentId) VALUES
                                                     (105, 1),  -- Alice enrolled in Computer Science
                                                     (105, 2),  -- Bob enrolled in Computer Science
                                                     (105, 4);  -- Diana enrolled in Computer Science
+
+-- create more students and sample data for students
+INSERT INTO students (studentId, studentName) VALUES  
+                                                  (7, 'George Clark'),
+                                                  (8, 'Hannah Lee'),
+                                                  (9, 'Ian Scott'),
+                                                  (10, 'Jane Adams');

@@ -1,0 +1,36 @@
+Reacct is a Javascript library not framework like Angular
+In reach components are similar to classes in Javascript
+We can pass data from parent to child
+When there is any change in state react first change it in the virtual dom after that it change in the real dom
+We are using functional components in this app
+To send data from parent to schild we can use props in our functional components and <Header name="ravi">
+this way we can pass data, or we can use array destructuring on component side Header ({name}), we can usee name directly
+When we pass values from parent to child in child we can also define which type of this property will like:
+
+React Hooks: 
+useEffect  -> It is a webhook which is used to handle the side effects in react like: 
+ API call, Timer, Event listener, DOM manipulation, Local storage
+
+We can use this in following ways: 
+    useEffect(() => {
+        console.log("Effect running");
+    });
+Above code will run after every render i.e First render, State change, Parent re-render
+
+Empty Dependency Array (Most Common)
+useEffect(() => {
+   console.log("Run only once");
+}, []);
+
+This calls when component renders first time 
+
+useEffect(() => {
+   console.log("Count changed");
+}, [count]);
+
+Important: Order of Execution
+1. component will render
+2. DOM Updated
+3. Then useEffect will be called
+
+Cleanup Function (Very Important):
