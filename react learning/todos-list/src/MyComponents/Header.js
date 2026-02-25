@@ -9,9 +9,11 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import AddToDo from './AddToDo';
+import { useEffect } from 'react';
 
 
-function Header({ name, searchBar }) {
+function Header({ name, searchBar, addTodo }) {
     return (
         <Navbar expand="lg" className="bg-body-tertiary justify-content-between">
             <Container>
@@ -20,22 +22,8 @@ function Header({ name, searchBar }) {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">Link</Nav.Link>
-                        {searchBar ?
-                        <Form inline>
-                            <Row>
-                                <Col xs="auto">
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Search"
-                                        className=" mr-sm-2"
-                                    />
-                                </Col>
-                                <Col xs="auto">
-                                    <Button type="submit">Submit</Button>
-                                </Col>
-                            </Row>
-                        </Form> : ""}
+                        <Nav.Link href="#link">Signup</Nav.Link>
+                        <AddToDo addTodo={addTodo}/>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -1,0 +1,36 @@
+React Hooks: 
+useEffect  -> It is a webhook which is used to handle the side effects in react like: 
+ API call, Timer, Event listener, DOM manipulation, Local storage
+
+We can use this in following ways: 
+    useEffect(() => {
+        console.log("Effect running");
+    });
+Above code will run after every render i.e First render, State change, Parent re-render
+
+Empty Dependency Array (Most Common)
+useEffect(() => {
+   console.log("Run only once");
+}, []);
+
+This calls when component renders first time 
+
+useEffect(() => {
+   console.log("Count changed");
+}, [count]);
+
+Important: Order of Execution
+1. component will render
+2. DOM Updated
+3. Then useEffect will be called
+
+Cleanup Function (Very Important):
+useEffect(() => {
+   console.log("Effect");
+
+   return () => {
+      console.log("Cleanup");
+   };
+}, [count]);
+
+When there is any change in count, then first cleanup print and after that Effect print in console log

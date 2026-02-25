@@ -1,12 +1,18 @@
 import React from 'react'
 import TodoItem from './TodoItem'
 import Table from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import AddToDo from './AddToDo';
 
 export default function Todos({ todos, onDelete }) {
 
     return (
         <div>
+           
             {todos.length == 0 ? 'Not Todos to display' :
+
                 <Table striped bordered hover size="sm" responsive="sm">
                     <thead>
                         <tr>
@@ -17,8 +23,8 @@ export default function Todos({ todos, onDelete }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {todos.map((todoItem) => (
-                            <TodoItem item={todoItem} key={todoItem.sno} onDelete={onDelete}></TodoItem>
+                        {todos.map((key, todoItem) => (
+                            <TodoItem item={todoItem} key={key} onDelete={onDelete}></TodoItem>
                         ))}
                     </tbody>
                 </Table >
