@@ -1,9 +1,7 @@
-import React from 'react'
-import { useEffect } from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
 
 export default function AddToDo({ addTodo }) {
     const [show, setShow] = useState(false);
@@ -17,7 +15,6 @@ export default function AddToDo({ addTodo }) {
         setShow(false)
         setTitle("")
         setDesc("")
-        console.log("Submit clickked")
         addTodo(title, desc)
     }
     return (

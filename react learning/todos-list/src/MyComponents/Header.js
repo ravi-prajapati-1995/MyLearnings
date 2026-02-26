@@ -1,16 +1,9 @@
 
+import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import PropTypes from 'prop-types'
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import AddToDo from './AddToDo';
-import { useEffect } from 'react';
 
 
 function Header({ name, searchBar, addTodo }) {
@@ -21,8 +14,8 @@ function Header({ name, searchBar, addTodo }) {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">Signup</Nav.Link>
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/form">Signup</Nav.Link>
                         <AddToDo addTodo={addTodo}/>
                     </Nav>
                 </Navbar.Collapse>

@@ -7,53 +7,48 @@ import { Footer } from './MyComponents/Footer';
 import { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MyForm from './MyComponents/MyForm';
 
 function App() {
 
-  let existingToDos = []
-  if(localStorage.getItem("todos") != null) {
-    const fromStorage = localStorage.getItem("todos");
-    console.log("from local storage", fromStorage)
-    existingToDos = JSON.parse(fromStorage)
-  }
+  const [todos, setTodos] = useState(() => {
+    const stored = localStorage.getItem("todos");
+    return stored ? JSON.parse(stored) : [];
+  });
 
   const onDelete = (todo) => {
-    console.log("I am on delte", todo)
     setTodos(todos.filter(item => item !== todo))
   }
 
   const addTodo = (title, desc) => {
-    console.log('I am in add todo', title, desc)
-    let size = todos.length ==0 ? 1 : todos[todos.length - 1].sno + 1
+    let size = todos.length === 0 ? 1 : todos[todos.length - 1].sno + 1
     let newTodo = {
       sno: size,
       title: title,
       desc: desc
     }
     setTodos([...todos, newTodo])
-    localStorage.setItem("todos", JSON.stringify(todos))
   }
 
-  const [todos, setTodos] = useState([existingToDos]);
-
+  // Here in useEffect we used todos in array, so that where there is change in todos then this method will be called
   useEffect(() => {
-    console.log("Effect running");
-
-    return () => {
-      console.log("I am in return ")
-    }
+    localStorage.setItem("todos", JSON.stringify(todos))
   }, [todos]);
 
   return (
-
-    <Container fluid >
-      <Row>
-        <Header name={'ToDo App'} searchBar={true} addTodo={addTodo}></Header>
-        <Todos todos={todos} onDelete={onDelete}></Todos>
-        <Footer></Footer>
-      </Row>
-    </Container>
+    <BrowserRouter>
+      <Container fluid >
+        <Row>
+          <Header name={'ToDo App'} searchBar={true} addTodo={addTodo}></Header>
+          <Routes>
+            <Route path="/" element={<Todos todos={todos} onDelete={onDelete} />} />
+            <Route path="/form" element={<MyForm />} />
+          </Routes>
+          <Footer></Footer>
+        </Row>
+      </Container>
+    </BrowserRouter>
   );
 }
 
