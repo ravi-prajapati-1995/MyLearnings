@@ -16,6 +16,7 @@ function Header({ name, searchBar, addTodo }) {
                     <Nav className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/form">Signup</Nav.Link>
+                        <Nav.Link href="/posts">All Posts</Nav.Link>
                         <AddToDo addTodo={addTodo}/>
                     </Nav>
                 </Navbar.Collapse>
