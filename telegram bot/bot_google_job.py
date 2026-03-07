@@ -14,10 +14,11 @@ from typing import List, Dict, Any
 
 from serpapi import GoogleSearch
 from telegram import Update
-from telegram.constants import ParseMode
-from telegram.ext import ApplicationBuilder, ContextTypes
+from telegram.ext import ContextTypes
 
-from utils import get_file_logger
+from utils import get_file_logger, parse_date
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 
 logger = get_file_logger("jobBot", "logs/app.log")
 

@@ -1,4 +1,4 @@
-package com.ravi.learnings.dsa.binartree;
+package com.ravi.learnings.dsa.binarytree;
 
 import lombok.Getter;
 

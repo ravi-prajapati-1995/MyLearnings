@@ -1,0 +1,114 @@
+package com.ravi.learnings.dsa.heap;
+
+import java.util.PriorityQueue;
+
+import static com.ravi.learnings.dsa.heap.ConvertMinHeapToMaxHeap.swap;
+import static java.util.Arrays.sort;
+
+/**
+ * Given an array nums, return the kth largest element in the array.
+ * Input: nums = [1, 2, 3, 4, 5], k = 2
+ * Output: 4
+ */
+public class KthLargestElement {
+
+    public static void main(String[] args) {
+        int nums[] = {-5, 4, 1, 2, -3};
+        System.out.println(kthLargestElement_BruteForce(nums, 5));
+        System.out.println(kthLargestElement_BruteForce_striver(nums, 5));
+    }
+
+    /**
+     * Brute Force Approach:
+     * One way to do it by sort the given array in descending order, then find the k-1 element and return simple
+     * TC = O(NlogN) -- as we are sorting the array
+     * SC - O(1) -- Not using extra space
+     * Better Approach:
+     * 1. We can use a priority queue which will have k elements
+     * 2. Traverse the array after adding K element when adding next element check the top element if it is smaller than
+     * current element
+     * 3. If yes then continue to next element
+     * 4. If not then remove the top element and add the current element priority queue
+     * 5. Do same for all the elements we will left with k largest element in the priority queue
+     * <p>
+     * TC: So we are adding K element in the PQ so compexity: ( O(KlogK) + (N-k)LogK ) = logK(k + N -K) --> NlogK
+     * So time complexity is near about nlogn
+     * SC -- O(k) for storing K elements
+     */
+    public static int kthLargestElement_BruteForce(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(k);
+        for (int i : nums) {
+            if (pq.size() < k) { // if priority queue have less than k elements we will add that in queue directly
+                pq.add(i);
+            } else { // meaning PQ is full with k element
+                if (pq.peek() < i) { // meaning we have small element in PQ
+                    pq.poll();
+                    pq.add(i);
+                }
+            }
+        }
+        System.out.println(pq);
+        return pq.poll();
+    }
+
+    public static int kthLargestElement_BruteForce_striver(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(k);
+        for (int i = 0; i < k; i++) {
+            pq.add(nums[i]);
+        }
+
+        for (int i = k; i < nums.length; i++) {
+            if (pq.peek() < i) { // meaning we have small element in PQ
+                pq.poll();
+                pq.add(i);
+            }
+        }
+        System.out.println(pq);
+        return pq.poll();
+    }
+
+    /**
+     * We need to learn about the algorithm: Quick, Select and Partition Algorithm
+     * 1. We will take an element from the array randomly
+     * 2. Then we will place large element from the selected element in left side
+     * 3. And smaller element in the right side it is like quick sort
+     */
+    public static int kthLargestElement_optimal_striver(int[] nums, int k) {
+        //1. take left and right
+        int left = 0;
+        int right = nums.length - 1;
+        sortkaro(nums, left, right);
+        return 0;
+    }
+
+    /**
+     * 1. 1st step to move pivot to the left, swap left with pivot
+     * 2. Take a variable idx it will always point to element that will be in the right half, mean it point element
+     * which is smaller than pivot
+     *   [-5, 4, 1, 2, -3]
+     *   [1, 4, -5, 2, -3] -- as we selected pivot left + 2 and left is 0, so we swap it, pivot is 1
+     */
+    private static void sortkaro(final int[] nums, final int left, final int right) {
+
+        // this is our pivot around left side of this we will have greater elements and in right have smaller
+        int pivot = left + 2 > right ? left : left + 2;
+        swap(nums, left, pivot);
+        // start with the next element from left because it points to pivot
+        int startPoint = left + 1;
+        int idx = startPoint; // idx will point element which will smaller than pivot
+
+        for(int i = startPoint; i<= right; i++) {
+            if(nums[idx] > nums[pivot]) { // when element is greater than pivot it will be as it is
+                idx++;
+            } else {
+
+            }
+        }
+    }
+
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}

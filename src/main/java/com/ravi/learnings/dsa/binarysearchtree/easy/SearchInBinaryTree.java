@@ -1,6 +1,6 @@
 package com.ravi.learnings.dsa.binarysearchtree.easy;
 
-import com.ravi.learnings.dsa.binartree.TreeNode;
+import com.ravi.learnings.dsa.binarytree.TreeNode;
 
 import java.util.List;
 

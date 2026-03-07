@@ -17,8 +17,8 @@ import java.util.Arrays;
  * */
 public class HeapifyAlgoMinHeap {
     public static void main(String[] args) {
-        int[] arr1 = {3, 4, 7, 5, 6, 11, 9, 10};
-        heapifyMinHeap(arr1, 7, 1);
+        int[] arr1 = {1, 4, 5, 5, 7, 6};
+        heapifyMinHeap(arr1, 5, 2);
         System.out.println(Arrays.toString(arr1));
     }
 

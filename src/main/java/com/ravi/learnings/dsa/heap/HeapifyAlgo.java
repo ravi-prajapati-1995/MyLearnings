@@ -3,22 +3,22 @@ package com.ravi.learnings.dsa.heap;
 import java.util.Arrays;
 
 /**
- * We have given a heap and need to update the value at particular index
+ * We have given a max heap and need to update the value at particular index
  * int[] arr = {10, 7, 6, 4, 5, 4, 5, 3, 2};
- *          10
- *        /    \
- *       7      6
- *      / \    / \
- *     4   5  4   5
- *    / \
- *   3   2
- *
- *   In above max heap we need to replace value at certain places
- * */
+ * 10
+ * /    \
+ * 7      6
+ * / \    / \
+ * 4   5  4   5
+ * / \
+ * 3   2
+ * <p>
+ * In above max heap we need to replace value at certain places
+ */
 public class HeapifyAlgo {
     public static void main(String[] args) {
-        int[] arr = {10, 7, 6, 4, 5, 4, 5, 3, 2};
-        heapify(arr, 0, 1);
+        int[] arr = {1, 4, 5, 5, 7, 6};
+        heapify(arr, 5, 2);
         System.out.println(Arrays.toString(arr));
 
         int[] arr1 = {3, 4, 7, 5, 6, 11, 9, 10};
@@ -56,6 +56,21 @@ public class HeapifyAlgo {
         }
     }
 
+   /* *//**
+     * This method will be called for heapify
+     * In case @val will be greater than the existing element in the heap I need to do heapify UP
+     * In case val is smaller we need to heapify down
+     *//*
+    public static void heapify(int[] nums, int ind, int val) {
+        if (val < nums[ind]) {
+            nums[ind] = val;
+//            heapifyUpMinHeap(nums, ind, val);
+        } else {
+            nums[ind] = val;
+            heapifyDown(nums, ind);
+        }
+    }*/
+
     /**
      * When we set a value that is smaller than the current value i.e if at index 0 we set 1 , then we need to do
      * heapify down till it follow the heap properties.
@@ -76,7 +91,7 @@ public class HeapifyAlgo {
         int rightChild = ind * 2 + 2;
         // So here if the left child is less than the root, then we compare left child with the right child
         // This also helps in case we have only left child and there is no right child
-        if(rightChild < nums.length && nums[rightChild] > nums[smallest]) {
+        if (rightChild < nums.length && nums[rightChild] > nums[smallest]) {
             smallest = rightChild;
         }
 
@@ -85,7 +100,6 @@ public class HeapifyAlgo {
             swap(nums, ind, smallest);
             // Now we need to check if we can move this item further in tree
             heapifyDown(nums, smallest);
-
         }
         //Now we will replace the ind with the maxIdx value and maxIdx with ind val
 

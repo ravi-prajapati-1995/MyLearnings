@@ -1,6 +1,6 @@
 package com.ravi.learnings.dsa.binarysearchtree.easy;
 
-import com.ravi.learnings.dsa.binartree.TreeNode;
+import com.ravi.learnings.dsa.binarytree.TreeNode;
 
 /**
  * <a href="https://www.geeksforgeeks.org/problems/max-and-min-element-in-binary-tree/1">Problem Link</a>
