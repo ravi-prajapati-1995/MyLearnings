@@ -52,7 +52,7 @@ i.e
  2 5 7 10 12 15
  if we are at 5 which at index 1 its left child will be on 3, right 4 and this is true for all the elements
 
- To find the parent of any child idx = ceil(idx/2) - 1
+ To find the parent of any child idx = ceil(idx-1/2)
  i.e if we are at 15 index 6 parent will be ceil(6/2) - 1 --> 3-1 = 2
 
  No of internal nodes: In complete binary tree number of internal nodes are calculated by below formula, internal nodes
