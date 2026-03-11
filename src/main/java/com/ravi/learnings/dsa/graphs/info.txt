@@ -58,7 +58,7 @@ This matrix will be represented by:
              4 |  0   0   0   1   0   1
              5 |  0   0   1   1   1   0
 
-In matrix representation we waste lot of space so there is better way to stor it in lis
+In matrix representation we waste lot of space so there is better way to store it in list
 We can store graph in list also we will create a list with [n+1] here n is nodes
 list will look like:
 0 -> {}
