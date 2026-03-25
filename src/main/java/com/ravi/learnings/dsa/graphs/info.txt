@@ -20,7 +20,7 @@ If we start traversing from node and end at that node then it is called cycle in
 Path: It contains multiple nodes/vertices and each of them are reachable.
 
 Degree:
-    Undirected Graph: No of nodes to which a node is connected known as degree, Total Degree = 2 * Edge
+    Undirected Graph: No. of nodes to which a node is connected known as degree, Total Degree = 2 * Edge
     Directional Graph:
         In-Degree: No of incoming edge to that particular node know and in degree
         out-Degree: No of outgoing edges from a node know as out degree
