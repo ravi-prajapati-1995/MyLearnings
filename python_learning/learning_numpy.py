@@ -33,3 +33,6 @@ print(np.eye(5)) # To create a identity matrix with the given rows and column an
 
 print(np.random.rand(5)) # Create matrix of random numbers with provided length
 print(np.random.rand(5, 6)) # Create matrix of random numbers with provided length
+
+print("--------------------- randn ------------------")
+print(np.random.randn(5))
