@@ -58,7 +58,7 @@ public class LargestRectangleInHistogram {
 
         for (int i = heights.length - 1; i >= 0; i--) {
 
-            while (!st.empty() && heights[st.peek()] > heights[i]) {
+            while (!st.empty() && heights[st.peek()] >= heights[i]) {
                 st.pop();
             }
 
@@ -83,7 +83,7 @@ public class LargestRectangleInHistogram {
 
         for (int i = 0; i < heights.length; i++) {
 
-            while (!st.empty() && heights[st.peek()] > heights[i]) {
+            while (!st.empty() && heights[st.peek()] >= heights[i]) {
                 st.pop();
             }
 
