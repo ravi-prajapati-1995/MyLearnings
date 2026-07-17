@@ -1,3 +1,18 @@
+Q. How we can find out if any given problem is a DP problem: 
+    In question you find the below keyword: 
+    1. Find the total number of ways
+    2. Try all the possible ways--- Recursion will be applied
+        a. count
+        b. best ways
+
+According to striver if we want to solve any DP problem remember below rules: 
+1. Try to represent the problem in terms of index
+2. Do all possible stuff on that index and do all the possbile  According to the problem statement
+3. Sum of all stuff -- if problem says count all ways
+    min(of all stuff) -- find min 
+    max(of all stuff) -- find max
+    
+
 Dynamic Programming:
     We have 2 type of DP
     Memoization: Top - down approach

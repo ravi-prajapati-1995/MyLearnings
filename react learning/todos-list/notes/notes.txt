@@ -1,0 +1,9 @@
+Reacct is a Javascript library not framework like Angular
+In reach components are similar to classes in Javascript
+We can pass data from parent to child
+When there is any change in state react first change it in the virtual dom after that it change in the real dom
+We are using functional components in this app
+To send data from parent to schild we can use props in our functional components and <Header name="ravi">
+this way we can pass data, or we can use array destructuring on component side Header ({name}), we can usee name directly
+When we pass values from parent to child in child we can also define which type of this property will like:
+

@@ -1,0 +1,76 @@
+This is from this YouTube playlist: https://www.youtube.com/watch?v=1v3_AQ26jZ0&list=PLKnIA16_Rmvbr7zKYQuBfsVkjoLcJgxHH&index=2
+
+There are three main part of AI
+
+AI - Artificial Intelligence : Where We can add thinking capabilities to a machine
+ML - Machine learning : This is sub set of AI where we train machine like we will provide images of dogs with features
+like it have mustache, tail and other things
+DL - Deep Learning : It is subset of the Machine learning where we didn't provide any features to system, System will
+identify the patterns in the data
+
+Deep learning become more and more reliable when we train it on more and more data, but ML learning after a particular
+ amount of data become linear
+
+Deep learning we will use at the places where we have huge data
+
+
+Types of Machine Learning:
+Based on Supervision Needed to train algorithm:
+1. Supervised Learning: It is the algorithm where we have input and output, then we this data to model and model will create
+a relation between input and output, then we give it new input, then it will provide us output, i.e we have data for 5000
+students where we have CGPA, IQ and Placed. We train our data on 5000 records, then we will provide CGPA and IQ , then the model
+will tell if placement will be done or not
+
+Below are two types of the supervised learning based on the output. We have two kind of output Number and Categorical
+i.e  In above example if our output will be in number like package it will be numerical
+    a. Regression:  Output for this problem will be in numeric
+    b. Classification: Output for this will be categorical i.e: Yes/No, Male/Female, Nation
+
+2. Unsupervised Learning: In this we have only input i.e IQ and CGPA
+    a. Clustering : In clustering we will group similar data points togather
+
+    b. Dimensionality Reduction: When we have input where we have multiple dimensions, then using this alog we can reduce
+    the dimension of the data, i.e if we have data for building noOfRooms | noOfWashRooms, In this algo we can convert them
+    in single column i.e areSquareFt so that we can reduce dimesion
+
+    c. Anomaly Detection: a machine learning technique used to identify rare items, events, or observations that deviate
+    significantly from the rest of the data
+    : Sensors on factory turbines track vibrations, temperature, and pressure to predict equipment failure before it happens.
+    : Medical devices flag sudden, irregular heartbeats (arrhythmias) or abnormal EEG brain activity.
+
+    d. Association Rule learning: It is used to discover the hidden relationship/pattern among the variable in large dataset,
+    i.e In Big stores like BigBazar if we see past 100 bills and find that whenever there is purchase of Milk, 60% times eggs
+    also bought, so we will keep these items togather
+    it is used in: Market Basket Analysis, Recommendation Systems, HealthCare Analytics
+
+3. Semi-supervised Learning: It is the mix of supervised and unsupervised learning. i.e Google Photos in this we will
+    label only one photo, then all other photos of that person are automatically grouped based on the label
+
+4. Reinforcement Learning: a machine learning paradigm where an autonomous agent learns to make decisions by performing
+    actions in an environment to maximize a cumulative reward
+    examples: a self-driving car software or a chess bot
+
+
+Batch Learning: A machine learning approach where a model is trained using the entire dataset all at once.
+    I.e we are creating a recommendation engine for Netflix, we have all the data offline we created and trained model
+    on the available data, then deployed a trained model to the cloud.
+    When on netflix a new movie is uploaded, then our model will not work for that movie; we need to train our model on the new
+    data then deploy that model again on cloud
+
+    Disadvantage of Batch Learning:
+        1. Lots of Data: When we have a large dataset that becomes impossible to load in memory i.e Social media data, in
+            that case it becomes hard to retrain the model
+        2. Hardware Limitation: If our model running on a place where we don't have internet connectivity, in that case
+            it will become hard to get and redeploy the model with new learning
+        3. Availability: In batch learning we need to train our data on new data after a certain period it may be 1 day/week/month
+            depends on the data we are working on,
+    I.e Image recognition
+
+Online-Learning: Online machine learning is a training method where a model updates its parameters sequentially
+   and continuously as new data instances arrive one at a time or in small mini-batches.
+   Suppose we have data of 50 GB, So we can't load that at once in the memory as hardware limitations, So we can use online
+   learning.
+   In online Learning we will train our model on small mini-batches and use that, In this approach model will learn from the
+   new data that came, In this way model will become more and more accurate with the time
+   I.e This is used where data changes very frequently like in stock market, Healthcare
+
