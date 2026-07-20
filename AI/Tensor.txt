@@ -1,0 +1,21 @@
+Tensors:
+    It is data structure where we can store numbers, like arrays, Tensors are N dimensional array
+
+0D Tensor/Scalar: (2), (4) are 0D tensors
+
+1D Tensor/Vector/1D array: [1, 2, 3, 4], No. of axis = rank = dimension
+2D Tensors/Matrices: [1, 2, 3]
+                     [4,  5, 6]
+                     [7, 8, 9]
+3D Tensors/3D matrix: Imagine a workbook with 2 pages. Each page contains a table with 3 rows and 4 columns of numbers.
+                      This entire block of data forms a 3D tensor with a shape of (2, 3, 4)
+
+4D Tensor: When we are seeing any image on the computer screen or anywhere it is the collection of RGB layers, where each
+           Layer have some color value which make it 3D tensor, when we have collection of images like I have 50 Images
+           then it called 4D tensor. If each layer i.e R is having (1200, 800) pixels, then each image will have
+           (3, 1200, 800). 3D tensor, so 50 images will have (50, 3, 1200, 800) in 4D tensor
+
+5D Tensor: Video, Lets assume we have video of 60 second, which shoots on 30 FPS an at 480 * 720 Pixel
+            So one frame will have (3, 480, 720) , in 60 second video there are 1800 frames so it will be
+            (1800, 3, 480, 720) 4D tensor, if we have 5 videos so it will create 5D tensor:
+            (5, 1800, 3, 480, 720)

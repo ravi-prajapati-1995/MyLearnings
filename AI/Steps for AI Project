@@ -1,0 +1,12 @@
+0. Preprocess, EDA, Feature Selection
+    Preprocess: Remove the extra columns and missing value
+    Exploratory Data analysis(EDA): In this step we do analysis of data by visualization from which we can
+    Feature Selection: We will select the columns which are related to our problem
+1. Extract Input and output cols
+    Here we will separate our dependent and independent columns in our student problem independent columns are iq and cgpa,
+    dependent column is placement which is dependent on the iq and cgpa column
+2. Scale the values
+3. Train test split
+4. Train the model
+5. Evaluate the model/ Model selection
+6. Deploy the model
