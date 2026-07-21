@@ -6,7 +6,14 @@
     Here we will separate our dependent and independent columns in our student problem independent columns are iq and cgpa,
     dependent column is placement which is dependent on the iq and cgpa column
 2. Scale the values
+    : Here we will shrink our data from -1 to 1 range so that we can minimize the distance between two independent columns
+    fit(): Analyzes the data to calculate the mathematical state (like finding the min/max or the mean/standard deviation). It stores these as internal instance variables.
+    transform(): Applies the mathematical formula to the data using those stored variables and returns a new dataset.
 3. Train test split
+    In this we will split the our test data, like we have 100 record we will train our model on 90 record and then test
+    it on 10 records
 4. Train the model
+    : In this step we will select the model which we want to use and then train the modal on the training data
 5. Evaluate the model/ Model selection
+    : Then we check the accuracy of out model how it is performing
 6. Deploy the model
