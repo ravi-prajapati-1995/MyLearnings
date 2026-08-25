@@ -1,0 +1,25 @@
+First Step we need to understand the data
+
+1. How big is the data:
+Ans: use df.shape() - to find out how many rows and columns are there in the data
+2. How does the data look like?
+Ans: We can use the df.head() to get the top 5 rows, or we can use df.sample(5) this will return the random rows
+
+3. What is the data type of cols?
+Ans: df.info(): this will get the information about the data we have
+
+4. Are there any missing values?
+Ans: if We want to check if there are missing values in our data we can use: df.isnull().sum()
+      this will return the total number of columns
+
+
+5. How does the data look mathematically?
+Ans: df.describe() : this will tell about your data which colums are numeric
+
+6. Are there duplicate values?
+Ans: If there are duplicate data in the data to find out we will use: df.duplicated().sum() it will return count of all
+duplicate values
+
+7. How is correlation between columns?
+Ans: Correlation is the relation between property ie. we are having placement dataset and if we find out correlation of
+placement i.e: df.corr()['placement'], then it will tell how placement is related to the cgpa and IQ

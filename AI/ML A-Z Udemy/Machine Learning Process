@@ -1,0 +1,13 @@
+Data Pre-processing:
+    Import the data
+    Clean the data
+    Split into training  & test sets
+
+Modeling:
+    Build the model
+    Train the model
+    Make predictions
+
+Evaluation:
+    Calculate performance Metrics
+    Make a verdict

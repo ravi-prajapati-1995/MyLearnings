@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from mlxtend.plotting import plot_decision_regions
 
-df = pd.read_csv("placement.csv")
+df = pd.read_csv("../placement.csv")
 print(df)
 df.info()
 

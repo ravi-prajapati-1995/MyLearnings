@@ -4,15 +4,15 @@ Tokenization: When we give any prompt to LLM first it break the input in token i
 then LLM breaks it All (1 token) _(space 2nd token) that (3rd token) _(4th token) glit (5th token) ers(6th token)
 LLM breaks 'ers' because its general suffices like 'ing'(Eating, dancing, running) 's'(boys, toys)
 
-Vectors: In LLM after tokenization what meaning has to drive is represent by vector, Vector is the n dimensional array
-where meaningful words puts close to each other, which can make sentence and which can't will put far. Tokens converted
-into vectors, and these vector contains the meaning
-i.e if we write apple it can be fruite , it can represent apple company
-So when we write "tasty Apple" -- LLM understand that we are taking about the fruit
-"Apple Revenue" -- LLM understand we are talking about apple company revenue
+Vectors: In LLM after tokenization what meaning has to drive is represented by vector, Vector is the n dimensional array
+where meaningful words put close to each other, which can make sentence and which can't put far. Tokens are converted
+into vectors. These vectors contain the meaning
+i.e if we write "apple" it can be fruit, it can represent apple company
+So when we write "tasty Apple" -- LLM understands that we are taking about the fruit
+"Apple Revenue" -- LLM understands we are talking about apple company revenue
 So LLM drive meaning with the nearby worlds
 
-4. Attention: It is mechanism where AI can focus on the most import part of the input when making a decision.
+4. Attention: It is a mechanism where AI can focus on the most important part of the input when making a decision.
 i.e The animal didn’t cross the street because it was too tired.
 Here we focus on the animal more than other words in the sentence in the way, AI model also works same way they also
 give weight to each word, and accordingly it generate output
