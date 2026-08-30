@@ -3,6 +3,7 @@ package com.ravi.learnings.dsa.binarytree.easy.traversal;
 import com.ravi.learnings.dsa.binarytree.TreeNode;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
@@ -19,27 +20,36 @@ import java.util.Stack;
 */
 public class PostOrderTraversalUsingStack {
     public static void main(String[] args) {
+        final var root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(7);
+        System.out.println(postorder(root));
 
     }
 
-    public List<Integer> postorder(TreeNode root) {
+    // read Logic from info.md file
+    public static List<Integer> postorder(TreeNode root) {
 
         List<Integer> li = new ArrayList<Integer>();
         Stack<TreeNode> st = new Stack<>();
         st.push(root);
 
         while (!st.isEmpty()) {
-            if(root.right != null) {
-                st.push(root.right);
+            final var pop = st.pop();
+            li.add(pop.val);
+            if(pop.left != null) {
+                st.push(pop.left);
             }
 
-            if(root.left != null) {
-                st.push(root.left);
+            if(pop.right != null) {
+                st.push(pop.right);
             }
-
-
-
         }
+        Collections.reverse(li);
         return li;
     }
 }
