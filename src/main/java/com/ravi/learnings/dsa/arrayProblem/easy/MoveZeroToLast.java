@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class MoveZeroToLast {
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 4, 5, 6};
+        int[] nums = {1, 2, 3,0, 0, 4, 5, 6};
         moveZeroes(nums);
         System.out.println(Arrays.toString(nums));
     }

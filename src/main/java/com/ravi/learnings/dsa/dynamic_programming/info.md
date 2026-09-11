@@ -12,14 +12,13 @@ We will store the data in the array of n+1 elements and
 `dpArray[0] = 0
 dp Array[1] = 1`
 
-
-
-Q. How we can find out if any given problem is a DP problem: 
-    In question you find the below keyword: 
-    1. Find the total number of ways
-    2. Try all the possible ways--- Recursion will be applied
-        a. count
-        b. best ways
+   
+### Q. How we can find out if any given problem is a DP problem: 
+In question you find the below keyword: 
+1. Find the total number of ways
+2. Try all the possible ways--- Recursion will be applied
+    a. count
+    b. best ways
 
 According to striver if we want to solve any DP problem remember below rules: 
 1. Try to represent the problem in terms of index
@@ -28,8 +27,7 @@ According to striver if we want to solve any DP problem remember below rules:
     min(of all stuff) -- find min 
     max(of all stuff) -- find max
     
-
-Dynamic Programming:
+   
     
 Lets take a recursion example to find the fibonacci series of f(6)
 
@@ -71,3 +69,6 @@ this problem we can store the pre-calculated values and use when we need
 So we will have an dpArray with n+1 size and in that array for each number we put the value if we have calculated
 
 So in DP we will save the calculated value so that we can use that in near future
+
+## Climbing Stairs
+[Problem Link](https://takeuforward.org/plus/dsa/problems/climbing-stairs?source=strivers-a2z-dsa-track)
