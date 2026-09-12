@@ -72,3 +72,15 @@ So in DP we will save the calculated value so that we can use that in near futur
 
 ## Climbing Stairs
 [Problem Link](https://takeuforward.org/plus/dsa/problems/climbing-stairs?source=strivers-a2z-dsa-track)
+
+## Tabulation
+Bottom-Up Approach in Tabulation: Tabulation involves solving a problem by building a solution from the bottom up. 
+This means start with the smallest subproblems and iteratively compute solutions for larger subproblems until the desired solution has been found.
+
+Declare an Array dp[] of Size n+1: Here, n is the parameter or size of the problem. It represents the solution to the subproblem for any given index.
+
+Setting Base Cases in the Array:In the recursive code, we knew the answer for base cases, similarly if we are computing in tabulation, we definitely know that the answer for dp[0] = 1 and dp[1] = 1.
+
+Iterative Computation Using a Loop: Set an iterative loop that traverses the array( from index 2 to n). To compute the solution for larger values, use a loop that iterates from the smallest subproblem up to n. The current value(dp[i]) represents the subproblem and by the recurrence relation it is obvious that it is sum of previous two values, for every index(i) set its value as dp[i-1] + dp[i-2].
+
+Returning the last element: The last element of the dp array is returned because it holds the optimal solution to the entire problem after the bottom-up computation has been completed.
