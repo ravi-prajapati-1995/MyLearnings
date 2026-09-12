@@ -2,6 +2,7 @@ package com.ravi.learnings.features.threading;
 
 import java.util.Objects;
 
+
 public class _001Thread {
     public static void main(String[] args) {
         final var myObj = new MyObj();
@@ -14,6 +15,17 @@ public class _001Thread {
     }
 }
 
+/*
+* In this class we have MyObj which is having synchronized method
+* If that method is instance method and we are calling it on same myObj object, then only one thread can access it at
+* a time
+* If that method is instance method and we are calling it on different myObj object, then both thread can access it at
+* a time independently
+* If that method is static method then even if we call it on different objects then only 1 will be called
+* or event we have two static synchronized method then only one will be called at same time
+*
+*
+* */
 class MyClass extends  Thread {
     String name;
     MyObj myObj;
