@@ -1,14 +1,24 @@
 Window Function:
 
-Suppose we have an employee table you can find structure and insert query in resource employee_db_and_insert.sql
+Suppose we have an employee table with you can find structure and insert query in resource employee_db_and_insert.sql
+ 
+       create table employee
+        (
+        emp_ID    int,
+        emp_NAME  varchar(50),
+        DEPT_NAME varchar(50),
+        SALARY    int
+        );
 
 If we want to get the max salary from all of the employee we can use
 select max(salary) from employee;
 -- Here max is aggregator function, there are multiple aggregator functions like MAX, MIN, AVG, SUM, COUNT
 
 Now I want to max salary of employee for each department
-select dept_name, max(salary) from employee group by dept_name;
+    
+    select dept_name, max(salary) from employee group by dept_name;
 So result of above query is like this:
+~~~text
 +---------+-----+
 |dept_name|max  |
 +---------+-----+
@@ -17,12 +27,12 @@ So result of above query is like this:
 |IT       |11000|
 |HR       |8000 |
 +---------+-----+
-
+~~~
 If we want to get max salary of employee and along with other details like emp_name, emp_id etc
 we can't do that as we are using group by clause
 So to do that we can use the window function
 
-select e.*, max(salary) over() as max_salary from employee e;
+    select e.*, max(salary) over() as max_salary from employee e;
 
 Above query will give us normal details along with a new column that will have the max salary
 Here in over() there is nothing so sql create a window for all the records present in the table
@@ -36,6 +46,7 @@ Here we create window for each dept_name and on that dept_name we find out the m
 max salary for each department along with other details
 
 row_number() -- It will assign the unique value to each record
+    
     select e.*, row_number() over() from employee e;
 
 Here in over() we didn't provide anything so the sql server treated all the records as single window
@@ -54,6 +65,7 @@ per department
 
 fetch top 3 employees in each department who is earning max salary
 if we use below query:
+
     select *
     from (select e.*, row_number() over (partition by dept_name order by salary desc) as rn from employee e) as x
     where x.rn < 4;
@@ -63,28 +75,34 @@ then only 3 will come
 So to overcome this we can use of rank instead of row number
 
 if we run:
-select e.*, rank() over (order by salary) from employee e;
+
+    select e.*, rank() over (order by salary) from employee e;
+
 Above query create rank for each record based on salary, in rank if multiple record has same value like in our case
 if multiple  record has same salary it will give them same rank, and also skip numbers in case of duplicate
 
 if we have total 24 record it will give total 24 ranks
 
 To group rank by dept_name we can use  below query:
+
     select e.*, rank() over (partition by dept_name order by salary) from employee e;
 
 To fetch top 3 employee in each dept with max salary we can use below query
+
     select *
     from (select e.*, rank() over (partition by dept_name order by salary) as rn from employee e) as x
     where x.rn < 4;
 
 Dense Rank:
     Then only difference is that it will not skip the value if we got duplicate records
-    select e.*, dense_rank() over (order by salary) from employee e;
+   
+     select e.*, dense_rank() over (order by salary) from employee e;
 
 In rank query for total records: 24 it gives rank till 24 as skipping numbers
 In dense rank we are getting rank till 13 as not skipping numbers
 
 Run below command to see the difference between row_number, rank and dense_rank
+    
     select *,
            row_number() over (partition by dept_name order by salary desc),
            rank() over(partition by  dept_name order by salary desc),
@@ -93,28 +111,35 @@ Run below command to see the difference between row_number, rank and dense_rank
 
 
 if we want to get any details of previous record like we want to get salary of previous employee we can
+    
     select *, lag(salary) over (order by salary) from employee;
+
 Above query will get the salary of previous employee ordering by salary , but we want salary of previous employee in
 order so we can write:
+    
     select *, lag(salary) over (order by emp_id) from employee;
 Now if we want previous employee salary and group by them department then it can be written as:
-   select *, lag(salary) over (partition by dept_name order by emp_id) from employee;
+    
+    select *, lag(salary) over (partition by dept_name order by emp_id) from employee;
 
 In lag function we can pass argument that how much previous records we want to get and default value i.e:
 lag(salary, 2, 0) --- so in this we will se 2 record previous and default value is 0
 
 Lead: if we want to get details of next record then we can use lead function
-    select *, lead(salary) over (partition by dept_name order by emp_id) from employee;
+   
+     select *, lead(salary) over (partition by dept_name order by emp_id) from employee;
 Above query get the salary of next employee along with other data
 
 I can also use the other aggregate function in window function like:sum, max, min, count, avg
 If I want to get number of employee in each department along with other details I can use below query
+    
     select *, count(*) over (partition by dept_name) from employee;
 
 From payment_attempt table if I have an requirement like I need to get the initial and final status of the payment
 as we can have multiple payment attempts
 So if we try to do it with min(status) and Max(status) it calculate based on char values not a correct choice
 we can use first_value and last_value window function and give the column we want in that particular window
+    
     select *,
        first_value(status) over (partition by appointment_id order by updated_at) as initial_status,
        last_value(status) over (partition by appointment_id order by updated_at) as final_status
@@ -123,7 +148,8 @@ In last_value we need to understand it will show details till the current row , 
 it FAILED, also for 2nd it FAILED and for 3rd it SUCCESS, then for 1st and 2nd last_value came as FAILED not SUCCESS
 
 to make last_value scan all the window we need to modify it to tell scan all window
-select *,
+
+    select *,
        first_value(status) over (partition by appointment_id order by updated_at) as initial_status,
        last_value(status) over (partition by appointment_id order by updated_at ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) as final_status
 
@@ -132,6 +158,9 @@ UNBOUNDED PRECEDING --- Start of the partition
 UNBOUNDED FOLLOWING --- End of the partition
 
 ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW --- Includes all rows up to current row
+
 ROWS BETWEEN 1 PRECEDING AND CURRENT ROW --- Includes current + previous row
+
 ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING --- From current to end of partition
+
 ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING -- Includes every row — often for LAST_VALUE()
